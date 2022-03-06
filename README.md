@@ -3,19 +3,14 @@
     src="https://i.imgur.com/tlsNOJ8.gif"
     width="100"
   />
-</div>
-
-<div id="badges" align="center>
-  <a href="https://www.linkedin.com/in/oli-nelson/">
+    <a href="https://www.linkedin.com/in/oli-nelson/">
     <img
       src="https://img.shields.io/badge/My%20stuff-black?style=for-the-badge&logo=linktree&logoColor=white"
       alt="My stuff"
     />
   </a>
-
 </div>
 
-# Hello human 
 
 <!--
 **olinelson/olinelson** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
