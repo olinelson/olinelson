@@ -1,44 +1,21 @@
-### Hi there 👋
-
 <div id="header" align="center">
   <img
-    style="border-radius: 50%"
-    src="https://d1fdloi71mui9q.cloudfront.net/QKdAvzeiRrO1FTmcSVyJ_wMw2XWSCPEl32R09"
+    src="https://i.imgur.com/tlsNOJ8.gif"
     width="100"
   />
 </div>
 
-<div id="badges">
+<div id="badges" align="center>
   <a href="https://www.linkedin.com/in/oli-nelson/">
     <img
-      src="https://img.shields.io/badge/LinkedIn-black?style=for-the-badge&logo=linkedin&logoColor=white"
-      alt="LinkedIn Badge"
+      src="https://img.shields.io/badge/My%20stuff-black?style=for-the-badge&logo=linktree&logoColor=white"
+      alt="My stuff"
     />
   </a>
 
-  <a href="https://instagram.com/olinelson__">
-    <img
-      src="https://img.shields.io/badge/Instagram-black?style=for-the-badge&logo=instagram&logoColor=white"
-      alt="Instagram Badge"
-    />
-  </a>
-
-  <a href="https://music.apple.com/au/album/i-wrote-you-a-song/1504299136">
-    <img
-      src="https://img.shields.io/badge/Apple Music-black?style=for-the-badge&logo=applemusic&logoColor=white"
-      alt="Apple Music Badge"
-    />
-  </a>
-
-  <a href="https://open.spotify.com/playlist/3qDjibCTOF2MiJ7ML51RY0?si=b761691fe6ce47eb">
-    <img
-      src="https://img.shields.io/badge/spotify-black?style=for-the-badge&logo=spotify&logoColor=white"
-      alt="Spotify Badge"
-    />
-  </a>
 </div>
 
-
+# Hello human 
 
 <!--
 **olinelson/olinelson** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
