@@ -5,12 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Oli Nelson</title>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        window.location.href = "https://linktr.ee/olinelson";
-      });
-    </script>
+
+    <noscript>
+      <div>
+        <a href="https://linktr.ee/olinelson">Continue</a>
+      </div>
+    </noscript>
     <style>
+      a {
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        color: white;
+        text-decoration: none;
+      }
+
       body {
         background-color: black;
         height: 100vh;
@@ -23,7 +31,8 @@
       }
 
       .lds-ring {
-        display: inline-block;
+        display: none;
+        /* display: inline-block; */
         position: relative;
         width: 80px;
         height: 80px;
@@ -67,4 +76,12 @@
       <div></div>
     </div>
   </body>
+  <script>
+    const el = (document.querySelector(".lds-ring").style.display =
+      "inline-block");
+    document.addEventListener("DOMContentLoaded", () => {
+      const el = document.querySelector(".lds-ring");
+      window.location.href = "https://linktr.ee/olinelson";
+    });
+  </script>
 </html>
