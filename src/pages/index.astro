@@ -1,0 +1,55 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+
+import LogoTwitter from "carbon-icons-svelte/lib/LogoTwitter.svelte";
+import LogoGithub from "carbon-icons-svelte/lib/LogoGithub.svelte";
+import LogoLinkedin from "carbon-icons-svelte/lib/LogoLinkedin.svelte";
+import CopyButton from "../components/CopyButton.svelte";
+import Header from "../components/Header.svelte";
+
+const nostrPubKey = "npub1rj70rm4vggrpcpvaukg2jpzp7qx9v9pfw5rmy9dth5fcn74y508qfekjvl";
+---
+
+<MainLayout>
+    <div class="container centered">
+        <section></section>
+        <Header />
+        <section class="nostr">
+            <a href="https://snort.social/p/npub1rj70rm4vggrpcpvaukg2jpzp7qx9v9pfw5rmy9dth5fcn74y508qfekjvl">Nostr</a>
+            <CopyButton client:visible text={nostrPubKey} />
+        </section>
+        <section>
+            <a class="outline" role="button" href="https://www.linkedin.com/in/oli-nelson/"><LogoLinkedin /></a>
+            <a class="outline" role="button" href="https://github.com/olinelson"><LogoGithub /></a>
+            <a class="outline" role="button" href="https://twitter.com/o_j_nelson"><LogoTwitter /></a>
+        </section>
+        <details>
+            <summary>Music</summary>
+            <p class="grid">
+                <a target="_blank" rel="noreferrer" href="https://open.spotify.com/album/1acg8VK6n5eiuuDpq13DCw"
+                    >James Muller & SCJO</a
+                >
+                <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://geo.music.apple.com/au/album/_/1230208237?app=music&at=1000lHKX"
+                    >Where the rest of the world begins</a
+                >
+                <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://open.spotify.com/album/6WXgcMmZ5zGChmGpMRQY3v?si=Z4HvA6eQTC2E6Tyx2BUpeQ&utm_medium=share"
+                    >I wrote you a song</a
+                >
+            </p>
+        </details>
+    </div>
+</MainLayout>
+
+<style>
+    .nostr {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+</style>
