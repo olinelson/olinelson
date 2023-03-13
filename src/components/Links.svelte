@@ -5,7 +5,7 @@
 <section>
   <div />
   <a
-    href="https://snort.social/p/npub1rj70rm4vggrpcpvaukg2jpzp7qx9v9pfw5rmy9dth5fcn74y508qfekjvl"
+    href="https://app.coracle.social/people/npub1rj70rm4vggrpcpvaukg2jpzp7qx9v9pfw5rmy9dth5fcn74y508qfekjvl/notes"
     >Nostr</a
   >
   <a
