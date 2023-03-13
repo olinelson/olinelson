@@ -6,7 +6,8 @@
   <div />
   <a
     href="https://app.coracle.social/people/npub1rj70rm4vggrpcpvaukg2jpzp7qx9v9pfw5rmy9dth5fcn74y508qfekjvl/notes"
-    >Nostr</a
+    target="_blank"
+    rel="noreferrer">Nostr</a
   >
   <a
     href="https://www.linkedin.com/in/oli-nelson/"
