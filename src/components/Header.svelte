@@ -2,7 +2,7 @@
   <img src="./headshot.jpeg" alt="Oli Nelson" />
   <hgroup>
     <h2>Oli Nelson</h2>
-    <h3>Software Engineer | Bitcoin Maximalist | Drummer</h3>
+    <h3>Software Engineer | Drummer</h3>
   </hgroup>
 </div>
 
