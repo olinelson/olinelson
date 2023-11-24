@@ -1,2 +1,2 @@
 # Oli Nelson
-### Software Engineer | Bitcoin Maximalist | Drummer
+### Software Engineer | Drummer
