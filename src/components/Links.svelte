@@ -1,5 +1,5 @@
 <script>
-  import { LogoGithub, LogoLinkedin, LogoTwitter } from "carbon-icons-svelte"
+  import { LogoGithub, LogoLinkedin, LogoTwitter } from "carbon-icons-svelte";
 </script>
 
 <section>
@@ -20,7 +20,6 @@
   <a href="https://twitter.com/o_j_nelson" target="_blank" rel="noreferrer"
     ><LogoTwitter size={32} /></a
   >
-  <a href="/resume.pdf" download target="_blank" rel="noreferrer">Resume</a>
   <div />
 </section>
 
