@@ -1,4 +1,4 @@
 # Oli Nelson
 ### Software Engineer | Drummer
 
-Building [hodlduck.com](https://hodlduck.com)
+Building [groovemerchant.co](https://groovemerchant.co)
