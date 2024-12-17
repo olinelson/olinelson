@@ -1,3 +1,18 @@
 a.contrast {
     text-decoration: none;
 }
+
+.header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.header > img {
+    width: 80px;
+    height: 80px;
+    border-radius: 1000px;
+}
+
+.header > hgroup {
+    margin: 0px;
+}

@@ -9,7 +9,7 @@ class Builders::LoadBlogPreviewsFromHey < SiteBuilder
       feed = RSS::Parser.parse(data)
       blog_post_previews = feed.items.slice(0,3).map do |item|
         title = item.title.content
-        published = item.published.content.to_s.split("T").at(0)
+        published = DateTime.parse(item.published.content.to_s).strftime("%B %d, %Y")
         content = Nokogiri::HTML(item.content.content).text
         link = item.link.href
         {title:, published:, preview: "#{content.slice(0,100)}...", link: }

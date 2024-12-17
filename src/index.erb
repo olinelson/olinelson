@@ -3,10 +3,13 @@ layout: default
 ---
 
 <main class="container">
-  <hgroup>
-    <h1>Oli Nelson</h1>
-    <p>Musician / Software Developer</p>
-  </hgroup>
+  <section class="header">
+    <img src="/images/profile.jpg">
+    <hgroup>
+      <h1>Oli Nelson</h1>
+      <p>Musician / Software Developer</p>
+    </hgroup>
+  </section>
 
   <p>An aspiring digital Renaissance man. If you are looking to learn the drums,
     build a sofware product or learn how to code I'd love to hear from you at
@@ -18,7 +21,10 @@ layout: default
   </a>
   <% site.data["blog_post_previews"].each do |p| %>
     <article>
-      <h5><%= p["title"] %></h5>
+      <hgroup>
+        <h5><%= p["title"] %></h5>
+        <p><%= p["published"] %></p>
+      </hgroup>
       <p><%= p["preview"] %>
         <%= link_to "read more", p["link"], target: "_blank" %></p>
     </article>
