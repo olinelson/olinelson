@@ -7,63 +7,78 @@ layout: default
     <img src="/images/profile.jpg">
     <hgroup>
       <h1>Oli Nelson</h1>
-      <p>Musician / Software Developer</p>
+      <p>Drummer + Indie Software Developer</p>
     </hgroup>
   </section>
 
-  <p>An aspiring digital Renaissance man. If you are looking to learn the drums,
-    build a sofware product or learn how to code I'd love to hear from you at
-    <a href="mailto:olivernelson@hey.com">olivernelson@hey.com</a>.
-  </p>
+  <section>
+    <h4>Services</h4>
+    <ul>
+      <li>Software development</li>
+      <li>Drum Lessons</li>
+      <li>Coding / Programming Lessons</li>
+    </ul>
+  </section>
 
-  <a href="https://world.hey.com/olivernelson" target="_blank" class="contrast">
-    <h4>Blog</h4>
-  </a>
-  <% site.data["blog_post_previews"].each do |p| %>
-    <article>
-      <hgroup>
-        <h5><%= p["title"] %></h5>
-        <p><%= p["published"] %></p>
-      </hgroup>
-      <p><%= p["preview"] %>
-        <%= link_to "read more", p["link"], target: "_blank" %></p>
-    </article>
-  <% end %>
+  <section>
+    <a href="https://world.hey.com/olivernelson" target="_blank" class="contrast">
+      <h4>Blog</h4>
+    </a>
+    <% site.data["blog_post_previews"].each do |p| %>
+      <article>
+        <hgroup>
+          <h5><%= p["title"] %></h5>
+          <p><%= p["published"] %></p>
+        </hgroup>
+        <p><%= p["preview"] %>
+          <%= link_to "read more", p["link"], target: "_blank" %></p>
+      </article>
+    <% end %>
+  </section>
 
-  <h4>Links</h4>
+  <section>
+    <h4>Links</h4>
 
-  <a href="https://github.com/olinelson" target="_blank" class="contrast">
     <article>
-      <%= render "icons/github" %>
-      <span>Github</span>
+      <%= render "icons/envelope" %>
+      <span>olivernelson@hey.com</span>
     </article>
-  </a>
-  <a href="https://x.com/o_j_nelson" target="_blank" class="contrast">
-    <article>
-      <%= render "icons/x" %>
-      <span>/ Twitter</span>
-    </article>
-  </a>
-  <a
-    href="https://open.spotify.com/playlist/02iL2Vi9ONfgVKVG5DfGYz?si=bd53fa2abd8d4f5a"
-    class="contrast"
-    target="_blank"
-  >
-    <article>
-      <%= render "icons/music-note" %>
-      <span>Music</span>
-    </article>
-  </a>
-  <article>
-    <details>
-      <summary>Misc</summary>
-      <p>
-        <a href="https://pianobeachstorybook.com" target="_blank">Piano Beach: Simple Piano + Story for Kids</a>
-      </p>
-      <p>
-        <a href="https://allhandspianoacademy.com" target="_blank">All Hands Piano Academy</a>
-      </p>
-    </details>
-  </article>
 
+    <a href="https://github.com/olinelson" target="_blank" class="contrast">
+      <article>
+        <%= render "icons/github" %>
+        <span>Github</span>
+      </article>
+    </a>
+
+    <a href="https://x.com/o_j_nelson" target="_blank" class="contrast">
+      <article>
+        <%= render "icons/x" %>
+        <span>/ Twitter</span>
+      </article>
+    </a>
+
+    <a
+      href="https://open.spotify.com/playlist/02iL2Vi9ONfgVKVG5DfGYz?si=bd53fa2abd8d4f5a"
+      class="contrast"
+      target="_blank"
+    >
+      <article>
+        <%= render "icons/music-note" %>
+        <span>Music</span>
+      </article>
+    </a>
+
+    <article>
+      <details>
+        <summary>Misc</summary>
+        <p>
+          <a href="https://pianobeachstorybook.com" target="_blank">Piano Beach: Simple Piano + Story for Kids</a>
+        </p>
+        <p>
+          <a href="https://allhandspianoacademy.com" target="_blank">All Hands Piano Academy</a>
+        </p>
+      </details>
+    </article>
+  </section>
 </main>
