@@ -1,18 +1,22 @@
 a.contrast {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .header {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 .header > img {
-    width: 100px;
-    height: 100px;
-    border-radius: 1000px;
+  width: 100px;
+  height: 100px;
+  border-radius: 1000px;
 }
 
 .header > hgroup {
-    margin: 0px;
+  margin: 0px;
+}
+
+.hidden-if-empty:empty {
+  display: none;
 }

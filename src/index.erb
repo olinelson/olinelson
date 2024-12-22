@@ -36,20 +36,40 @@ layout: default
     <% end %>
   </section>
 
-  <section id="email-list">
+  <section id="email-list" data-controller="contact-form">
     <h4>Email list</h4>
-    <form method="POST" action="https://octopus.olinelson.com/contacts">
+    <form
+      data-contact-form-target="form"
+      data-contact-form-submitted-value="false"
+      method="POST"
+      action="http://localhost:3000/octopus/contacts"
+    >
       <input hidden name="return_to" value="https://olinelson.com#email-list"/>
-      <fieldset role="group">
+      <fieldset
+        data-contact-form-target="fieldset"
+        role="group"
+        aria-describedby="message"
+      >
         <input
           type="email"
+          required
           name="contact[email]"
           placeholder="Enter your email"
           autocomplete="email"
+          aria-describedby="message"
+          data-contact-form-target="email"
         />
         <input type="submit" value="Join"/>
       </fieldset>
+      <small id="message" class="hidden-if-empty" data-contact-form-target="message"></small>
     </form>
+    <article
+      data-contact-form-target="success"
+      style="display: none; align-items: center; gap: 0.5rem;"
+    >
+      <%= render "icons/check-circle" %>
+      Email received, thank you.
+    </article>
   </section>
 
   <section>
