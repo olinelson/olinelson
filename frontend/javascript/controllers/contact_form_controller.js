@@ -19,14 +19,12 @@ export default class extends Controller {
   }
 
   async handleSubmit(e) {
-    console.log("HANDLING SUBMIT", e)
     e.preventDefault()
     const body = new FormData(this.formTarget)
     const url = this.formTarget.action
     try {
       const res = await fetch(url, { method: "POST", body })
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
-      console.log(res)
       this.errorValue = false
       this.submittedValue = true
     } catch (error) {
@@ -43,7 +41,6 @@ export default class extends Controller {
   }
 
   submittedValueChanged(submitted) {
-    console.log("SUBMITTED", submitted)
     if (submitted) {
       this.formTarget.style.display = "none"
       this.successTarget.style.display = "flex"
