@@ -36,6 +36,22 @@ layout: default
     <% end %>
   </section>
 
+  <section id="email-list">
+    <h4>Email list</h4>
+    <form method="POST" action="https://octopus.olinelson.com/contacts">
+      <input hidden name="return_to" value="https://olinelson.com#email-list"/>
+      <fieldset role="group">
+        <input
+          type="email"
+          name="contact[email]"
+          placeholder="Enter your email"
+          autocomplete="email"
+        />
+        <input type="submit" value="Join"/>
+      </fieldset>
+    </form>
+  </section>
+
   <section>
     <h4>Links</h4>
 
