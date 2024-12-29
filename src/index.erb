@@ -7,23 +7,23 @@ layout: default
     <img src="/images/profile.jpg">
     <hgroup>
       <h1>Oli Nelson</h1>
-      <p>Drummer + Indie Software Developer</p>
+      <p>Indie Software Developer / Drummer</p>
     </hgroup>
   </section>
 
   <section>
-    <h4>Services</h4>
-    <ul>
-      <li>Software development</li>
-      <li>Drum Lessons</li>
-      <li>Coding / Programming Lessons</li>
-    </ul>
+    <p>I help people become self-reliant through coding.
+      <a href="https://tidycal.com/olinelson" target="_blank">Book a call</a>
+      (free)</p>
   </section>
 
   <section>
     <a href="https://world.hey.com/olivernelson" target="_blank" class="contrast">
       <h4>Blog</h4>
     </a>
+    <p>Thoughts, tutorials, and modern day musings. Sign up
+      <a href="https://world.hey.com/olivernelson" target="_blank">here</a>
+      to get this straight to your inbox.</p>
     <% site.data["blog_post_previews"].each do |p| %>
 
       <%= link_to  p["link"], target: "_blank", class:"contrast" do %>
@@ -39,17 +39,21 @@ layout: default
     <% end %>
   </section>
 
-  <section id="email-list">
-    <h4>Email list</h4>
-    <a href="https://world.hey.com/olivernelson" target="_blank" role="button">Signup</a>
-  </section>
-
   <section>
     <h4>Links</h4>
 
     <article>
-      <%= render "icons/envelope" %>
-      <span>olivernelson@hey.com</span>
+      <a href="mailto:olivernelson@hey.com" target="_blank" class="contrast">
+        <%= render "icons/envelope" %>
+        olivernelson@hey.com
+      </a>
+    </article>
+
+    <article>
+      <a class="contrast" target="_blank" href="https://tidycal.com/olinelson">
+        <%= render "icons/calendar-days" %>
+        Book a call (free)
+      </a>
     </article>
 
     <a href="https://github.com/olinelson" target="_blank" class="contrast">
