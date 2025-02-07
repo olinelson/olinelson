@@ -12,34 +12,6 @@ layout: default
   </section>
 
   <section>
-    <p>I help people become self-reliant through coding.
-      <a href="https://cal.com/olinelson" target="_blank">Book a call</a>
-      (free)</p>
-  </section>
-
-  <section>
-    <a href="https://world.hey.com/olivernelson" target="_blank" class="contrast">
-      <h4>Blog</h4>
-    </a>
-    <p>Thoughts, tutorials, and modern day musings. Sign up
-      <a href="https://world.hey.com/olivernelson" target="_blank">here</a>
-      to get this straight to your inbox.</p>
-    <% site.data["blog_post_previews"].each do |p| %>
-
-      <%= link_to  p["link"], target: "_blank", class:"contrast" do %>
-        <article>
-          <hgroup>
-            <h5><%= p["title"] %></h5>
-            <p><%= p["published"] %></p>
-          </hgroup>
-          <p><%= p["preview"] %>
-            <%= link_to "read more", p["link"], target: "_blank" %></p>
-        </article>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section>
     <h4>Links</h4>
 
     <article>
@@ -80,17 +52,40 @@ layout: default
         <span>Music</span>
       </article>
     </a>
-
-    <article>
-      <details>
-        <summary>Misc</summary>
-        <p>
-          <a href="https://pianobeachstorybook.com" target="_blank">Piano Beach: Simple Piano + Story for Kids</a>
-        </p>
-        <p>
-          <a href="https://allhandspianoacademy.com" target="_blank">All Hands Piano Academy</a>
-        </p>
-      </details>
-    </article>
   </section>
+
+  <article>
+    <details>
+      <summary>Misc</summary>
+      <p>
+        <a href="https://pianobeachstorybook.com" target="_blank">Piano Beach: Simple Piano + Story for Kids</a>
+      </p>
+      <p>
+        <a href="https://allhandspianoacademy.com" target="_blank">All Hands Piano Academy</a>
+      </p>
+    </details>
+  </article>
+
+  <section>
+    <a href="https://world.hey.com/olivernelson" target="_blank" class="contrast">
+      <h4>Blog</h4>
+    </a>
+    <p>Thoughts, tutorials, and modern day musings. Sign up
+      <a href="https://world.hey.com/olivernelson" target="_blank">here</a>
+      to get this straight to your inbox.</p>
+    <% site.data["blog_post_previews"].each do |p| %>
+
+      <%= link_to  p["link"], target: "_blank", class:"contrast" do %>
+        <article>
+          <hgroup>
+            <h5><%= p["title"] %></h5>
+            <p><%= p["published"] %></p>
+          </hgroup>
+          <p><%= p["preview"] %></p>
+          <%= link_to "read more", p["link"], target: "_blank" %>
+        </article>
+      <% end %>
+    <% end %>
+  </section>
+
 </main>

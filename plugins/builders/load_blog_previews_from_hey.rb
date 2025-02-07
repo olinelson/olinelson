@@ -7,7 +7,7 @@ class Builders::LoadBlogPreviewsFromHey < SiteBuilder
     hook :site, :post_read do
       get "https://world.hey.com/olivernelson/feed.atom" do |data|
         feed = RSS::Parser.parse(data)
-        blog_post_previews = feed.items.slice(0,3).map do |item|
+        blog_post_previews = feed.items.map do |item|
           title = item.title.content
           published = item.published.content.strftime("%B %d, %Y")
           content = Nokogiri::HTML(item.content.content).text
