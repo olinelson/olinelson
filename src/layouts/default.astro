@@ -1,0 +1,13 @@
+---
+import Head from './head.astro'
+import Pico from '@picocss/pico'
+---
+<!doctype html>
+<html lang="<%= site.locale %>">
+  <head>
+      <Head/>
+  </head>
+  <body>
+      <slot/>
+  </body>
+</html>

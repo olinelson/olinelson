@@ -1,0 +1,31 @@
+    ---
+    import { SEO } from "astro-seo";
+    import profileImage from '../assets/images/profile.jpg'
+
+    const description = "Indie Software Developer / Drummer"
+    const image = `https://olinelson.com/${profileImage.src}`
+
+    ---
+
+
+    <SEO
+      title="Maestrocast"
+      description={description}
+      canonical="https://maestrocast.com"
+      openGraph={{
+        basic: {
+          title: "Teach From Anywhere",
+          type: "website",
+          image,
+          url: "https://maestrocast.com"
+        }
+      }}
+      twitter={{
+        title: "Oli Nelson",
+        card: "app",
+        site: "https://olinelson.com",
+        description,
+        creator: "@o_j_nelson",
+        image
+      }}
+    />
