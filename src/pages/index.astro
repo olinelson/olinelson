@@ -1,16 +1,98 @@
 ---
-
+import Mail from '../icons/mail.astro'
+import BrandGithub from '../icons/brandGithub.astro'
+import BrandX from '../icons/brandX.astro'
+import BrandSpotify from '../icons/brandSpotify.astro'
+import DefaultLayout from '../layouts/default.astro'
+import profileImage from '../assets/images/profile.jpg'
+import { Image } from 'astro:assets'
+import BlogPreview from '../components/blogPreview.astro'
 ---
+<DefaultLayout>
+<main class="container">
+  <section class="header">
+      <Image alt="Oli Nelson" src={profileImage}/>
+    <hgroup>
+      <h1>Oli Nelson</h1>
+      <p>Indie Software Developer / Drummer</p>
+    </hgroup>
+  </section>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+  <section>
+    <h4>Links</h4>
+
+    <article>
+      <a href="mailto:olivernelson@hey.com" target="_blank" class="contrast">
+          <Mail />
+        olivernelson@hey.com
+      </a>
+    </article>
+
+    <a href="https://github.com/olinelson" target="_blank" class="contrast">
+      <article>
+          <BrandGithub />
+        <span>Github</span>
+      </article>
+    </a>
+
+    <a href="https://x.com/o_j_nelson" target="_blank" class="contrast">
+      <article>
+          <BrandX />
+        <span>/ Twitter</span>
+      </article>
+    </a>
+
+    <a
+      href="https://open.spotify.com/playlist/02iL2Vi9ONfgVKVG5DfGYz?si=bd53fa2abd8d4f5a"
+      class="contrast"
+      target="_blank"
+    >
+      <article>
+          <BrandSpotify />
+        <span>Music</span>
+      </article>
+    </a>
+  </section>
+
+  <article>
+    <details>
+      <summary>Misc</summary>
+      <p>
+        <a href="https://pianobeachstorybook.com" target="_blank">Piano Beach: Simple Piano + Story for Kids</a>
+      </p>
+      <p>
+        <a href="https://allhandspianoacademy.com" target="_blank">All Hands Piano Academy</a>
+      </p>
+    </details>
+  </article>
+
+  <BlogPreview/>
+
+
+</main>
+</DefaultLayout>
+
+<style is:global>
+a.contrast {
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.header > img {
+  width: 100px;
+  height: 100px;
+  border-radius: 1000px;
+}
+
+.header > hgroup {
+  margin: 0px;
+}
+
+.hidden-if-empty:empty {
+  display: none;
+}
+</style>
