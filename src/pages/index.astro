@@ -55,6 +55,13 @@ import BlogPreview from '../components/blogPreview.astro'
     </a>
   </section>
 
+  <a href="https://words.olinelson.com" target="_blank" class="contrast">
+    <article>
+      <span>Blog</span>
+    </article>
+  </a>
+
+
   <article>
     <details>
       <summary>Misc</summary>
@@ -66,8 +73,6 @@ import BlogPreview from '../components/blogPreview.astro'
       </p>
     </details>
   </article>
-
-  <BlogPreview/>
 
   <article>
        <header>Join my email newsletter to stay up to date</header>
@@ -85,6 +90,17 @@ import BlogPreview from '../components/blogPreview.astro'
   </article>
 
 
+  <form action="https://world.hey.com/olivernelson/subscribers" accept-charset="UTF-8" data-remote="true" method="post">
+      <label for="subscriber_email_address" class="flush--top push_quarter--bottom">
+        Subscribe to get future posts via email (or grab the <a class="permalink" href="https://world.hey.com/olivernelson/feed.atom">RSS feed</a>)
+      </label>
+
+      <div class="subscribe flex push_half--top">
+        <input type="email" name="subscriber[email_address]" id="subscriber_email_address" placeholder="Type your email…" required="" class="subscribe__email input input--full-width input--borderless unpad flex-item--grow txt--x-small">
+
+        <button class="subscribe__submit btn--plain txt--x-small">Subscribe</button>
+      </div>
+  </form>
 
 </main>
 </DefaultLayout>
