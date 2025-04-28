@@ -7,6 +7,7 @@ import DefaultLayout from '../layouts/default.astro'
 import profileImage from '../assets/images/profile.jpg'
 import { Image } from 'astro:assets'
 import BlogPreview from '../components/blogPreview.astro'
+import WaveSine from '../icons/waveSine.astro'
 ---
 <DefaultLayout>
 <main class="container">
@@ -22,16 +23,17 @@ import BlogPreview from '../components/blogPreview.astro'
   <section>
     <h4>Links</h4>
 
-    <article>
-      <a href="mailto:olivernelson@hey.com" target="_blank" class="contrast">
-          <Mail />
-        olivernelson@hey.com
-      </a>
-    </article>
+    <a href="https://maestrocast.com" target="_blank" class="contrast">
+      <article>
+        <WaveSine />
+        <span>Maestrocast</span>
+      </article>
+    </a>
+
 
     <a href="https://github.com/olinelson" target="_blank" class="contrast">
       <article>
-          <BrandGithub />
+        <BrandGithub />
         <span>Github</span>
       </article>
     </a>
@@ -61,21 +63,18 @@ import BlogPreview from '../components/blogPreview.astro'
     </article>
   </a>
 
-
   <article>
-    <details>
-      <summary>Misc</summary>
-      <p>
-        <a href="https://pianobeachstorybook.com" target="_blank">Piano Beach: Simple Piano + Story for Kids</a>
-      </p>
-      <p>
-        <a href="https://allhandspianoacademy.com" target="_blank">All Hands Piano Academy</a>
-      </p>
-    </details>
+    <a href="mailto:olivernelson@hey.com" target="_blank" class="contrast">
+    <Mail />
+      Email me
+    </a>
   </article>
 
+
+
   <article>
-       <header>Join my email newsletter to stay up to date</header>
+        <header>Newsletter</header>
+        <p>Would you like my ramblings and modern day musings straight to your inbox?</p>
       <form method="get" action="https://magic.beehiiv.com/v1/f30b2623-cadf-45ac-aa5b-d967e3d9b590" target="_blank">
           <fieldset role="group">
             <input
@@ -87,6 +86,19 @@ import BlogPreview from '../components/blogPreview.astro'
             <input type="submit" value="Subscribe" />
           </fieldset>
          </form>
+  </article>
+
+
+  <article>
+    <details>
+      <summary>Misc</summary>
+      <p>
+        <a href="https://pianobeachstorybook.com" target="_blank">Piano Beach: Simple Piano + Story for Kids</a>
+      </p>
+      <p>
+        <a href="https://allhandspianoacademy.com" target="_blank">All Hands Piano Academy</a>
+      </p>
+    </details>
   </article>
 
 </main>
