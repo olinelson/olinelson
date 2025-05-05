@@ -75,16 +75,15 @@ import WaveSine from '../icons/waveSine.astro'
   <article>
         <header>Newsletter</header>
         <p>Would you like my ramblings and modern day musings straight to your inbox?</p>
-      <form method="get" action="https://magic.beehiiv.com/v1/f30b2623-cadf-45ac-aa5b-d967e3d9b590" target="_blank">
-          <fieldset role="group">
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-              autocomplete="email"
-            />
-            <input type="submit" value="Subscribe" />
-          </fieldset>
+         <form class="email-form" data-email-status-value="ready" data-controller="email" data-action="email#submit:prevent" action="https://assets.mailerlite.com/jsonp/1481436/forms/153508920103535703/subscribe" data-code="" method="post" >
+             <fieldset role="group">
+                <input type="email" data-email-target="input" class="form-control" data-inputmask="" name="fields[email]" placeholder="Enter your email" autocomplete="email">
+                <button type="submit" class="primary" data-email-target="button">Subscribe</button>
+             </fieldset>
+             <p class="success">Got it, thanks!</p>
+             <small class="failure">Something went wrong... Please try again</small>
+           <input type="hidden" name="ml-submit" value="1">
+           <input type="hidden" name="anticsrf" value="true">
          </form>
   </article>
 
@@ -101,7 +100,15 @@ import WaveSine from '../icons/waveSine.astro'
     </details>
   </article>
 
+
+
+
+
+
 </main>
+
+
+
 </DefaultLayout>
 
 <style is:global>
@@ -127,4 +134,53 @@ a.contrast {
 .hidden-if-empty:empty {
   display: none;
 }
+
+.hidden {
+    display: none;
+}
+
+.block {
+    display: block;
+}
+
+
+.email-form[data-email-status-value="ready"] {
+    .success {
+        display: none;
+    }
+    .failure {
+        display: none;
+    }
+}
+
+.email-form[data-email-status-value="submitting"] {
+    .success {
+        display: none;
+    }
+    .failure {
+        display: none;
+    }
+}
+
+.email-form[data-email-status-value="error"] {
+    .success {
+        display: none;
+    }
+    .failure {
+        display: block;
+    }
+}
+
+.email-form[data-email-status-value="submitted"] {
+    .success {
+        display: block;
+    }
+    .failure {
+        display: none;
+    }
+    fieldset {
+        display: none;
+    }
+}
+
 </style>

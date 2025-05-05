@@ -1,6 +1,7 @@
 ---
 import Head from './head.astro'
 import Pico from '@picocss/pico'
+
 ---
 <!doctype html>
 <html lang="<%= site.locale %>">
@@ -11,3 +12,7 @@ import Pico from '@picocss/pico'
       <slot/>
   </body>
 </html>
+
+<script>
+    import "../scripts/application.js";
+</script>
