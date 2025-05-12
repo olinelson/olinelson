@@ -1,0 +1,33 @@
+---
+import CircleCheck from "../icons/circle-check.astro";
+import Mail from "../icons/mail.astro";
+---
+<section>
+    <article class="card bg-base-100 border border-base-300">
+        <div class="card-body">
+            <header class="card-title">Stay in touch?</header>
+            <p class="pb-2">Get my ramblings and modern day musings straight to your inbox</p>
+            <form class="group"  data-controller="email" data-action="email#submit:prevent" action="https://app.kit.com/forms/8018571/subscriptions" method="post" >
+                <div class="flex gap-2 group-data-[email-status-value=submitted]:hidden">
+                    <div class="w-full" >
+                        <label class="input w-full input-lg validator">
+                            <Mail class="opacity-50"/>
+                        <input type="email" data-email-target="input" class="form-control" name="email_address" placeholder="Enter your email" autocomplete="email">
+                        </label>
+                        <div class="validator-hint hidden">Enter valid email address</div>
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-primary">
+                        <span class="loading loading-spinner hidden group-data-[email-status-value=submitting]:block"></span>
+                        Subscribe
+                    </button>
+                </div>
+                <div class="hidden w-full gap-2 group-data-[email-status-value=submitted]:grid place-items-center p-4">
+                    <div class="flex items-center justify-center gap-1">
+                        <CircleCheck class="text-success"/>
+                    <p class="flex">Got it, thanks</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </article>
+</section>

@@ -1,5 +1,6 @@
 ---
-import SEO from './seo.astro'
+
+import "../assets/app.css";
 ---
 <head>
     <meta charset="UTF-8" />
@@ -7,10 +8,6 @@ import SEO from './seo.astro'
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
-    >
 
     <!-- plausible start -->
     <script
@@ -23,6 +20,6 @@ import SEO from './seo.astro'
     <!-- plausible end -->
 
 
-    <SEO/>
+    <slot name="seo"/>
 
 </head>

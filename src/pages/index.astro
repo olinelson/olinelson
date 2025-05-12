@@ -6,179 +6,76 @@ import BrandSpotify from '../icons/brandSpotify.astro'
 import DefaultLayout from '../layouts/default.astro'
 import profileImage from '../assets/images/profile.jpg'
 import { Image } from 'astro:assets'
-import BlogPreview from '../components/blogPreview.astro'
 import WaveSine from '../icons/waveSine.astro'
+import Seo from '../components/seo/index.astro'
+import Article from '../icons/article.astro'
+import MailingList from '../components/mailingList.astro'
 ---
 <DefaultLayout>
-<main class="container">
-  <section class="header">
-      <Image alt="Oli Nelson" src={profileImage}/>
-    <hgroup>
-      <h1>Oli Nelson</h1>
-      <p>Indie Software Developer / Drummer</p>
-    </hgroup>
-  </section>
+<Seo slot="seo"/>
+<main class="container mx-auto grid place-items-center p-4 gap-4">
+    <div class="avatar">
+      <div class="w-24 rounded-full">
+        <Image alt="Oli Nelson" src={profileImage}/>
+      </div>
+    </div>
 
+    <ul class="menu  rounded-box menu-xl bg-base-100 border-1 border-base-300">
+      <li>
+          <a href="https://maestrocast.com" target="_blank" >
+            <WaveSine /> Maestrocast
+          </a>
+      </li>
+      <li>
+          <a href="https://github.com/olinelson" target="_blank" >
+              <BrandGithub /> Github
+          </a>
+      </li>
+      <li>
+          <a href="https://x.com/o_j_nelson" target="_blank" >
+                <BrandX />
+              <span>/ Twitter</span>
+          </a>
+      </li>
+      <li>
+          <a
+            href="https://open.spotify.com/playlist/02iL2Vi9ONfgVKVG5DfGYz?si=bd53fa2abd8d4f5a"
 
-  <section>
-    <h4>Links</h4>
+            target="_blank"
+          >
+              <BrandSpotify />
+              <span>Music</span>
+          </a>
+      </li>
 
-    <a href="https://maestrocast.com" target="_blank" class="contrast">
-      <article>
-        <WaveSine />
-        <span>Maestrocast</span>
-      </article>
-    </a>
+      <li>
+          <a href="/blog" >
+              <Article/>
+              <span>Blog</span>
+          </a>
+      </li>
 
+      <li>
+            <a href="mailto:olivernelson@hey.com" target="_blank" >
+            <Mail />
+              Email
+            </a>
+      </li>
+    </ul>
 
-    <a href="https://github.com/olinelson" target="_blank" class="contrast">
-      <article>
-        <BrandGithub />
-        <span>Github</span>
-      </article>
-    </a>
+<MailingList/>
 
-    <a href="https://x.com/o_j_nelson" target="_blank" class="contrast">
-      <article>
-          <BrandX />
-        <span>/ Twitter</span>
-      </article>
-    </a>
-
-    <a
-      href="https://open.spotify.com/playlist/02iL2Vi9ONfgVKVG5DfGYz?si=bd53fa2abd8d4f5a"
-      class="contrast"
-      target="_blank"
-    >
-      <article>
-          <BrandSpotify />
-        <span>Music</span>
-      </article>
-    </a>
-  </section>
-
-  <a href="https://words.olinelson.com" target="_blank" class="contrast">
-    <article>
-      <span>Blog</span>
-    </article>
-  </a>
-
-  <article>
-    <a href="mailto:olivernelson@hey.com" target="_blank" class="contrast">
-    <Mail />
-      Email me
-    </a>
-  </article>
-
-  <article>
-        <header>Newsletter</header>
-        <p>Would you like my ramblings and modern day musings straight to your inbox?</p>
-         <form class="email-form" data-email-status-value="ready" data-controller="email" data-action="email#submit:prevent" action="https://app.kit.com/forms/8018571/subscriptions" data-code="" method="post" >
-             <fieldset role="group">
-                <input type="email" data-email-target="input" class="form-control" data-inputmask="" name="email_address" placeholder="Enter your email" autocomplete="email">
-                <button type="submit" class="primary" data-email-target="button">Subscribe</button>
-             </fieldset>
-             <p class="success">Got it, thanks!</p>
-             <small class="failure">Something went wrong... Please try again</small>
-           <input type="hidden" name="ml-submit" value="1">
-           <input type="hidden" name="anticsrf" value="true">
-         </form>
-  </article>
-
-
-  <article>
-    <details>
-      <summary>Misc</summary>
-      <p>
-        <a href="https://pianobeachstorybook.com" target="_blank">Piano Beach: Simple Piano + Story for Kids</a>
-      </p>
-      <p>
-        <a href="https://allhandspianoacademy.com" target="_blank">All Hands Piano Academy</a>
-      </p>
-    </details>
-  </article>
-
-
-
-
-
-
+<div class="collapse bg-base-100 border border-base-300">
+  <input type="radio" name="my-accordion-1"  />
+  <div class="collapse-title font-semibold">Bits and bobs</div>
+  <div class="collapse-content text-sm">
+      <div>
+          <a class="link" href="https://pianobeachstorybook.com" target="_blank">Piano Beach: Simple Piano + Story for Kids</a>
+      </div>
+      <div>
+          <a class="link" href="https://allhandspianoacademy.com" target="_blank">All Hands Piano Academy</a>
+      </div>
+  </div>
+</div>
 </main>
-
-
-
 </DefaultLayout>
-
-<style is:global>
-a.contrast {
-  text-decoration: none;
-}
-
-.header {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-.header > img {
-  width: 100px;
-  height: 100px;
-  border-radius: 1000px;
-}
-
-.header > hgroup {
-  margin: 0px;
-}
-
-.hidden-if-empty:empty {
-  display: none;
-}
-
-.hidden {
-    display: none;
-}
-
-.block {
-    display: block;
-}
-
-
-.email-form[data-email-status-value="ready"] {
-    .success {
-        display: none;
-    }
-    .failure {
-        display: none;
-    }
-}
-
-.email-form[data-email-status-value="submitting"] {
-    .success {
-        display: none;
-    }
-    .failure {
-        display: none;
-    }
-}
-
-.email-form[data-email-status-value="error"] {
-    .success {
-        display: none;
-    }
-    .failure {
-        display: block;
-    }
-}
-
-.email-form[data-email-status-value="submitted"] {
-    .success {
-        display: block;
-    }
-    .failure {
-        display: none;
-    }
-    fieldset {
-        display: none;
-    }
-}
-
-</style>
