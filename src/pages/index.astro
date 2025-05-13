@@ -2,6 +2,7 @@
 import Mail from '../icons/mail.astro'
 import BrandGithub from '../icons/brandGithub.astro'
 import BrandX from '../icons/brandX.astro'
+import BrandInstagram from '../icons/brandInstagram.astro'
 import BrandSpotify from '../icons/brandSpotify.astro'
 import DefaultLayout from '../layouts/default.astro'
 import profileImage from '../assets/images/profile.jpg'
@@ -10,17 +11,27 @@ import WaveSine from '../icons/waveSine.astro'
 import Seo from '../components/seo/index.astro'
 import Article from '../icons/article.astro'
 import MailingList from '../components/mailingList.astro'
+import BlogPreview from '../components/blogPreview.astro'
 ---
 <DefaultLayout>
 <Seo slot="seo"/>
-<main class="container mx-auto grid place-items-center p-4 gap-4">
-    <div class="avatar">
-      <div class="w-24 rounded-full">
-        <Image alt="Oli Nelson" src={profileImage}/>
-      </div>
+<main class="container max-w-prose mx-auto grid place-items-center p-4 gap-4">
+    <div class="flex w-full gap-4 items-center">
+        <div class="avatar">
+            <div class="w-24 rounded-full">
+                <Image alt="Oli Nelson" src={profileImage}/>
+            </div>
+        </div>
+        <div class="">
+            <h1 class="text-2xl font-semibold">Oli Nelson</h1>
+            <p class="opacity-50">Digital renaissance man & all-round thing doer.</p>
+            <p class="opacity-50">Dad | Drummer | Indie software dev</p>
+        </div>
     </div>
 
-    <ul class="menu  rounded-box menu-xl bg-base-100 border-1 border-base-300">
+
+    <ul class="menu w-full rounded-box menu-xl bg-base-100 border-1 border-base-300">
+         <li class="menu-title">Links</li>
       <li>
           <a href="https://maestrocast.com" target="_blank" >
             <WaveSine /> Maestrocast
@@ -49,6 +60,13 @@ import MailingList from '../components/mailingList.astro'
       </li>
 
       <li>
+          <a target="_blank" href="https://www.instagram.com/olinelson__/">
+              <BrandInstagram/>
+              Instagram
+          </a>
+      </li>
+
+      <li>
           <a href="/blog" >
               <Article/>
               <span>Blog</span>
@@ -63,9 +81,14 @@ import MailingList from '../components/mailingList.astro'
       </li>
     </ul>
 
+    <div class="w-full">
+
+    <BlogPreview/>
+
+    </div>
 <MailingList/>
 
-<div class="collapse bg-base-100 border border-base-300">
+<div class="collapse collapse-arrow bg-base-100 border border-base-300">
   <input type="radio" name="my-accordion-1"  />
   <div class="collapse-title font-semibold">Bits and bobs</div>
   <div class="collapse-content text-sm">

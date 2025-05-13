@@ -18,8 +18,5 @@ for (const path in modules) {
   const name = path
     .match(/\/([^/]+)_controller\.js$/)[1]
     .replace(/[-_](.)/g, (_, c) => c.toUpperCase());
-  console.log("name", name);
   application.register(name, controllerModule.default);
 }
-
-console.log("Hello world!");

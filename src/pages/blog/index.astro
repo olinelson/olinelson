@@ -6,7 +6,6 @@ const blogs = await getCollection('blog')
 
 <DefaultLayout>
     <main class="container">
-        {JSON.stringify(blogs)}
         {blogs.map(b =>
             <article>
                 <hgroup>

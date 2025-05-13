@@ -1,50 +1,16 @@
 ---
-import { XMLParser } from 'fast-xml-parser';
+import { getCollection } from 'astro:content';
+const blogs = (await getCollection('blog')).filter(b => b.data.public)
 
-// Fetch feed from Hey World
-const res = await fetch("https://world.hey.com/olivernelson/feed.atom");
-const text = await res.text();
-const parser = new XMLParser({
-  ignoreAttributes: false,
-  attributeNamePrefix: ""
-});
-const feed = parser.parse(text);
-
-const blogPostPreviews = feed.feed.entry.map(item => {
-  const title = item.title;
-  const date = new Date(item.published);
-  const published = date.toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric'
-  });
-
-  const contentHtml = item.content["#text"] || "";
-  const content = contentHtml.replace(/<[^>]*>/g, '');
-  const preview = `${content.slice(0, 100)}...`;
-  const link = item.link.href;
-  return { title, published, preview, link };
-});
 ---
 
-<section>
-  <a href="https://world.hey.com/olivernelson" target="_blank" class="contrast">
-    <h4>Blog</h4>
-  </a>
-  <p>Thoughts, tutorials, and modern day musings. Sign up
-    <a href="https://world.hey.com/olivernelson" target="_blank">here</a>
-    to get this straight to your inbox.</p>
-
-  {blogPostPreviews.map(post => (
-    <a href={post.link} target="_blank" class="contrast">
-      <article>
-        <hgroup>
-          <h5>{post.title}</h5>
-          <p>{post.published}</p>
-        </hgroup>
-        <p>{post.preview}</p>
-        <a href={post.link} target="_blank">read more</a>
-      </article>
-    </a>
-  ))}
-</section>
+    <ul class="menu bg-base-100 border-1 border-base-300 w-full">
+       {blogs.map(b =>
+       <li class="menu-title">Words</li>
+       <li class="relative">
+           <h4 class="pb-0">{b.data.published} - {b.data.title}</h4>
+           <p class="opacity-50">{b.data.preview}</p>
+           <a class="absolute inset-0" href={`/blog/${b.id}`}></a>
+       </li>
+       )}
+    </ul>
