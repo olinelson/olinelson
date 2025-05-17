@@ -11,7 +11,11 @@ import WaveSine from '../icons/waveSine.astro'
 import Seo from '../components/seo/index.astro'
 import Article from '../icons/article.astro'
 import MailingList from '../components/mailingList.astro'
-import BlogPreview from '../components/blogPreview.astro'
+import BlogsList from '../components/blogsList.astro'
+import { getCollection } from 'astro:content'
+
+const blogs = (await getCollection('blog')).filter(b => b.data.public)
+
 ---
 <DefaultLayout>
 <Seo slot="seo"/>
@@ -67,7 +71,7 @@ import BlogPreview from '../components/blogPreview.astro'
       </li>
 
       <li>
-          <a href="/blog" >
+          <a href="/words" >
               <Article/>
               <span>Blog</span>
           </a>
@@ -81,12 +85,12 @@ import BlogPreview from '../components/blogPreview.astro'
       </li>
     </ul>
 
+
+    <MailingList/>
+
     <div class="w-full">
-
-    <BlogPreview/>
-
+        <BlogsList blogs={blogs}/>
     </div>
-<MailingList/>
 
 <div class="collapse collapse-arrow bg-base-100 border border-base-300">
   <input type="radio" name="my-accordion-1"  />

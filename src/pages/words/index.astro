@@ -1,0 +1,15 @@
+---
+import BlogsList from '../../components/blogsList.astro';
+import DefaultLayout from '../../layouts/default.astro'
+import { getCollection } from 'astro:content';
+
+const blogs = (await getCollection('blog')).filter(b => b.data.public)
+---
+
+<DefaultLayout>
+    <main class="container mx-auto max-w-prose p-4">
+        <h1 class="text-3xl pb-1">Words</h1>
+        <p class="pb-4">Ramblings, thoughts, and modern day musings...</p>
+        <BlogsList blogs={blogs}/>
+    </main>
+</DefaultLayout>

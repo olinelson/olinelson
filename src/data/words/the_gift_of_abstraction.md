@@ -1,7 +1,7 @@
 ---
 id: "the_gift_of_abstraction"
 title: "The Gift of Abstraction"
-preview: "A very engaging preview about things"
+preview: "When I began taking drum lessons from Dave Goodman everything changed for me."
 public: true
 published: 07/02/2025
 ---

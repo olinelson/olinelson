@@ -1,6 +1,6 @@
 ---
+import Nav from '../components/nav.astro'
 import Head from './head.astro'
-import Pico from '@picocss/pico'
 
 ---
 <!doctype html>
@@ -10,6 +10,7 @@ import Pico from '@picocss/pico'
       <Head/>
   </head>
   <body>
+      <Nav/>
       <slot/>
   </body>
 </html>
