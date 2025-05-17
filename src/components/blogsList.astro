@@ -1,13 +1,10 @@
 ---
-
 const {blogs} = Astro.props
-// const blogs = (await getCollection('blog')).filter(b => b.data.public)
-
 ---
 
     <ul class="menu bg-base-100 border-1 border-base-300 w-full">
-       {blogs.map(b =>
        <li class="menu-title">Words</li>
+       {blogs.map(b =>
        <li class="relative">
            <h4 class="pb-0">{b.data.published} - {b.data.title}</h4>
            <p class="opacity-50">{b.data.preview}</p>
