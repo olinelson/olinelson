@@ -14,7 +14,7 @@ import MailingList from '../components/mailingList.astro'
 import BlogsList from '../components/blogsList.astro'
 import { getCollection } from 'astro:content'
 
-const blogs = (await getCollection('blog')).filter(b => b.data.public)
+const blogs = (await getCollection('blog')).filter(b => b.data.public).sort((a,b) => new Date(b.data.published) - new Date(a.data.published))
 
 ---
 <DefaultLayout>
