@@ -5,10 +5,6 @@ preview: "When I began taking drum lessons from Dave Goodman everything changed 
 public: true
 published: 07/02/2025
 ---
-# The Gift of Abstraction
-
-*February 7, 2025*
-
 When I began taking drum lessons from [David Goodman](https://davegoodman.com.au) everything changed for me.
 
 I had had wonderful drum teachers previously, but there was something about Dave’s approach that really clicked.
