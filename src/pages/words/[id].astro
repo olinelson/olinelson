@@ -1,8 +1,14 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { SEO } from "astro-seo";
 import DefaultLayout from '../../layouts/default.astro'
 import MailingList from '../../components/mailingList.astro';
 import ArrowLeft from '../../icons/arrowLeft.astro'
+import profileImage from "../../assets/images/profile.jpg";
+
+const image = `https://olinelson.com/${profileImage.src}`
+
+
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   return posts.filter(p => p.data.public === true).map(post => ({
@@ -12,8 +18,35 @@ export async function getStaticPaths() {
 }
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const url = `https://olinelson.com/words/${post.id}`
+const preview = post.data.preview
+const description = preview.length > 155 ? `${preview.slice(0, 155)}...` : preview
+const title = `Oli Nelson | ${post.data.title}`
 ---
 <DefaultLayout>
+    <SEO
+        slot="seo"
+        title={title}
+        description={description}
+        canonical={url}
+        openGraph={{
+            basic: {
+                title,
+                type: "website",
+                image,
+                url: url,
+            },
+        }}
+        twitter={{
+            title,
+            card: "app",
+            site: url,
+            description,
+            creator: "@o_j_nelson",
+            image,
+        }}
+    />
     <div class="container mx-auto p-4 max-w-prose">
         <h1 class="text-3xl font-semibold">{post.data.title}</h1>
     <p>{post.data.published}</p>
