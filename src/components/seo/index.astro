@@ -1,31 +1,33 @@
     ---
-    import { SEO } from "astro-seo";
-    import profileImage from '../../assets/images/profile.jpg'
+import { SEO } from "astro-seo";
+import profileImage from '../../assets/images/profile.jpg'
 
-    const description = "Indie Software Developer / Drummer. Creator of Maestrocast"
-    const image = `https://olinelson.com${profileImage.src}`
+const description = "Indie Software Developer / Drummer. Creator of Maestrocast"
+const image = `https://olinelson.com${profileImage.src}`
+const site = "@o_j_nelson"
+const creator = "@o_j_nelson"
 
-    ---
+---
 
 
-    <SEO
-      title="Oli Nelson"
-      description={description}
-      canonical="https://olinelson.com"
-      openGraph={{
-        basic: {
-          title: "Oli Nelson",
-          type: "website",
-          image,
-          url: "https://olinelson.com"
-        }
-      }}
-      twitter={{
-        title: "Oli Nelson",
-        card: "app",
-        site: "https://olinelson.com",
-        description,
-        creator: "@o_j_nelson",
-        image
-      }}
-    />
+<SEO
+  title="Oli Nelson"
+  description={description}
+  canonical="https://olinelson.com"
+  openGraph={{
+    basic: {
+      title: "Oli Nelson",
+      type: "website",
+      image,
+      url: "https://olinelson.com"
+    }
+  }}
+  twitter={{
+    title: "Oli Nelson",
+    card: "summary_large_image",
+    site,
+    creator,
+    description,
+    image
+  }}
+/>
