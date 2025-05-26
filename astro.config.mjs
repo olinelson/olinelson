@@ -13,6 +13,6 @@ export default defineConfig({
 
   integrations: [sitemap()],
   build: {
-    format: "directory",
+    format: "file",
   },
 });
