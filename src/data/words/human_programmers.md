@@ -1,26 +1,41 @@
 ---
 id: "human_programmers"
-title: "Human Programmers - A manifesto"
+title: "Human Programmers - a manifesto"
 preview: "First principles over 'Best Practice'. Ability Over Credentials. Evidence over Experience"
 public: true
 published: 16/06/2025
 ---
-In a world of abundance, the answer is curation
 
-When the barriers to entry are lowered, the differentiator is taste
+> In a world of abundance, the answer is **curation**.
+> When the barriers to entry are lowered, the differentiator is **taste**.
+> When machines are more capable than ever, **personality** is everything.
+> When everyone has a team of AI yes-men at their beck and call, you need someone who says **NO**.
 
-When machines are more capable than ever, personality is everything
+[**Human Programmers**](https://humanprogrammers.com) is a community and _unDirectory_ of hand-picked software professionals.
 
-When everyone has a team of team of AI yes men at their beckoned call, you need someone who says NO
+Digital Renaissance men and women with
+**taste**, **purpose**, and **opinions** —
+humans dedicated to building things that matter,
+crafted with care and intention.
 
-Human Programmers is a community and unDirectory of hand-picked software professionals. Digital Renaissance men and women with taste, purpose, and opinions. Humans dedicated to the craft of building things that serve a purpose, with care.
 
-First principles over ‘Best practice’
+- **First principles** over ‘Best practice’
+- **Ability** over Credentials
+- **Evidence** over Experience
 
-Ability over Credentials
+[**Human Programmers**](https://humanprogrammers.com) will be launching **soon**
+with a list of just
+**50 hand-picked software professionals**.
 
-Evidence over Experience
+The selection process is entirely, and unapologetically, **subjective**.
 
-Human Programmers will be launching soon with a list of only 50 hand-picked software professionals. The selection process is completely and unapologetically subjective.
+No paywall.
+Anyone can browse the unDirectory.
 
-No paywall. Anyone can browse the unDirectory. We run on an honesty system. If you or your company hires one of our humans, we ask that you support us with a one-time thank you payment of $200 USD. We also welcome sponsorships from like-minded organisations or individuals.
+We run on an honesty system:
+If you or your company hires one of our humans,
+we ask for a one-time **thank you** payment of **$200 USD**.
+
+We also welcome sponsorships from like-minded organizations and individuals.
+
+👉 [**Become a Human**](/become_a_human)

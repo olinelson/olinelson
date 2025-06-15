@@ -6,7 +6,7 @@ import { SEO } from "astro-seo";
 import profileImage from "../../assets/images/profile.jpg";
 const image = `https://olinelson.com/${profileImage.src}`
 
-const blogs = (await getCollection('blog')).filter(b => b.data.public).sort((a,b) => new Date(b.data.published) - new Date(a.data.published))
+const blogs = (await getCollection('blog')).filter(b => b.data.public).sort((a,b) => new Date(b.data.published.split("/").reverse().join()) - new Date(a.data.published.split("/").reverse().join()))
 const url = "https://olinelson.com/words"
 const description = "Ramblings, thoughts, and modern day musings"
 ---
