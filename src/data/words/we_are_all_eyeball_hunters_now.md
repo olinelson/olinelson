@@ -3,7 +3,7 @@ id: "we_are_all_eyeball_hunters_now"
 title: "We Are All Eyeball Hunters Now"
 preview: "True freedom comes from the attainment of attention"
 public: true
-published: 15/12/2025
+published: 15/12/2024
 ---
 
 I used to think trying to gain a following on social media was an activity for the vain. The superficial Plebeians who lacked any substantive passions so instead worshiped the false god of fame. How wrong I was.

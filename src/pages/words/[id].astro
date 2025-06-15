@@ -51,15 +51,18 @@ const title = `Oli Nelson | ${post.data.title}`
         <h1 class="text-3xl font-semibold">{post.data.title}</h1>
     <p>{post.data.published}</p>
     </div>
-    <main class="container prose mx-auto p-4 pb-12">
+    <main class="container prose mx-auto p-4">
 
         <Content />
-        <div class="pb-8">
-        <a class="btn flex gap-1 items-center" href="/words">
-            <ArrowLeft/>
-            More words
-        </a>
+        <div class="">
+            <a class="btn flex gap-1 items-center" href="/words">
+                <ArrowLeft/>
+                More words
+            </a>
         </div>
-        <MailingList/>
     </main>
+    <div class="max-w-prose mx-auto p-4 pb-12">
+        <MailingList/>
+    </div>
+
 </DefaultLayout>

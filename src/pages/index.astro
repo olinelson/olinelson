@@ -15,7 +15,7 @@ import BlogsList from '../components/blogsList.astro'
 import { getCollection } from 'astro:content'
 import HeartHandshake from '../icons/heart-handshake.astro'
 
-const blogs = (await getCollection('blog')).filter(b => b.data.public).sort((a,b) => new Date(b.data.published) - new Date(a.data.published))
+const blogs = (await getCollection('blog')).filter(b => b.data.public).sort((a,b) => new Date(b.data.published.split("/").reverse().join()) - new Date(a.data.published.split("/").reverse().join('/')))
 
 ---
 <DefaultLayout>
