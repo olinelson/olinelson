@@ -13,6 +13,7 @@ import Article from '../icons/article.astro'
 import MailingList from '../components/mailingList.astro'
 import BlogsList from '../components/blogsList.astro'
 import { getCollection } from 'astro:content'
+import HeartHandshake from '../icons/heart-handshake.astro'
 
 const blogs = (await getCollection('blog')).filter(b => b.data.public).sort((a,b) => new Date(b.data.published) - new Date(a.data.published))
 
@@ -27,20 +28,30 @@ const blogs = (await getCollection('blog')).filter(b => b.data.public).sort((a,b
             </div>
         </div>
         <div class="">
-            <h1 class="text-2xl font-semibold">Oli Nelson</h1>
-            <p class="opacity-50">Digital renaissance man & all-round thing doer.</p>
-            <p class="opacity-50">Drummer | Indie software dev</p>
+            <h1 class="text-3xl font-semibold">Oli Nelson</h1>
+            <p class="opacity-60 text-xl">Digital renaissance man & all-round thing doer.</p>
+            <p class="opacity-60 text-xl">Drummer | Indie software developer</p>
         </div>
     </div>
 
 
     <ul class="menu w-full rounded-box menu-xl bg-base-100 border-1 border-base-300">
-         <li class="menu-title">Links</li>
+         <li class="menu-title">Current projects</li>
+         <li>
+             <a href="https://maestrocast.com" target="_blank" >
+                 <HeartHandshake /> Human Programmers
+             </a>
+         </li>
       <li>
           <a href="https://maestrocast.com" target="_blank" >
             <WaveSine /> Maestrocast
           </a>
       </li>
+    </ul>
+
+
+    <ul class="menu w-full rounded-box menu-xl bg-base-100 border-1 border-base-300">
+         <li class="menu-title">Links</li>
       <li>
           <a href="https://github.com/olinelson" target="_blank" >
               <BrandGithub /> Github
@@ -49,7 +60,7 @@ const blogs = (await getCollection('blog')).filter(b => b.data.public).sort((a,b
       <li>
           <a href="https://x.com/o_j_nelson" target="_blank" >
                 <BrandX />
-              <span>/ Twitter</span>
+              <span>X</span>
           </a>
       </li>
       <li>
@@ -89,7 +100,7 @@ const blogs = (await getCollection('blog')).filter(b => b.data.public).sort((a,b
     <MailingList/>
 
     <div class="w-full">
-        <BlogsList blogs={blogs}/>
+        <BlogsList showTitle blogs={blogs}/>
     </div>
 
 <div class="collapse collapse-arrow bg-base-100 border border-base-300">

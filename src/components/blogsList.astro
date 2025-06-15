@@ -1,13 +1,13 @@
 ---
-const {blogs} = Astro.props
+const {blogs, showTitle} = Astro.props
 ---
 
-    <ul class="menu bg-base-100 border-1 border-base-300 w-full">
-       <li class="menu-title">Words</li>
+    <ul class="menu bg-base-100 rounded-box border-1  w-full">
+        {showTitle ? <li class="menu-title">Words</li> : null}
        {blogs.map(b =>
        <li class="relative">
-           <h4 class="pb-0">{b.data.published} - {b.data.title}</h4>
-           <p class="opacity-50">{b.data.preview}</p>
+           <h4 class="pb-0 text-lg">{b.data.published} - {b.data.title}</h4>
+           <p class="opacity-60 text-base">{b.data.preview}</p>
            <a class="absolute inset-0" href={`/words/${b.id}`}></a>
        </li>
        )}
