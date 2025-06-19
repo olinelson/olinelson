@@ -6,7 +6,8 @@ const {blogs, showTitle} = Astro.props
         {showTitle ? <li class="menu-title">Words</li> : null}
        {blogs.map(b =>
        <li class="relative">
-           <h4 class="pb-0 text-lg">{b.data.published} - {b.data.title}</h4>
+           <h4 class=" pb-1 text-lg">{b.data.title}</h4>
+           <p class="py-0 text-sm">{b.data.published}</p>
            <p class="opacity-60 text-base">{b.data.preview}</p>
            <a class="absolute inset-0" href={`/words/${b.id}`}></a>
        </li>
