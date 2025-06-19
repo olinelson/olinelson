@@ -38,4 +38,4 @@ we ask for a one-time **thank you** payment of **$200 USD**.
 
 We also welcome sponsorships from like-minded organizations and individuals.
 
-👉 [**Become a Human**](/become_a_human)
+👉 [**Become a Human**](https://humanprogrammers.com/become_a_human)
