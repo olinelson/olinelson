@@ -1,15 +1,46 @@
 ---
-const {blogs, showTitle} = Astro.props
+import { parseFeed } from '@rowanmanning/feed-parser';
+const res = await fetch("https://world.hey.com/olivernelson/feed.atom")
+const data = await res.text()
+const feed = parseFeed(data)
+
+function getPlainTextPreviewSimple(htmlString, maxLength = 150) {
+  // Decode HTML entities
+  const decodedHtml = htmlString
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'");
+  
+  // Remove HTML tags and normalize whitespace
+  const plainText = decodedHtml
+    .replace(/<[^>]+>/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  
+  if (plainText.length <= maxLength) return plainText;
+  
+  const truncated = plainText.substring(0, maxLength);
+  const lastSpace = truncated.lastIndexOf(' ');
+  
+  return lastSpace > maxLength * 0.75 
+    ? truncated.substring(0, lastSpace) + '...'
+    : truncated + '...';
+}
+
 ---
 
     <ul class="menu bg-base-100 rounded-box border-1  w-full">
-        {showTitle ? <li class="menu-title">Words</li> : null}
-       {blogs.map(b =>
+      <li class="menu-title">Words</li>
+       {feed.items.map(b =>
        <li class="relative">
-           <h4 class=" pb-1 text-lg">{b.data.title}</h4>
-           <p class="py-0 text-sm">{b.data.published}</p>
-           <p class="opacity-60 text-base">{b.data.preview}</p>
-           <a class="absolute inset-0" href={`/words/${b.id}`}></a>
+           <h4 class=" pb-1 text-lg">{b.title}</h4>
+    <p class="py-0 text-sm">
+      {new Date(b.published).toLocaleDateString('en-UK', { month: "long", day: "numeric", year: "numeric"})}
+    </p>
+    <p class="opacity-60 text-base">{getPlainTextPreviewSimple(b.content)}</p>
+        <a class="absolute inset-0" href={b.url}></a>
        </li>
        )}
     </ul>
