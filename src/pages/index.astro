@@ -13,7 +13,6 @@ import Seo from '../components/seo/index.astro'
 import Article from '../icons/article.astro'
 import BlogsList from '../components/blogsList.astro'
 import { getCollection } from 'astro:content'
-import HeartHandshake from '../icons/heart-handshake.astro'
 
 const blogs = (await getCollection('blog')).filter(b => b.data.public).sort((a,b) => new Date(b.data.published.split("/").reverse().join()) - new Date(a.data.published.split("/").reverse().join('/')))
 
@@ -37,11 +36,6 @@ const blogs = (await getCollection('blog')).filter(b => b.data.public).sort((a,b
 
     <ul class="menu w-full rounded-box menu-xl bg-base-100 border-1 border-base-300">
          <li class="menu-title">Current projects</li>
-         <li>
-             <a href="https://humanprogrammers.com" target="_blank" >
-                 <HeartHandshake /> Human Programmers
-             </a>
-         </li>
       <li>
           <a href="https://maestrocast.com" target="_blank" >
             <WaveSine /> Maestrocast
