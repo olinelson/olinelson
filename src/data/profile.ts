@@ -219,7 +219,7 @@ export const links: Link[] = [
   { label: 'GitHub', href: 'https://github.com/olinelson', icon: 'github' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/oli-nelson/', icon: 'linkedin' },
   { label: 'X', href: 'https://x.com/o_j_nelson', icon: 'x' },
-  { label: 'Blog', href: 'https://world.hey.com/olivernelson', icon: 'article' },
+  { label: 'Blog', href: '/words.html', icon: 'article' },
   {
     label: 'Music',
     href: 'https://open.spotify.com/playlist/02iL2Vi9ONfgVKVG5DfGYz?si=bd53fa2abd8d4f5a',

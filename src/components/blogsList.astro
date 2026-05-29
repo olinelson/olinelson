@@ -1,34 +1,13 @@
 ---
-import { parseFeed } from '@rowanmanning/feed-parser';
-const res = await fetch("https://world.hey.com/olivernelson/feed.atom")
-const data = await res.text()
-const feed = parseFeed(data)
+import { getCollection } from 'astro:content'
 
-function getPlainTextPreviewSimple(htmlString, maxLength = 150) {
-  // Decode HTML entities
-  const decodedHtml = htmlString
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&amp;/g, '&')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'");
-  
-  // Remove HTML tags and normalize whitespace
-  const plainText = decodedHtml
-    .replace(/<[^>]+>/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
-  
-  if (plainText.length <= maxLength) return plainText;
-  
-  const truncated = plainText.substring(0, maxLength);
-  const lastSpace = truncated.lastIndexOf(' ');
-  
-  return lastSpace > maxLength * 0.75 
-    ? truncated.substring(0, lastSpace) + '...'
-    : truncated + '...';
-}
+const posts = (await getCollection('blog', ({ data }) => data.public !== false)).sort(
+  (a, b) => b.data.published.valueOf() - a.data.published.valueOf(),
+)
+const latest = posts.slice(0, 5)
 
+const fmt = (d) =>
+  d.toLocaleDateString('en-GB', { month: 'short', day: 'numeric', year: 'numeric' })
 ---
 
 <section id="words" class="mx-auto max-w-5xl px-6 py-20 sm:py-24">
@@ -38,19 +17,33 @@ function getPlainTextPreviewSimple(htmlString, maxLength = 150) {
   </header>
 
   <ul class="mt-10 border-t border-base-300">
-    {feed.items.slice(0, 5).map(b =>
-    <li class="group relative border-b border-base-300" data-reveal>
-      <div class="grid gap-1 py-6 sm:grid-cols-[10rem_1fr] sm:gap-8">
-        <p class="font-mono text-xs tracking-wide text-base-content/55 sm:pt-1">
-          {new Date(b.published).toLocaleDateString('en-UK', { month: "short", day: "numeric", year: "numeric"})}
-        </p>
-        <div>
-          <h3 class="text-xl transition-colors group-hover:text-primary">{b.title}</h3>
-          <p class="mt-1.5 text-sm leading-relaxed text-base-content/65">{getPlainTextPreviewSimple(b.content)}</p>
-        </div>
-      </div>
-      <a class="absolute inset-0" href={b.url} aria-label={b.title}></a>
-    </li>
-    )}
+    {
+      latest.map((p) => (
+        <li class="group relative border-b border-base-300" data-reveal>
+          <div class="grid gap-1 py-6 sm:grid-cols-[10rem_1fr] sm:gap-8">
+            <p class="font-mono text-xs tracking-wide text-base-content/55 sm:pt-1">
+              {fmt(p.data.published)}
+            </p>
+            <div>
+              <h3 class="text-xl transition-colors group-hover:text-primary">{p.data.title}</h3>
+              <p class="mt-1.5 text-sm leading-relaxed text-base-content/65">{p.data.preview}</p>
+            </div>
+          </div>
+          <a class="absolute inset-0" href={`/words/${p.id}.html`} aria-label={p.data.title} />
+        </li>
+      ))
+    }
   </ul>
+
+  {
+    posts.length > latest.length && (
+      <a
+        href="/words.html"
+        class="mt-8 inline-flex items-center gap-2 font-mono text-sm text-primary transition-opacity hover:opacity-70"
+        data-reveal
+      >
+        All writing ({posts.length}) →
+      </a>
+    )
+  }
 </section>
