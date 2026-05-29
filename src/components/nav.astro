@@ -1,8 +1,22 @@
-<div class="navbar bg-base-100 shadow-sm sticky top-0 z-50">
-    <div class="flex justify-center w-full">
-    <ul class="menu menu-horizontal">
-        <li><a class="text-lg" href="/">Main</a></li>
-        <li><a class="text-lg" href="https://world.hey.com/olivernelson">Words</a></li>
-    </ul>
+---
+import { profile } from '../data/profile'
+---
+
+<header class="sticky top-0 z-50 border-b border-base-300 bg-base-200/80 backdrop-blur-md">
+  <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-3.5">
+    <a href="#top" class="font-display text-lg font-medium tracking-tight">Oli Nelson</a>
+
+    <div class="hidden items-center gap-7 font-mono text-xs tracking-wide text-base-content/60 sm:flex">
+      <a class="transition-colors hover:text-primary" href="#work">Work</a>
+      <a class="transition-colors hover:text-primary" href="#experience">Experience</a>
+      <a class="transition-colors hover:text-primary" href="#words">Words</a>
     </div>
-</div>
+
+    <a
+      href={`mailto:${profile.email}`}
+      class="btn btn-primary btn-sm rounded-full px-4 shadow-none"
+    >
+      Email me
+    </a>
+  </nav>
+</header>

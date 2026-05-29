@@ -1,0 +1,64 @@
+---
+import { profile, links } from '../../data/profile'
+import Mail from '../../icons/mail.astro'
+import BrandGithub from '../../icons/brandGithub.astro'
+import BrandLinkedin from '../../icons/brandLinkedin.astro'
+import BrandX from '../../icons/brandX.astro'
+import BrandInstagram from '../../icons/brandInstagram.astro'
+import BrandSpotify from '../../icons/brandSpotify.astro'
+import Article from '../../icons/article.astro'
+
+const icons = {
+  github: BrandGithub,
+  linkedin: BrandLinkedin,
+  x: BrandX,
+  instagram: BrandInstagram,
+  spotify: BrandSpotify,
+  article: Article,
+}
+---
+
+<footer id="contact" class="bg-neutral text-neutral-content">
+  <div class="mx-auto max-w-5xl px-6 py-24 sm:py-32">
+    <p class="eyebrow" style="color: var(--color-primary)" data-reveal>Get in touch</p>
+
+    <h2 class="mt-6 max-w-3xl text-4xl leading-[1.08] sm:text-6xl" data-reveal style="--reveal-delay: 80ms">
+      Have something worth building? <span class="text-primary">Let’s talk.</span>
+    </h2>
+
+    <p class="mt-6 max-w-xl text-neutral-content/70" data-reveal style="--reveal-delay: 160ms">
+      {profile.available}
+    </p>
+
+    <a
+      href={`mailto:${profile.email}`}
+      class="btn btn-primary mt-9 rounded-full px-7 text-base shadow-none"
+      data-reveal
+      style="--reveal-delay: 240ms"
+    >
+      <Mail /> {profile.email}
+    </a>
+
+    <div class="mt-16 flex flex-wrap items-center gap-x-7 gap-y-3 border-t border-neutral-content/15 pt-8" data-reveal>
+      {
+        links.map((l) => {
+          const Icon = icons[l.icon as keyof typeof icons]
+          return (
+            <a
+              href={l.href}
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-2 font-mono text-sm text-neutral-content/65 transition-colors hover:text-primary"
+            >
+              <Icon /> {l.label}
+            </a>
+          )
+        })
+      }
+    </div>
+
+    <p class="mt-10 font-mono text-xs text-neutral-content/40">
+      © {profile.name} · {profile.location}
+    </p>
+  </div>
+</footer>

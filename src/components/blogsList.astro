@@ -31,16 +31,26 @@ function getPlainTextPreviewSimple(htmlString, maxLength = 150) {
 
 ---
 
-    <ul class="menu bg-base-100 rounded-box border-1  w-full">
-      <li class="menu-title">Words</li>
-       {feed.items.map(b =>
-       <li class="relative">
-           <h4 class=" pb-1 text-lg">{b.title}</h4>
-    <p class="py-0 text-sm">
-      {new Date(b.published).toLocaleDateString('en-UK', { month: "long", day: "numeric", year: "numeric"})}
-    </p>
-    <p class="opacity-60 text-base">{getPlainTextPreviewSimple(b.content)}</p>
-        <a class="absolute inset-0" href={b.url}></a>
-       </li>
-       )}
-    </ul>
+<section id="words" class="mx-auto max-w-5xl px-6 py-20 sm:py-24">
+  <header class="max-w-2xl" data-reveal>
+    <p class="eyebrow">Words</p>
+    <h2 class="mt-5 text-3xl sm:text-4xl">Occasional writing.</h2>
+  </header>
+
+  <ul class="mt-10 border-t border-base-300">
+    {feed.items.slice(0, 5).map(b =>
+    <li class="group relative border-b border-base-300" data-reveal>
+      <div class="grid gap-1 py-6 sm:grid-cols-[10rem_1fr] sm:gap-8">
+        <p class="font-mono text-xs tracking-wide text-base-content/55 sm:pt-1">
+          {new Date(b.published).toLocaleDateString('en-UK', { month: "short", day: "numeric", year: "numeric"})}
+        </p>
+        <div>
+          <h3 class="text-xl transition-colors group-hover:text-primary">{b.title}</h3>
+          <p class="mt-1.5 text-sm leading-relaxed text-base-content/65">{getPlainTextPreviewSimple(b.content)}</p>
+        </div>
+      </div>
+      <a class="absolute inset-0" href={b.url} aria-label={b.title}></a>
+    </li>
+    )}
+  </ul>
+</section>

@@ -1,0 +1,43 @@
+---
+import { experience, profile } from '../../data/profile'
+---
+
+<section id="experience" class="border-y border-base-300 bg-base-100">
+  <div class="mx-auto max-w-5xl px-6 py-20 sm:py-28">
+    <header class="max-w-2xl" data-reveal>
+      <p class="eyebrow">Experience</p>
+      <h2 class="mt-5 text-3xl sm:text-4xl">Where I’ve shipped.</h2>
+    </header>
+
+    <ol class="mt-12">
+      {
+        experience.map((job) => (
+          <li
+            class="grid gap-2 border-t border-base-300 py-7 sm:grid-cols-[10rem_1fr] sm:gap-8"
+            data-reveal
+          >
+            <div class="font-mono text-xs tracking-wide text-base-content/55 sm:pt-1">
+              {job.period}
+            </div>
+            <div>
+              <h3 class="text-xl">
+                {job.role} <span class="text-primary">· {job.company}</span>
+              </h3>
+              <p class="mt-2 max-w-2xl text-sm leading-relaxed text-base-content/70">
+                {job.blurb}
+              </p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="mt-8 font-mono text-xs text-base-content/55" data-reveal>
+      Full CV available —{' '}
+      <a class="text-primary underline-offset-4 hover:underline" href={`mailto:${profile.email}?subject=Résumé request`}>
+        email me
+      </a>{' '}
+      and I’ll send it over.
+    </p>
+  </div>
+</section>

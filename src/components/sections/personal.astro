@@ -1,0 +1,32 @@
+---
+import { personal } from '../../data/profile'
+import WaveSine from '../../icons/waveSine.astro'
+---
+
+<section id="more" class="border-t border-base-300 bg-base-100">
+  <div class="mx-auto max-w-5xl px-6 py-20 sm:py-28">
+    <div class="grid gap-10 md:grid-cols-[1fr_1.4fr] md:gap-16">
+      <div data-reveal>
+        <p class="eyebrow">{personal.heading}</p>
+        <div class="mt-6 text-primary/70"><WaveSine /></div>
+      </div>
+
+      <p
+        class="font-display text-2xl leading-snug text-base-content/85 sm:text-[1.7rem]"
+        data-reveal
+        style="--reveal-delay: 100ms"
+      >
+        {personal.body}
+      </p>
+    </div>
+
+    <div class="mt-12 flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs text-base-content/55" data-reveal>
+      <a class="hover:text-primary" href="https://pianobeachstorybook.com" target="_blank" rel="noopener"
+        >↳ Piano Beach — piano + story for kids</a
+      >
+      <a class="hover:text-primary" href="https://allhandspianoacademy.com" target="_blank" rel="noopener"
+        >↳ All Hands Piano Academy</a
+      >
+    </div>
+  </div>
+</section>
