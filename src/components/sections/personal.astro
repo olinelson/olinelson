@@ -11,14 +11,25 @@ import WaveSine from '../../icons/waveSine.astro'
         <div class="mt-6 text-primary/70"><WaveSine /></div>
       </div>
 
-      <p
-        class="font-display text-2xl leading-snug text-base-content/85 sm:text-[1.7rem]"
-        data-reveal
-        style="--reveal-delay: 100ms"
-      >
-        {personal.body}
-      </p>
-    </div>
+      <div data-reveal style="--reveal-delay: 100ms">
+        <p class="font-display text-2xl leading-snug text-base-content/85 sm:text-[1.7rem]">
+          {personal.body}
+        </p>
+
+        <div class="mt-10">
+          <p class="eyebrow mb-4">Stuff I’ve played on</p>
+          <iframe
+            title="Recordings Oli has played on"
+            src="https://open.spotify.com/embed/playlist/3qDjibCTOF2MiJ7ML51RY0?utm_source=generator"
+            width="100%"
+            height="152"
+            loading="lazy"
+            frameborder="0"
+            style="border-radius:12px"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          ></iframe>
+        </div>
+      </div>
 
     <div class="mt-12 flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs text-base-content/55" data-reveal>
       <a class="hover:text-primary" href="https://pianobeachstorybook.com" target="_blank" rel="noopener"
