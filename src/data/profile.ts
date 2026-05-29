@@ -84,7 +84,7 @@ export const work: Project[] = [
       'Built and shipped to production in two weeks.',
       'Paired with a conversational AI surfacing site status, compliance, and attendance insights.',
     ],
-    stack: ['Python', 'Computer vision', 'AWS'],
+    stack: ['Scala', 'Node.js', 'TypeScript', 'AWS', 'React'],
   },
 ]
 
@@ -202,7 +202,7 @@ export const skills: { label: string; items: string }[] = [
   {
     label: 'Infra & services',
     items:
-      'AWS · PostgreSQL · Redis · Sidekiq · Stripe · Mux · WebRTC · Zoom & Google Calendar APIs',
+      'AWS Lambda · Kinesis · SQS · PostgreSQL · Redis · Sidekiq · Stripe · Xero · Mux · WebRTC · Zoom API · Google Calendar API',
   },
 ]
 
