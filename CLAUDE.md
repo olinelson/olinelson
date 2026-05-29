@@ -1,0 +1,63 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## What this is
+
+A single-page personal site (olinelson.com) built with Astro 5, deployed as a static
+site to GitHub Pages. The package manager is **bun** (`bun.lock` is committed).
+
+## Commands
+
+```bash
+bun install          # install deps
+bun run dev          # local dev server (astro dev)
+bun run build        # production build to dist/
+bun run preview      # serve the built dist/ locally
+```
+
+There are no tests, linters, or formatters configured.
+
+## Deployment
+
+Pushing to `master` triggers `.github/workflows/deploy.yml` (`withastro/action@v3` →
+`actions/deploy-pages`), which builds and publishes to GitHub Pages. `public/CNAME`
+holds the custom domain. There is no separate staging environment — `master` is live.
+
+## Architecture
+
+- **Styling**: Tailwind CSS v4 wired through the Vite plugin (`@tailwindcss/vite`), not
+  a config file. `src/assets/app.css` is the single entry stylesheet and declares the
+  daisyUI v5 plugin plus the custom `olinelson` theme (referenced as
+  `data-theme="olinelson"` in `default.astro`). Use daisyUI component classes
+  (`menu`, `card`, `collapse`, `avatar`, etc.) — they are the established convention here.
+- **Client JS**: Hotwired Stimulus. `src/scripts/application.js` auto-registers every
+  `src/scripts/controllers/*_controller.js` via `import.meta.glob`. To add behavior,
+  drop a new `<name>_controller.js` and reference it with `data-controller="<name>"` —
+  no manual registration needed.
+- **Layouts/pages**: `src/pages/index.astro` is essentially the whole site. It composes
+  `layouts/default.astro` (html shell + nav + Stimulus bootstrap) which pulls in
+  `layouts/head.astro` (meta, Plausible analytics, app.css) and a `seo` slot fed by
+  `components/seo/index.astro` (uses `astro-seo`).
+- **Icons**: each SVG is its own `.astro` component under `src/icons/`.
+
+## Blog content — important quirk
+
+The "Words" list on the homepage is fetched **live at build time** from Oli's
+hey.com Atom feed inside `components/blogsList.astro`
+(`https://world.hey.com/olivernelson/feed.atom`, parsed with
+`@rowanmanning/feed-parser`). The build will hit the network.
+
+Note the vestigial local path: `src/content.config.ts` defines a `blog` content
+collection sourced from `./src/data/words` (which does not exist), and `index.astro`
+still calls `getCollection('blog')` and passes the result to `<BlogsList blogs={...}>`.
+`BlogsList` **ignores that prop** and uses the feed instead. If you reintroduce local
+markdown posts, that collection + the unused `blogs` prop are the wiring to revive.
+
+## Conventions
+
+- Astro is configured with `build.format: "file"` — pages emit as `foo.html`, not
+  `foo/index.html`. Keep internal links consistent with that.
+- TypeScript is `astro/tsconfigs/strict`.
+- `site` is set to `https://olinelson.com` in `astro.config.mjs`; the sitemap
+  integration and absolute SEO/OG image URLs depend on it.
