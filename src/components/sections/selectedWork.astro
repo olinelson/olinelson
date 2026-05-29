@@ -1,5 +1,5 @@
 ---
-import { work } from '../../data/profile'
+import { work, moreWork } from '../../data/profile'
 import CircleCheck from '../../icons/circle-check.astro'
 import ArrowLeft from '../../icons/arrowLeft.astro'
 ---
@@ -14,7 +14,7 @@ import ArrowLeft from '../../icons/arrowLeft.astro'
     {
       work.map((p, i) => (
         <article
-          class="group grid gap-6 bg-base-100 p-7 sm:grid-cols-[auto_1fr] sm:gap-10 sm:p-10"
+          class="group grid gap-6 bg-base-100 p-7 sm:grid-cols-[12rem_1fr] sm:gap-10 sm:p-10"
           data-reveal
         >
           <div class="flex items-baseline gap-4 sm:flex-col sm:gap-2">
@@ -66,5 +66,26 @@ import ArrowLeft from '../../icons/arrowLeft.astro'
         </article>
       ))
     }
+  </div>
+
+  <div class="mt-14" data-reveal>
+    <h3 class="font-mono text-xs tracking-wide text-base-content/55 uppercase">
+      More things I’ve built
+    </h3>
+    <div class="mt-7 grid gap-x-10 gap-y-7 sm:grid-cols-2">
+      {
+        moreWork.map((m) => (
+          <div class="border-l-2 border-base-300 pl-4">
+            <div class="flex items-baseline justify-between gap-3">
+              <h4 class="font-medium">{m.title}</h4>
+              <span class="shrink-0 font-mono text-[0.62rem] tracking-wide text-primary/80 uppercase">
+                {m.tag}
+              </span>
+            </div>
+            <p class="mt-1.5 text-sm leading-relaxed text-base-content/65">{m.blurb}</p>
+          </div>
+        ))
+      }
+    </div>
   </div>
 </section>

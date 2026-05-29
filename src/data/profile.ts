@@ -18,10 +18,10 @@ export const profile = {
 export type Metric = { value: string; label: string }
 
 export const metrics: Metric[] = [
-  { value: '2×', label: 'day-one creator activation' },
+  { value: '4+', label: 'AI products shipped to production' },
+  { value: '2', label: 'products founded, 0→1' },
   { value: '~28×', label: 'lower cost per AI thumbnail' },
-  { value: '6', label: 'net-new product surfaces in 8 months' },
-  { value: '1', label: 'video platform founded solo' },
+  { value: '2×', label: 'day-one creator activation' },
 ]
 
 export type Project = {
@@ -35,6 +35,20 @@ export type Project = {
 }
 
 export const work: Project[] = [
+  {
+    title: 'Ricordi',
+    tag: 'Founder · AI-native',
+    blurb:
+      'An AI-native platform for music lessons — record a lesson and “Bartók” turns it into a timestamped practice plan automatically.',
+    bullets: [
+      'Built the full product end-to-end: AI lesson analysis (recording → timestamped practice plans), a shared student workspace, and a unified teacher/student/parent chat thread.',
+      'Shipped web and native — in invite-only beta, with a Hotwire Native iOS app in App Store review.',
+      'Own everything: product, the AI pipeline, full-stack build, branding, and pricing.',
+    ],
+    stack: ['Ruby on Rails', 'Anthropic', 'Hotwire', 'Hotwire Native', 'iOS'],
+    href: 'https://ricordi.ai',
+    hrefLabel: 'ricordi.ai',
+  },
   {
     title: 'AI Thumbnail Generator',
     tag: 'Uscreen · 0→1',
@@ -51,13 +65,13 @@ export const work: Project[] = [
     title: 'Maestrocast',
     tag: 'Founder · live product',
     blurb:
-      'A real-time video platform built specifically for online music teaching — control student cameras, annotate sheet music live, share handouts, and manage lessons in one place.',
+      'A real-time video platform built specifically for online music teaching — control student cameras, annotate sheet music live, share handouts, and manage lessons in one place. The product whose lessons led to Ricordi.',
     bullets: [
       'Designed and built a low-latency video platform from scratch: live annotation, high-fidelity audio, recording.',
-      'Owned everything — full-stack, UX, branding, and pricing — to strong early adoption.',
+      'Owned everything — full-stack, UX, branding, and pricing — and put it in front of real users: a paying studio runs ~30 lessons a week on it.',
       'Ran customer discovery directly with music teachers and iterated around their workflow.',
     ],
-    stack: ['TypeScript', 'WebRTC', 'Node.js', 'React'],
+    stack: ['Ruby on Rails', 'WebRTC', 'Hotwire'],
     href: 'https://maestrocast.com',
     hrefLabel: 'maestrocast.com',
   },
@@ -71,6 +85,60 @@ export const work: Project[] = [
       'Paired with a conversational AI surfacing site status, compliance, and attendance insights.',
     ],
     stack: ['Python', 'Computer vision', 'AWS'],
+  },
+]
+
+export type MoreProject = { title: string; tag: string; blurb: string }
+
+// The breadth reel — smaller or earlier work shown as one-liners.
+export const moreWork: MoreProject[] = [
+  {
+    title: 'Welcome App V2',
+    tag: 'Rapid Global',
+    blurb:
+      'Collapsed 3+ microservices into a single full-stack React Router app handling thousands of facial-recognition events daily.',
+  },
+  {
+    title: 'Uscreen product surfaces',
+    tag: 'Uscreen',
+    blurb:
+      'Link in Bio, bookable Coaching Events (Zoom + Google Calendar), a Starter tier, and a rebuilt onboarding flow.',
+  },
+  {
+    title: 'Real-time AI Chat',
+    tag: 'Rapid Global',
+    blurb:
+      'A conversational AI surfacing live site status, compliance, check-ins, and attendance insights.',
+  },
+  {
+    title: 'Integrations platform',
+    tag: 'Nirovision',
+    blurb:
+      'A business-critical platform syncing customer data across MYOB, Employment Hero, and other external systems.',
+  },
+  {
+    title: 'Diagnostics viewer',
+    tag: 'iCare',
+    blurb:
+      'A performant, visually-synced multi-image viewer for eye-care clinicians — filters, zoom, pan, and compare.',
+  },
+  {
+    title: 'Billing automation',
+    tag: 'Nirovision',
+    blurb:
+      'Automated Stripe + Xero billing with guided checkout and account setup, removing manual work for finance.',
+  },
+  {
+    title: 'Recruiter Flow',
+    tag: 'WithYouWithMe',
+    blurb:
+      'A guided workflow walking recruiters through the applicant process end-to-end.',
+  },
+  {
+    title: 'Freelance builds',
+    tag: '2019–2020',
+    blurb:
+      'A psychologist booking platform, a podcast transcription + search app, and a Bitcoin music marketplace.',
   },
 ]
 
