@@ -6,9 +6,9 @@ export const profile = {
   name: 'Oli Nelson',
   // Headline is the highest-leverage line on the page — easy to swap here.
   role: 'Product engineer & founder',
-  headline: 'I ship products end-to-end — discovery, design, full stack, deploy.',
+  headline: 'Founder’s instincts, engineer’s hands — blank page to shipped product.',
   subhead:
-    'Product engineer with a founder’s instincts. I take ideas from a blank page to shipped software that moves the numbers — fast, and without sacrificing craft.',
+    'I’ve founded and shipped my own products end-to-end — discovery, design, full stack, deploy — and I bring that same ownership to great teams.',
   location: 'Australia · working remotely worldwide',
   email: 'olivernelson@hey.com',
   available:
