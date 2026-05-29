@@ -83,6 +83,9 @@ import ArrowLeft from '../../icons/arrowLeft.astro'
               </span>
             </div>
             <p class="mt-1.5 text-sm leading-relaxed text-base-content/65">{m.blurb}</p>
+            <p class="mt-2 font-mono text-[0.62rem] tracking-wide text-base-content/45">
+              {m.stack.join(' · ')}
+            </p>
           </div>
         ))
       }

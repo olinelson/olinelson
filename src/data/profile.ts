@@ -88,7 +88,7 @@ export const work: Project[] = [
   },
 ]
 
-export type MoreProject = { title: string; tag: string; blurb: string }
+export type MoreProject = { title: string; tag: string; blurb: string; stack: string[] }
 
 // The breadth reel — smaller or earlier work shown as one-liners.
 export const moreWork: MoreProject[] = [
@@ -97,48 +97,56 @@ export const moreWork: MoreProject[] = [
     tag: 'Rapid Global',
     blurb:
       'Collapsed 3+ microservices into a single full-stack React Router app handling thousands of facial-recognition events daily.',
+    stack: ['TypeScript', 'React', 'Node.js'],
   },
   {
     title: 'Uscreen product surfaces',
     tag: 'Uscreen',
     blurb:
       'Link in Bio, bookable Coaching Events (Zoom + Google Calendar), a Starter tier, and a rebuilt onboarding flow.',
+    stack: ['Ruby on Rails', 'Hotwire', 'React'],
   },
   {
     title: 'Real-time AI Chat',
     tag: 'Rapid Global',
     blurb:
       'A conversational AI surfacing live site status, compliance, check-ins, and attendance insights.',
+    stack: ['Node.js', 'TypeScript', 'React'],
   },
   {
     title: 'Integrations platform',
     tag: 'Nirovision',
     blurb:
       'A business-critical platform syncing customer data across MYOB, Employment Hero, and other external systems.',
+    stack: ['Scala', 'Node.js', 'TypeScript', 'React'],
   },
   {
     title: 'Diagnostics viewer',
     tag: 'iCare',
     blurb:
       'A performant, visually-synced multi-image viewer for eye-care clinicians — filters, zoom, pan, and compare.',
+    stack: ['Kotlin', 'React'],
   },
   {
     title: 'Billing automation',
     tag: 'Nirovision',
     blurb:
       'Automated Stripe + Xero billing with guided checkout and account setup, removing manual work for finance.',
+    stack: ['Node.js', 'TypeScript'],
   },
   {
     title: 'Recruiter Flow',
     tag: 'WithYouWithMe',
     blurb:
       'A guided workflow walking recruiters through the applicant process end-to-end.',
+    stack: ['JavaScript', 'React'],
   },
   {
     title: 'Freelance builds',
     tag: '2019–2020',
     blurb:
       'A psychologist booking platform, a podcast transcription + search app, and a Bitcoin music marketplace.',
+    stack: ['Ruby on Rails', 'Node.js', 'TypeScript', 'Svelte', 'React'],
   },
 ]
 
@@ -184,7 +192,7 @@ export const skills: { label: string; items: string }[] = [
   {
     label: 'Languages & frameworks',
     items:
-      'TypeScript · Ruby on Rails · Node.js · Python · React · Svelte · Vue · Hotwire',
+      'TypeScript · Node.js · Ruby on Rails · Python · Scala · Kotlin · React · Svelte · Vue · Hotwire',
   },
   {
     label: 'AI & product',
