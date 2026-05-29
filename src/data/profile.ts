@@ -19,8 +19,8 @@ export type Metric = { value: string; label: string }
 
 export const metrics: Metric[] = [
   { value: '4+', label: 'AI products shipped to production' },
-  { value: '2', label: 'products founded, 0→1' },
-  { value: '~28×', label: 'lower cost per AI thumbnail' },
+  { value: '4', label: 'products founded, 0→1' },
+  { value: '~28×', label: 'cheaper AI image generation' },
   { value: '2×', label: 'day-one creator activation' },
 ]
 
@@ -192,7 +192,7 @@ export const skills: { label: string; items: string }[] = [
   {
     label: 'Languages & frameworks',
     items:
-      'TypeScript · Node.js · Ruby on Rails · Python · Scala · Kotlin · React · Svelte · Vue · Hotwire',
+      'TypeScript · Node.js · Ruby on Rails · Python · Scala · React · Svelte · Vue · Hotwire',
   },
   {
     label: 'AI & product',
