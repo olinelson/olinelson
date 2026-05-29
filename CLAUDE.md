@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A single-page personal site (olinelson.com) built with Astro 5, deployed as a static
+A personal site and blog (olinelson.com) built with Astro 5, deployed as a static
 site to GitHub Pages. The package manager is **bun** (`bun.lock` is committed).
 
 ## Commands
@@ -35,24 +35,38 @@ holds the custom domain. There is no separate staging environment — `master` i
   `src/scripts/controllers/*_controller.js` via `import.meta.glob`. To add behavior,
   drop a new `<name>_controller.js` and reference it with `data-controller="<name>"` —
   no manual registration needed.
-- **Layouts/pages**: `src/pages/index.astro` is essentially the whole site. It composes
-  `layouts/default.astro` (html shell + nav + Stimulus bootstrap) which pulls in
-  `layouts/head.astro` (meta, Plausible analytics, app.css) and a `seo` slot fed by
-  `components/seo/index.astro` (uses `astro-seo`).
+- **Layouts/pages**: `src/pages/index.astro` is the homepage (the bulk of the site);
+  blog pages live under `src/pages/words/`. All compose `layouts/default.astro` (html
+  shell + nav + Stimulus bootstrap) which pulls in `layouts/head.astro` (meta, Plausible
+  analytics, RSS autodiscovery, app.css) and a `seo` slot fed by
+  `components/seo/index.astro` (uses `astro-seo`; accepts optional `title`/`description`/
+  `canonical`/`type` props, defaulting to the homepage values).
 - **Icons**: each SVG is its own `.astro` component under `src/icons/`.
 
-## Blog content — important quirk
+## Blog
 
-The "Words" list on the homepage is fetched **live at build time** from Oli's
-hey.com Atom feed inside `components/blogsList.astro`
-(`https://world.hey.com/olivernelson/feed.atom`, parsed with
-`@rowanmanning/feed-parser`). The build will hit the network.
+Posts are local Markdown in `src/data/words/*.md`, loaded via the `blog` content
+collection (`src/content.config.ts`; frontmatter: `title`, `published` (date),
+`public` (bool, default true), `preview`). Migrated off hey.com — the build no longer
+hits the network for content.
 
-Note the vestigial local path: `src/content.config.ts` defines a `blog` content
-collection sourced from `./src/data/words` (which does not exist), and `index.astro`
-still calls `getCollection('blog')` and passes the result to `<BlogsList blogs={...}>`.
-`BlogsList` **ignores that prop** and uses the feed instead. If you reintroduce local
-markdown posts, that collection + the unused `blogs` prop are the wiring to revive.
+- **Homepage list**: `components/blogsList.astro` reads the collection, shows the 5
+  newest, links to `/words/<slug>.html`, plus an "All writing" link to the index.
+- **Index**: `src/pages/words/index.astro` lists every post (emitted as `/words.html`).
+- **Post pages**: `src/pages/words/[slug].astro` renders each post with
+  `@tailwindcss/typography` (`prose`) + Shiki (`github-light`) highlighting; the prose is
+  themed via CSS-var overrides in that file's `<style is:global>`.
+- **Images**: stored under `public/words/<slug>/`, referenced with absolute `/words/...`
+  paths.
+- **RSS**: `src/pages/feed.xml.js` emits a **full-content** feed at `/feed.xml` — renders
+  each post via the Astro Container API, sanitized with `sanitize-html`, image/link URLs
+  absolutized. Autodiscovery `<link>` is in `layouts/head.astro`.
+
+**Add a post**: drop a `.md` into `src/data/words/` with the frontmatter above, commit,
+push. Set `public: false` to keep a draft out of the list/index/feed.
+
+The one-off importer that pulled the original hey.com posts is parked at
+`scripts/import-hey.mjs` (uses the `turndown` devDependency); it is not part of the build.
 
 ## Conventions
 
