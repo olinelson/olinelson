@@ -12,6 +12,11 @@ export default defineConfig({
   },
 
   integrations: [sitemap()],
+  markdown: {
+    shikiConfig: {
+      theme: "github-light",
+    },
+  },
   build: {
     format: "file",
   },

@@ -1,29 +1,42 @@
-    ---
+---
 import { SEO } from "astro-seo";
 import profileImage from '../../assets/images/profile.jpg'
 
-const description = "Product engineer & founder. I ship products end-to-end — discovery, design, full stack, deploy. Open to technical-cofounder, product-engineer, and freelance work."
+interface Props {
+  title?: string
+  description?: string
+  canonical?: string
+  type?: "website" | "article"
+}
+
+const defaultDescription = "Product engineer & founder. I ship products end-to-end — discovery, design, full stack, deploy. Open to technical-cofounder, product-engineer, and freelance work."
+
+const {
+  title = "Oli Nelson",
+  description = defaultDescription,
+  canonical = "https://olinelson.com",
+  type = "website",
+} = Astro.props
+
 const image = `https://olinelson.com${profileImage.src}`
 const site = "@o_j_nelson"
 const creator = "@o_j_nelson"
-
 ---
 
-
 <SEO
-  title="Oli Nelson"
+  title={title}
   description={description}
-  canonical="https://olinelson.com"
+  canonical={canonical}
   openGraph={{
     basic: {
-      title: "Oli Nelson",
-      type: "website",
+      title,
+      type,
       image,
-      url: "https://olinelson.com"
+      url: canonical
     }
   }}
   twitter={{
-    title: "Oli Nelson",
+    title,
     card: "summary_large_image",
     site,
     creator,
