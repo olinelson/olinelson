@@ -210,7 +210,7 @@ export const skills: { label: string; items: string }[] = [
 export const personal = {
   heading: 'The other half',
   body:
-    'Before software I was a jazz drummer — a Bachelor of Jazz Performance from the Sydney Conservatorium, a James Morrison Jazz Scholarship, a podium finish at the Australian National Jazz Awards, and albums reviewed in the Sydney Morning Herald. I think the discipline of playing in a band — listening hard, shipping live, no second takes — is most of why I build the way I do.',
+    'Before software I was a professional drummer. I hold a Bachelor of Jazz Performance from the Sydney Conservatorium of Music, received the James Morrison Jazz Scholarship, finished on the podium at the Australian National Jazz Awards, and recorded albums reviewed in the Sydney Morning Herald. Being a musician implicitly taught me how theory and embodied knowledge must combine to really affect the world around you.',
 }
 
 export type Link = { label: string; href: string; icon: string }
