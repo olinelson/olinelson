@@ -1,7 +1,10 @@
 ---
+import { Image } from 'astro:assets'
 import { getCollection, render } from 'astro:content'
 import DefaultLayout from '../../layouts/default.astro'
 import Seo from '../../components/seo/index.astro'
+import profileImage from '../../assets/images/profile.jpg'
+import { profile } from '../../data/profile'
 import { blogPostingSchema, breadcrumbSchema, SITE } from '../../lib/schema'
 
 export async function getStaticPaths() {
@@ -12,6 +15,11 @@ export async function getStaticPaths() {
 const { post } = Astro.props
 const { Content } = await render(post)
 const { title, published, preview } = post.data
+
+const related = (await getCollection('blog', ({ data }) => data.public !== false))
+  .filter((p) => p.id !== post.id)
+  .sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf())
+  .slice(0, 3)
 
 const dateLabel = published.toLocaleDateString('en-GB', {
   month: 'long',
@@ -38,6 +46,7 @@ const schema = [
     canonical={url}
     type="article"
     image={ogImage}
+    imageAlt={title}
     publishedTime={published.toISOString()}
     schema={schema}
   />
@@ -57,6 +66,61 @@ const schema = [
     <article class="prose prose-lg mt-12 max-w-none">
       <Content />
     </article>
+
+    <footer class="mt-16 border-t border-base-300 pt-10">
+      <div
+        class="flex flex-col gap-5 rounded-box border border-base-300 bg-base-100 p-6 sm:flex-row sm:items-start sm:gap-6 sm:p-8"
+      >
+        <Image
+          src={profileImage}
+          alt={profile.name}
+          width={128}
+          height={128}
+          class="h-16 w-16 shrink-0 rounded-2xl object-cover"
+        />
+        <div>
+          <p class="font-mono text-xs tracking-wide text-base-content/55 uppercase">Written by</p>
+          <p class="mt-1 text-xl">{profile.name}</p>
+          <p class="mt-2 text-base-content/70">
+            AI product engineer & founder. I ship AI-native products end-to-end — discovery,
+            design, full-stack build, and deploy. {profile.available}
+          </p>
+          <div class="mt-4 flex flex-wrap gap-3">
+            <a href="/hire.html" class="btn btn-primary btn-sm rounded-full px-5 shadow-none">
+              Work with me
+            </a>
+            <a
+              href={`mailto:${profile.email}`}
+              data-lead-source="post"
+              class="btn btn-ghost btn-sm rounded-full border border-base-300 px-5"
+            >
+              Email me
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {
+        related.length > 0 && (
+          <nav class="mt-12" aria-label="More writing">
+            <p class="eyebrow">Keep reading</p>
+            <ul class="mt-5 border-t border-base-300">
+              {related.map((r) => (
+                <li class="border-b border-base-300">
+                  <a
+                    href={`/words/${r.id}.html`}
+                    class="group flex flex-col gap-1 py-4 transition-colors hover:text-primary"
+                  >
+                    <span class="text-lg">{r.data.title}</span>
+                    <span class="text-sm text-base-content/60">{r.data.preview}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )
+      }
+    </footer>
   </main>
 </DefaultLayout>
 

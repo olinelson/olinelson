@@ -17,7 +17,11 @@ const schema = [personSchema(image), websiteSchema(), profilePageSchema()]
 ---
 
 <DefaultLayout>
-  <Seo slot="seo" schema={schema} />
+  <Seo
+    slot="seo"
+    title="Oli Nelson — AI Product Engineer & Founder"
+    schema={schema}
+  />
   <main>
     <Hero />
     <ProofBar />
