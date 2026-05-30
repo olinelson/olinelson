@@ -1,0 +1,173 @@
+---
+import DefaultLayout from '../layouts/default.astro'
+import Seo from '../components/seo/index.astro'
+import ProofBar from '../components/sections/proofBar.astro'
+import SelectedWork from '../components/sections/selectedWork.astro'
+import ContactCta from '../components/sections/contactCta.astro'
+import { profile } from '../data/profile'
+import profileImage from '../assets/images/profile.jpg'
+import Mail from '../icons/mail.astro'
+import CircleCheck from '../icons/circle-check.astro'
+import { personSchema, serviceSchema, faqSchema, breadcrumbSchema, SITE } from '../lib/schema'
+
+const title = 'Hire Oli Nelson — Freelance AI Product Engineer & Technical Cofounder'
+const description =
+  'Hire Oli Nelson: a freelance AI product engineer and technical cofounder who ships AI-native products end-to-end — discovery, design, full-stack build, and deploy. Remote, worldwide.'
+const canonical = `${SITE}/hire.html`
+const image = `${SITE}${profileImage.src}`
+
+const services = [
+  {
+    title: 'AI product engineering',
+    body: 'LLM and agent features that actually ship — RAG, vision, multi-modal pipelines, and the product UX around them. I’ve shipped 4+ AI products to production.',
+  },
+  {
+    title: '0→1 MVP builds',
+    body: 'Blank page to a real, in-market product. I’ve founded and launched my own — I move fast without leaving a mess for the next engineer.',
+  },
+  {
+    title: 'Technical cofounder',
+    body: 'Founder’s instincts plus engineer’s hands. Product, architecture, branding, and pricing — owned end-to-end while you find product-market fit.',
+  },
+  {
+    title: 'Full-stack delivery',
+    body: 'Rails, TypeScript/React, Node, Python, Hotwire. I collapse microservices, rebuild onboarding, and ship net-new surfaces on real production codebases.',
+  },
+]
+
+const faqs = [
+  {
+    q: 'What does Oli Nelson do?',
+    a: 'Oli is a product engineer and founder who ships AI-native products end-to-end — discovery, design, full-stack build, and deploy. He has shipped 4+ AI products to production and founded multiple 0→1 products.',
+  },
+  {
+    q: 'Is Oli available for freelance or contract work?',
+    a: 'Yes. Oli is open to technical-cofounder, product-engineer, and freelance/contract work, available remotely worldwide. Email olivernelson@hey.com to start a conversation.',
+  },
+  {
+    q: 'Does Oli work remotely?',
+    a: 'Yes — Oli is based in Australia and works remotely with teams worldwide.',
+  },
+  {
+    q: 'What technologies does Oli work with?',
+    a: 'Ruby on Rails, TypeScript, Node.js, React, Python, Scala, and Hotwire, plus the OpenAI and Anthropic APIs for AI features. Infrastructure across AWS, PostgreSQL, Redis, Sidekiq, Stripe, Mux, and WebRTC.',
+  },
+  {
+    q: 'Can Oli be a technical cofounder?',
+    a: 'Yes. Oli has founded and built his own products (Ricordi, Maestrocast) end-to-end and is open to technical-cofounder arrangements for the right venture.',
+  },
+  {
+    q: 'How do you start working together?',
+    a: `Email ${profile.email} with a short description of what you’re building. Oli will reply with whether it’s a fit and suggest a first call.`,
+  },
+]
+
+const schema = [
+  personSchema(image),
+  serviceSchema(),
+  faqSchema(faqs),
+  breadcrumbSchema([
+    { name: 'Home', item: SITE },
+    { name: 'Hire', item: canonical },
+  ]),
+]
+---
+
+<DefaultLayout>
+  <Seo
+    slot="seo"
+    title={title}
+    description={description}
+    canonical={canonical}
+    image={image}
+    schema={schema}
+  />
+
+  <main>
+    <section class="mx-auto max-w-5xl px-6 pt-28 pb-16 sm:pt-32">
+      <a
+        href="/"
+        class="font-mono text-xs tracking-wide text-base-content/55 transition-colors hover:text-primary"
+        >← Oli Nelson</a
+      >
+
+      <p class="eyebrow mt-10" data-reveal>Hire me</p>
+
+      <h1 class="mt-6 max-w-3xl text-4xl leading-[1.05] sm:text-6xl" data-reveal style="--reveal-delay: 80ms">
+        A freelance <span class="text-primary">AI product engineer</span> who ships, end-to-end.
+      </h1>
+
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-base-content/70 sm:text-xl" data-reveal style="--reveal-delay: 160ms">
+        I take AI-native products from a blank page to live in production — discovery, design,
+        full-stack build, and deploy. Founder’s instincts, engineer’s hands. {profile.available}
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-3" data-reveal style="--reveal-delay: 240ms">
+        <a
+          href={`mailto:${profile.email}`}
+          data-lead-source="hire-hero"
+          class="btn btn-primary rounded-full px-6 shadow-none"
+        >
+          <Mail /> Start a conversation
+        </a>
+        <a href="/" class="btn btn-ghost rounded-full border border-base-300 px-6"> See full portfolio </a>
+      </div>
+
+      <p class="mt-7 flex items-center font-mono text-xs tracking-wide text-base-content/55" data-reveal style="--reveal-delay: 320ms">
+        <span class="mr-2 inline-block h-2 w-2 shrink-0 animate-pulse rounded-full bg-success"></span
+        >{profile.available}
+      </p>
+    </section>
+
+    <ProofBar />
+
+    <section class="mx-auto max-w-5xl px-6 py-20 sm:py-28">
+      <header class="max-w-2xl" data-reveal>
+        <p class="eyebrow">How I can help</p>
+        <h2 class="mt-5 text-3xl sm:text-4xl">What you’re actually hiring.</h2>
+      </header>
+
+      <div class="mt-12 grid gap-px overflow-hidden rounded-box border border-base-300 bg-base-300 sm:grid-cols-2">
+        {
+          services.map((s) => (
+            <article class="bg-base-100 p-7 sm:p-9" data-reveal>
+              <div class="flex items-start gap-3">
+                <span class="mt-1 shrink-0 text-primary">
+                  <CircleCheck />
+                </span>
+                <div>
+                  <h3 class="text-xl sm:text-2xl">{s.title}</h3>
+                  <p class="mt-3 text-base-content/70">{s.body}</p>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <SelectedWork />
+
+    <section class="mx-auto max-w-3xl px-6 py-20 sm:py-28">
+      <header class="max-w-2xl" data-reveal>
+        <p class="eyebrow">FAQ</p>
+        <h2 class="mt-5 text-3xl sm:text-4xl">Common questions.</h2>
+      </header>
+
+      <div class="mt-10 flex flex-col gap-3">
+        {
+          faqs.map((f) => (
+            <details class="group rounded-box border border-base-300 bg-base-100 p-6" data-reveal>
+              <summary class="cursor-pointer list-none text-lg font-medium marker:hidden">
+                {f.q}
+              </summary>
+              <p class="mt-4 text-base-content/70">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </section>
+
+    <ContactCta />
+  </main>
+</DefaultLayout>

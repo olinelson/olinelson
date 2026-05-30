@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content'
 import DefaultLayout from '../../layouts/default.astro'
 import Seo from '../../components/seo/index.astro'
+import { blogPostingSchema, breadcrumbSchema, SITE } from '../../lib/schema'
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => data.public !== false)
@@ -18,10 +19,28 @@ const dateLabel = published.toLocaleDateString('en-GB', {
   year: 'numeric',
 })
 const url = `https://olinelson.com/words/${post.id}.html`
+const ogImage = `${SITE}/words/og/${post.id}.png`
+const schema = [
+  blogPostingSchema(post.data, url, ogImage),
+  breadcrumbSchema([
+    { name: 'Home', item: SITE },
+    { name: 'Words', item: `${SITE}/words.html` },
+    { name: title, item: url },
+  ]),
+]
 ---
 
 <DefaultLayout>
-  <Seo slot="seo" title={`${title} — Oli Nelson`} description={preview} canonical={url} type="article" />
+  <Seo
+    slot="seo"
+    title={`${title} — Oli Nelson`}
+    description={preview}
+    canonical={url}
+    type="article"
+    image={ogImage}
+    publishedTime={published.toISOString()}
+    schema={schema}
+  />
 
   <main class="mx-auto max-w-3xl px-6 pt-28 pb-24 sm:pt-32">
     <a

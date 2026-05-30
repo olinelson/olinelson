@@ -9,10 +9,15 @@ import Skills from '../components/sections/skills.astro'
 import Personal from '../components/sections/personal.astro'
 import BlogsList from '../components/blogsList.astro'
 import ContactCta from '../components/sections/contactCta.astro'
+import profileImage from '../assets/images/profile.jpg'
+import { personSchema, websiteSchema, profilePageSchema } from '../lib/schema'
+
+const image = `https://olinelson.com${profileImage.src}`
+const schema = [personSchema(image), websiteSchema(), profilePageSchema()]
 ---
 
 <DefaultLayout>
-  <Seo slot="seo" />
+  <Seo slot="seo" schema={schema} />
   <main>
     <Hero />
     <ProofBar />

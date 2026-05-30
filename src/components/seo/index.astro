@@ -7,20 +7,39 @@ interface Props {
   description?: string
   canonical?: string
   type?: "website" | "article"
+  image?: string
+  publishedTime?: string
+  schema?: object | object[]
 }
 
 const defaultDescription = "Product engineer & founder. I ship products end-to-end — discovery, design, full stack, deploy. Open to technical-cofounder, product-engineer, and freelance work."
+
+const defaultImage = `https://olinelson.com${profileImage.src}`
 
 const {
   title = "Oli Nelson",
   description = defaultDescription,
   canonical = "https://olinelson.com",
   type = "website",
+  image = defaultImage,
+  publishedTime,
+  schema,
 } = Astro.props
 
-const image = `https://olinelson.com${profileImage.src}`
 const site = "@o_j_nelson"
 const creator = "@o_j_nelson"
+
+const article =
+  type === "article" && publishedTime
+    ? { publishedTime, authors: ["https://olinelson.com"] }
+    : undefined
+
+const graph = schema
+  ? {
+      "@context": "https://schema.org",
+      "@graph": Array.isArray(schema) ? schema : [schema],
+    }
+  : null
 ---
 
 <SEO
@@ -33,7 +52,12 @@ const creator = "@o_j_nelson"
       type,
       image,
       url: canonical
-    }
+    },
+    optional: {
+      siteName: "Oli Nelson",
+      description,
+    },
+    ...(article ? { article } : {}),
   }}
   twitter={{
     title,
@@ -44,3 +68,4 @@ const creator = "@o_j_nelson"
     image
   }}
 />
+{graph && <script type="application/ld+json" is:inline set:html={JSON.stringify(graph)} />}

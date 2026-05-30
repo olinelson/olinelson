@@ -6,8 +6,15 @@ import "../assets/app.css";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="author" content="Oli Nelson" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <meta name="theme-color" content="#1e1b18" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title="Oli Nelson — Words" href="/feed.xml" />
+    <link rel="alternate" type="text/markdown" title="llms.txt" href="/llms.txt" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,14 +24,17 @@ import "../assets/app.css";
     />
 
 
-    <!-- plausible start -->
-    <script
-      defer
-      data-domain="olinelson.com"
-      src="https://plausible.io/js/script.file-downloads.hash.outbound-links.js"
-    ></script>
-    <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
-
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script async src="https://plausible.io/js/pa-Eb9J7CyZi93SZB2oFcKNq.js"></script>
+    <script>
+      window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments)
+        }
+      plausible.init = plausible.init || function (i) { plausible.o = i || {} }
+      plausible.init()
+    </script>
     <!-- plausible end -->
 
 
