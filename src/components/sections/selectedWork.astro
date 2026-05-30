@@ -49,48 +49,24 @@ import ArrowLeft from '../../icons/arrowLeft.astro'
               ))}
             </div>
 
-            <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2">
-              {p.caseStudy && (
-                <a
-                  href={`/work/${p.caseStudy}.html`}
-                  class="inline-flex items-center gap-2 font-mono text-sm text-primary transition-opacity hover:opacity-70"
-                >
-                  Read the case study
-                  <span class="rotate-180">
-                    <ArrowLeft />
-                  </span>
-                </a>
-              )}
-              {p.href && (
-                <a
-                  href={p.href}
-                  target="_blank"
-                  rel="noopener"
-                  class="inline-flex items-center gap-2 font-mono text-sm text-base-content/55 transition-colors hover:text-primary"
-                >
-                  {p.hrefLabel}
-                  <span class="rotate-180">
-                    <ArrowLeft />
-                  </span>
-                </a>
-              )}
-            </div>
+            {p.href && (
+              <a
+                href={p.href}
+                target="_blank"
+                rel="noopener"
+                class="mt-6 inline-flex items-center gap-2 font-mono text-sm text-primary transition-opacity hover:opacity-70"
+              >
+                <span class="rotate-180">
+                  <ArrowLeft />
+                </span>
+                {p.hrefLabel}
+              </a>
+            )}
           </div>
         </article>
       ))
     }
   </div>
-
-  <a
-    href="/work.html"
-    class="mt-8 inline-flex items-center gap-2 font-mono text-sm text-primary transition-opacity hover:opacity-70"
-    data-reveal
-  >
-    All case studies
-    <span class="rotate-180">
-      <ArrowLeft />
-    </span>
-  </a>
 
   <div class="mt-14" data-reveal>
     <h3 class="font-mono text-xs tracking-wide text-base-content/55 uppercase">

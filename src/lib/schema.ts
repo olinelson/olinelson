@@ -108,34 +108,6 @@ export function blogPostingSchema(post: PostMeta, url: string, imageUrl: string)
   }
 }
 
-type CaseStudyMeta = {
-  title: string
-  summary: string
-  published: Date
-  stack: string[]
-  appType?: string
-}
-
-export function caseStudySchema(data: CaseStudyMeta, url: string, imageUrl: string) {
-  const base = {
-    '@id': `${url}#work`,
-    name: data.title,
-    headline: data.title,
-    description: data.summary,
-    url,
-    image: imageUrl,
-    datePublished: data.published.toISOString(),
-    author: { '@id': PERSON_ID },
-    creator: { '@id': PERSON_ID },
-    keywords: data.stack.join(', '),
-    inLanguage: 'en',
-  }
-  // A shipped product reads best as SoftwareApplication; otherwise a CreativeWork.
-  return data.appType
-    ? { '@type': 'SoftwareApplication', applicationCategory: data.appType, ...base }
-    : { '@type': 'CreativeWork', ...base }
-}
-
 export function breadcrumbSchema(items: { name: string; item: string }[]) {
   return {
     '@type': 'BreadcrumbList',
