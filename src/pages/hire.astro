@@ -1,7 +1,6 @@
 ---
 import DefaultLayout from '../layouts/default.astro'
 import Seo from '../components/seo/index.astro'
-import ProofBar from '../components/sections/proofBar.astro'
 import SelectedWork from '../components/sections/selectedWork.astro'
 import ContactCta from '../components/sections/contactCta.astro'
 import { profile } from '../data/profile'
@@ -118,8 +117,6 @@ const schema = [
         >{profile.available}
       </p>
     </section>
-
-    <ProofBar />
 
     <section class="mx-auto max-w-5xl px-6 py-20 sm:py-28">
       <header class="max-w-2xl" data-reveal>

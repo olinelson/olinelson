@@ -15,15 +15,6 @@ export const profile = {
     'Open to technical-cofounder, product-engineer, and freelance work.',
 }
 
-export type Metric = { value: string; label: string }
-
-export const metrics: Metric[] = [
-  { value: '4+', label: 'AI products shipped to production' },
-  { value: '4', label: 'products founded, 0→1' },
-  { value: '~30', label: 'weekly lessons run on a platform I built' },
-  { value: '2×', label: 'day-one creator activation' },
-]
-
 export type Project = {
   title: string
   tag: string
