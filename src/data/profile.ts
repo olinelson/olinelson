@@ -20,7 +20,7 @@ export type Metric = { value: string; label: string }
 export const metrics: Metric[] = [
   { value: '4+', label: 'AI products shipped to production' },
   { value: '4', label: 'products founded, 0→1' },
-  { value: '~28×', label: 'cheaper AI image generation' },
+  { value: '~30', label: 'weekly lessons run on a platform I built' },
   { value: '2×', label: 'day-one creator activation' },
 ]
 
@@ -58,11 +58,10 @@ export const work: Project[] = [
       'An end-to-end system that turns any video into high-converting, on-brand thumbnails — automatically.',
     bullets: [
       'Built the full pipeline: Mux frame extraction → GPT vision scoring → industry-aware templates.',
-      'Drove cost per thumbnail down roughly 28× through model and pipeline optimisation.',
+      'Optimised the model and pipeline to make per-thumbnail cost viable at production scale.',
       'Shipped as a net-new product surface, owned end-to-end.',
     ],
     stack: ['Ruby on Rails', 'Python', 'OpenAI', 'Mux', 'React'],
-    caseStudy: 'ai-thumbnail-generator',
   },
   {
     title: 'Maestrocast',
@@ -77,6 +76,7 @@ export const work: Project[] = [
     stack: ['Ruby on Rails', 'WebRTC', 'Hotwire'],
     href: 'https://maestrocast.com',
     hrefLabel: 'maestrocast.com',
+    caseStudy: 'maestrocast',
   },
   {
     title: 'Safety Agent',
