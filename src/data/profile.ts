@@ -32,6 +32,7 @@ export type Project = {
   stack: string[]
   href?: string
   hrefLabel?: string
+  caseStudy?: string // slug of a /work/<slug> case-study page, if one exists
 }
 
 export const work: Project[] = [
@@ -48,6 +49,7 @@ export const work: Project[] = [
     stack: ['Ruby on Rails', 'Anthropic', 'Hotwire', 'Hotwire Native', 'iOS'],
     href: 'https://ricordi.ai',
     hrefLabel: 'ricordi.ai',
+    caseStudy: 'ricordi',
   },
   {
     title: 'AI Thumbnail Generator',
@@ -60,6 +62,7 @@ export const work: Project[] = [
       'Shipped as a net-new product surface, owned end-to-end.',
     ],
     stack: ['Ruby on Rails', 'Python', 'OpenAI', 'Mux', 'React'],
+    caseStudy: 'ai-thumbnail-generator',
   },
   {
     title: 'Maestrocast',

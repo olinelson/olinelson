@@ -12,6 +12,13 @@ export const GET: APIRoute = async () => {
     (a, b) => b.data.published.valueOf() - a.data.published.valueOf(),
   )
 
+  const caseStudies = (await getCollection('work', ({ data }) => data.public !== false)).sort(
+    (a, b) => a.data.order - b.data.order,
+  )
+  const caseStudyLines = caseStudies
+    .map((c) => `- [${c.data.title}](${SITE}/work/${c.id}.html) — ${c.data.tag}: ${c.data.summary}`)
+    .join('\n')
+
   const workLines = work
     .map((p) => {
       const link = p.href ? ` (${p.href})` : ''
@@ -55,6 +62,10 @@ Available remotely worldwide.
 ## Selected work
 
 ${workLines}
+
+## Case studies (in depth)
+
+${caseStudyLines}
 
 ## Experience
 

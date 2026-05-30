@@ -1,0 +1,143 @@
+---
+import { getCollection, render } from 'astro:content'
+import DefaultLayout from '../../layouts/default.astro'
+import Seo from '../../components/seo/index.astro'
+import CircleCheck from '../../icons/circle-check.astro'
+import ArrowLeft from '../../icons/arrowLeft.astro'
+import { profile } from '../../data/profile'
+import { caseStudySchema, breadcrumbSchema, SITE } from '../../lib/schema'
+
+export async function getStaticPaths() {
+  const items = await getCollection('work', ({ data }) => data.public !== false)
+  return items.map((item) => ({ params: { slug: item.id }, props: { item } }))
+}
+
+const { item } = Astro.props
+const { Content } = await render(item)
+const { title, tag, summary, stack, outcomes, liveUrl, liveLabel } = item.data
+
+const url = `${SITE}/work/${item.id}.html`
+const ogImage = `${SITE}/og/home.png`
+const schema = [
+  caseStudySchema(item.data, url, ogImage),
+  breadcrumbSchema([
+    { name: 'Home', item: SITE },
+    { name: 'Work', item: `${SITE}/work.html` },
+    { name: title, item: url },
+  ]),
+]
+---
+
+<DefaultLayout>
+  <Seo
+    slot="seo"
+    title={`${title} — case study by Oli Nelson`}
+    description={summary}
+    canonical={url}
+    type="article"
+    schema={schema}
+  />
+
+  <main class="mx-auto max-w-3xl px-6 pt-28 pb-24 sm:pt-32">
+    <a
+      href="/work.html"
+      class="font-mono text-xs tracking-wide text-base-content/55 transition-colors hover:text-primary"
+      >← Work</a
+    >
+
+    <header class="mt-8">
+      <p class="font-mono text-xs tracking-wide text-primary uppercase">{tag}</p>
+      <h1 class="mt-3 text-4xl leading-[1.1] sm:text-5xl">{title}</h1>
+      <p class="mt-5 text-lg text-base-content/70">{summary}</p>
+
+      {
+        liveUrl && (
+          <a
+            href={liveUrl}
+            target="_blank"
+            rel="noopener"
+            class="mt-6 inline-flex items-center gap-2 font-mono text-sm text-primary transition-opacity hover:opacity-70"
+          >
+            <span class="rotate-180">
+              <ArrowLeft />
+            </span>
+            {liveLabel ?? 'View live'}
+          </a>
+        )
+      }
+    </header>
+
+    {
+      outcomes.length > 0 && (
+        <ul class="mt-10 flex flex-col gap-2.5 rounded-box border border-base-300 bg-base-100 p-6 sm:p-7">
+          {outcomes.map((o) => (
+            <li class="flex gap-2.5 text-sm leading-relaxed text-base-content/80">
+              <span class="mt-0.5 shrink-0 text-primary">
+                <CircleCheck />
+              </span>
+              <span>{o}</span>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
+    <article class="prose prose-lg mt-12 max-w-none">
+      <Content />
+    </article>
+
+    {
+      stack.length > 0 && (
+        <div class="mt-10 flex flex-wrap items-center gap-2">
+          {stack.map((s) => (
+            <span class="rounded-full border border-base-300 px-3 py-1 font-mono text-[0.68rem] text-base-content/60">
+              {s}
+            </span>
+          ))}
+        </div>
+      )
+    }
+
+    <footer
+      class="mt-16 flex flex-col gap-4 border-t border-base-300 pt-10 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p class="max-w-md text-base-content/70">
+        Want something like this built end-to-end? {profile.available}
+      </p>
+      <div class="flex shrink-0 flex-wrap gap-3">
+        <a href="/hire.html" class="btn btn-primary btn-sm rounded-full px-5 shadow-none">
+          Work with me
+        </a>
+        <a
+          href={`mailto:${profile.email}`}
+          data-lead-source="case-study"
+          class="btn btn-ghost btn-sm rounded-full border border-base-300 px-5"
+        >
+          Email me
+        </a>
+      </div>
+    </footer>
+  </main>
+</DefaultLayout>
+
+<style is:global>
+  .prose {
+    --tw-prose-body: var(--color-base-content);
+    --tw-prose-headings: var(--color-base-content);
+    --tw-prose-links: var(--color-primary);
+    --tw-prose-bold: var(--color-base-content);
+    --tw-prose-counters: var(--color-base-content);
+    --tw-prose-bullets: var(--color-base-300);
+    --tw-prose-hr: var(--color-base-300);
+    --tw-prose-quote-borders: var(--color-primary);
+  }
+  .prose :is(h1, h2, h3, h4) {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .prose img {
+    border-radius: var(--radius-box);
+    border: 1.5px solid var(--color-base-300);
+  }
+</style>
