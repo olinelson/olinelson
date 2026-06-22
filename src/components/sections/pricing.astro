@@ -1,0 +1,39 @@
+---
+import { pricing, profile } from '../../data/profile'
+import Mail from '../../icons/mail.astro'
+---
+
+<section id="pricing" class="border-y border-base-300 bg-base-100">
+  <div class="mx-auto max-w-5xl px-6 py-20 sm:py-28">
+    <header class="max-w-2xl" data-reveal>
+      <p class="eyebrow">Straight about money</p>
+      <h2 class="mt-5 text-3xl sm:text-4xl">{pricing.heading}</h2>
+    </header>
+
+    <div class="mt-12 grid gap-px overflow-hidden rounded-box border border-base-300 bg-base-300 sm:grid-cols-2">
+      {
+        pricing.tiers.map((tier) => (
+          <div class="bg-base-100 p-8 sm:p-10" data-reveal>
+            <p class="font-mono text-[0.7rem] tracking-wide text-primary uppercase">{tier.label}</p>
+            <p class="mt-5 flex items-baseline gap-2">
+              <span class="font-display text-4xl sm:text-5xl">{tier.amount}</span>
+              <span class="text-sm text-base-content/55">{tier.unit}</span>
+            </p>
+            <p class="mt-5 text-base-content/70">{tier.note}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="mt-8 max-w-2xl text-base-content/65" data-reveal>{pricing.note}</p>
+
+    <a
+      href={`mailto:${profile.email}?subject=Quick%20chat%20about%20AI%20for%20my%20business`}
+      data-lead-source="pricing"
+      class="btn btn-primary mt-8 rounded-full px-6 shadow-none"
+      data-reveal
+    >
+      <Mail /> Book a free call
+    </a>
+  </div>
+</section>

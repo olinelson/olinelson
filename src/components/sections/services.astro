@@ -1,0 +1,36 @@
+---
+import { services } from '../../data/profile'
+import CircleCheck from '../../icons/circle-check.astro'
+---
+
+<section id="what-i-do" class="border-y border-base-300 bg-base-100">
+  <div class="mx-auto max-w-5xl px-6 py-20 sm:py-28">
+    <header class="max-w-2xl" data-reveal>
+      <p class="eyebrow">{services.heading}</p>
+      <h2 class="mt-5 text-3xl sm:text-4xl">{services.intro}</h2>
+    </header>
+
+    <div class="mt-12 grid gap-px overflow-hidden rounded-box border border-base-300 bg-base-300 sm:grid-cols-2">
+      {
+        services.items.map((s) => (
+          <article class="flex gap-4 bg-base-100 p-7 sm:p-9" data-reveal>
+            <span class="mt-1 shrink-0 text-primary">
+              <CircleCheck />
+            </span>
+            <div>
+              <h3 class="text-xl sm:text-2xl">{s.title}</h3>
+              <p class="mt-3 text-base-content/70">{s.body}</p>
+            </div>
+          </article>
+        ))
+      }
+      <article class="flex items-center bg-base-100 p-7 sm:p-9" data-reveal>
+        <p class="text-base-content/60">
+          Not sure which of these would move the needle for you? That’s exactly what the
+          first (free) call is for — I’ll tell you straight where AI is worth it and where
+          it isn’t.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>

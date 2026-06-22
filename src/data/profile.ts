@@ -1,18 +1,98 @@
 // Single source of truth for the site's content.
-// Sourced from the resume, with internal $ figures softened to multipliers and
-// PII (phone, precise address) deliberately omitted from the public site.
+// olinelson.com is a solo AI studio: I build practical AI software for small
+// businesses — trades, owner-operators, and the kind of company custom software
+// was never worth it for, until AI changed the economics.
 
 export const profile = {
   name: 'Oli Nelson',
-  // Headline is the highest-leverage line on the page — easy to swap here.
-  role: 'Product engineer & founder',
-  headline: 'Founder’s instincts, engineer’s hands — blank page to shipped product.',
+  role: 'Custom AI software for small business',
+  // The hero thesis. headline reads plain; headlineAccent carries the turn.
+  headline: 'Custom software used to be only for the big players.',
+  headlineAccent: 'AI changed that — now I build it for businesses like yours.',
   subhead:
-    'I’ve founded and shipped my own products end-to-end — discovery, design, full stack, deploy — and I bring that same ownership to great teams.',
-  location: 'Australia · working remotely worldwide',
+    'I find where AI can save you hours or win you more work — then I build it, and keep it running.',
+  location: 'Coffs Harbour, NSW · working anywhere',
   email: 'olivernelson@hey.com',
-  available:
-    'Open to technical-cofounder, product-engineer, and freelance work.',
+  phone: '0458 341 473',
+  phoneHref: '+61458341473',
+  available: 'Taking on new builds now — first call is free.',
+  // The price line that disarms the rip-off fear. Anchors $5k, keeps small jobs welcome.
+  priceLine:
+    'Builds from around $5,000 AUD. Got something smaller? Just ask.',
+}
+
+export type Service = { title: string; body: string }
+
+// What I do, in the buyer's language — outcomes, not features.
+export const services = {
+  heading: 'What I can do for you',
+  intro:
+    'Most small businesses are losing time and money to jobs that a bit of well-aimed AI could just… handle. Here’s where it usually pays off.',
+  items: [
+    {
+      title: 'Never miss another job',
+      body: 'An assistant that answers calls, texts, and website enquiries the moment they land — day or night — and books the job or takes down the lead. Work stops slipping away while you’re up a ladder or asleep.',
+    },
+    {
+      title: 'Quotes out in minutes, not evenings',
+      body: 'Turn a few photos, a voice note, or a quick description into a draft quote on the spot — instead of losing your nights to admin and losing jobs to whoever replied first.',
+    },
+    {
+      title: 'Nothing slips through the cracks',
+      body: 'Automatic follow-ups on quotes, reminders before jobs, and review requests after — quietly chasing the revenue that normally falls through the gaps.',
+    },
+    {
+      title: 'Paperwork that does itself',
+      body: 'Invoices, job reports, and safety or compliance docs written up from a quick voice note. I built a live safety-monitoring AI for an industrial-compliance company — this is home turf.',
+    },
+    {
+      title: 'Actually know your numbers',
+      body: 'Pull the figures scattered across your bank, your accounting software, and your job records into one clear picture of how the business is really tracking — without you touching a spreadsheet.',
+    },
+  ] satisfies Service[],
+}
+
+// Risk reversal — the exact fears a first-time software buyer has, answered head-on.
+export const trust = {
+  heading: 'How I take the risk out of it',
+  items: [
+    {
+      title: 'You own everything',
+      body: 'The software, the code, the accounts — all yours. No black boxes, no being held hostage by your developer.',
+    },
+    {
+      title: 'A fixed price, agreed up front',
+      body: 'You know exactly what it costs before any work starts. No open-ended bills, no nasty surprises at the end.',
+    },
+    {
+      title: 'Plain English, no lock-in',
+      body: 'I explain things in words that make sense, and you’re never trapped. If it’s not working for you, you walk.',
+    },
+    {
+      title: 'I don’t disappear',
+      body: 'For $500/month I keep it running, fix anything that breaks, and keep improving it — for as long as you want me around.',
+    },
+  ] satisfies Service[],
+}
+
+// Pricing, shown plainly. Anchors the credible number; small jobs stay welcome.
+export const pricing = {
+  heading: 'What it costs',
+  tiers: [
+    {
+      label: 'A typical build',
+      amount: '~$5,000',
+      unit: 'AUD · one-off',
+      note: 'Designed, built, and live — a real piece of software solving a real problem in your business.',
+    },
+    {
+      label: 'Ongoing care',
+      amount: '$500',
+      unit: '/ month',
+      note: 'Unlimited fixes and small improvements, for as long as you want it. Most clients stay on it. Optional, never forced.',
+    },
+  ],
+  note: 'Got something smaller? A focused automation can cost less — just ask. The first call is free, and you’ll have a fixed price before anything starts.',
 }
 
 export type Project = {
@@ -25,119 +105,56 @@ export type Project = {
   hrefLabel?: string
 }
 
+// Proof, reframed in outcomes. Lead with the trades-adjacent safety agent and the
+// product I built solo — the two that best tell a small-business owner "he can do this."
 export const work: Project[] = [
   {
-    title: 'Ricordi',
-    tag: 'Founder · AI-native',
+    title: 'A real-time safety agent',
+    tag: 'Built for an industrial-compliance company',
     blurb:
-      'An AI-native platform for music lessons — record a lesson and “Bartók” turns it into a timestamped practice plan automatically.',
+      'AI that watches live site camera feeds and flags hazards and accidents the moment they happen — alerting the team in real time, before a near-miss becomes an incident.',
     bullets: [
-      'Built the full product end-to-end: AI lesson analysis (recording → timestamped practice plans), a shared student workspace, and a unified teacher/student/parent chat thread.',
-      'Shipped web and native — in invite-only beta, with a Hotwire Native iOS app in App Store review.',
-      'Own everything: product, the AI pipeline, full-stack build, branding, and pricing.',
+      'Built and shipped to production in two weeks.',
+      'Paired it with a plain-language assistant that answers “what’s happening on site right now?” — status, compliance, who’s checked in.',
     ],
-    stack: ['Ruby on Rails', 'Anthropic', 'Hotwire', 'Hotwire Native', 'iOS'],
+    stack: ['Live video', 'Computer vision', 'AI agents'],
+  },
+  {
+    title: 'Ricordi',
+    tag: 'My own AI product — built solo',
+    blurb:
+      'An AI platform for music teachers: record a lesson and it becomes a timestamped practice plan automatically. I built the whole thing alone — the AI, the web app, the iPhone app, the brand.',
+    bullets: [
+      'AI that turns a lesson recording into a structured, time-stamped practice plan.',
+      'Live on web and as an iPhone app — proof I take an idea from a blank page all the way to in people’s hands.',
+    ],
+    stack: ['AI lesson analysis', 'Web + iPhone app'],
     href: 'https://ricordi.ai',
     hrefLabel: 'ricordi.ai',
   },
   {
-    title: 'AI Thumbnail Generator',
-    tag: 'Uscreen · 0→1',
+    title: 'Automatic thumbnail generator',
+    tag: 'Built for a video platform',
     blurb:
-      'An end-to-end system that turns any video into high-converting, on-brand thumbnails — automatically.',
+      'A system that turns any video into eye-catching, on-brand thumbnails automatically — the kind of repetitive busywork that used to eat hours, done in seconds.',
     bullets: [
-      'Built the full pipeline: Mux frame extraction → GPT vision scoring → industry-aware templates.',
-      'Optimised the model and pipeline to make per-thumbnail cost viable at production scale.',
-      'Shipped as a net-new product surface, owned end-to-end.',
+      'Built the whole pipeline end-to-end, and made it cheap enough to run at scale.',
+      'Shipped as a brand-new feature, used right across the platform.',
     ],
-    stack: ['Ruby on Rails', 'Python', 'OpenAI', 'Mux', 'React'],
+    stack: ['AI vision', 'Automation'],
   },
   {
     title: 'Maestrocast',
-    tag: 'Founder · live product',
+    tag: 'My own product — live & paying',
     blurb:
-      'A real-time video platform built specifically for online music teaching — control student cameras, annotate sheet music live, share handouts, and manage lessons in one place. The product whose lessons led to Ricordi.',
+      'A video platform built for online music lessons. A paying studio runs about 30 lessons a week on it. I built all of it — the product, the software, and the support behind it.',
     bullets: [
-      'Designed and built a low-latency video platform from scratch: live annotation, high-fidelity audio, recording.',
-      'Owned everything — full-stack, UX, branding, and pricing — and put it in front of real users: a paying studio runs ~30 lessons a week on it.',
-      'Ran customer discovery directly with music teachers and iterated around their workflow.',
+      'Designed and built it from scratch, then looked after real paying customers on it.',
+      'Proof I don’t just ship and vanish — I keep the thing running.',
     ],
-    stack: ['Ruby on Rails', 'WebRTC', 'Hotwire'],
+    stack: ['Live video', 'Full product'],
     href: 'https://maestrocast.com',
     hrefLabel: 'maestrocast.com',
-  },
-  {
-    title: 'Safety Agent',
-    tag: 'Rapid Global · shipped in 2 weeks',
-    blurb:
-      'A multi-modal AI agent that watches real-time video feeds to detect on-site hazards and accidents, alerting customers the moment something goes wrong.',
-    bullets: [
-      'Built and shipped to production in two weeks.',
-      'Paired with a conversational AI surfacing site status, compliance, and attendance insights.',
-    ],
-    stack: ['Scala', 'Node.js', 'TypeScript', 'AWS', 'React'],
-  },
-]
-
-export type MoreProject = { title: string; tag: string; blurb: string; stack: string[] }
-
-// The breadth reel — smaller or earlier work shown as one-liners.
-export const moreWork: MoreProject[] = [
-  {
-    title: 'Welcome App V2',
-    tag: 'Rapid Global',
-    blurb:
-      'Collapsed 3+ microservices into a single full-stack React Router app handling thousands of facial-recognition events daily.',
-    stack: ['TypeScript', 'React', 'Node.js'],
-  },
-  {
-    title: 'Uscreen product surfaces',
-    tag: 'Uscreen',
-    blurb:
-      'Link in Bio, bookable Coaching Events (Zoom + Google Calendar), a Starter tier, and a rebuilt onboarding flow.',
-    stack: ['Ruby on Rails', 'Hotwire', 'React'],
-  },
-  {
-    title: 'Real-time AI Chat',
-    tag: 'Rapid Global',
-    blurb:
-      'A conversational AI surfacing live site status, compliance, check-ins, and attendance insights.',
-    stack: ['Node.js', 'TypeScript', 'React'],
-  },
-  {
-    title: 'Integrations platform',
-    tag: 'Nirovision',
-    blurb:
-      'A business-critical platform syncing customer data across MYOB, Employment Hero, and other external systems.',
-    stack: ['Scala', 'Node.js', 'TypeScript', 'React'],
-  },
-  {
-    title: 'Diagnostics viewer',
-    tag: 'iCare',
-    blurb:
-      'A performant, visually-synced multi-image viewer for eye-care clinicians — filters, zoom, pan, and compare.',
-    stack: ['Kotlin', 'React'],
-  },
-  {
-    title: 'Billing automation',
-    tag: 'Nirovision',
-    blurb:
-      'Automated Stripe + Xero billing with guided checkout and account setup, removing manual work for finance.',
-    stack: ['Node.js', 'TypeScript'],
-  },
-  {
-    title: 'Recruiter Flow',
-    tag: 'WithYouWithMe',
-    blurb:
-      'A guided workflow walking recruiters through the applicant process end-to-end.',
-    stack: ['JavaScript', 'React'],
-  },
-  {
-    title: 'Freelance builds',
-    tag: '2019–2020',
-    blurb:
-      'A psychologist booking platform, a podcast transcription + search app, and a Bitcoin music marketplace.',
-    stack: ['Ruby on Rails', 'Node.js', 'TypeScript', 'Svelte', 'React'],
   },
 ]
 
@@ -148,60 +165,64 @@ export type Job = {
   blurb: string
 }
 
+// Light credibility — where I've worked, in plain terms. Not a résumé; a "this is a
+// real, experienced engineer" reassurance for anyone who reads this far.
 export const experience: Job[] = [
   {
     role: 'Product Engineer',
     company: 'Uscreen',
     period: '2025 — Present',
     blurb:
-      'Ship net-new product surfaces end-to-end for a creator video platform — Link in Bio, AI Thumbnails, bookable coaching events (Zoom + Google Calendar), a Starter tier, a rebuilt onboarding flow — and lead the team’s adoption of AI-assisted development.',
+      'Build new features end-to-end for a video platform used by thousands of creators — including its AI tools — and lead the team’s use of AI to build faster.',
   },
   {
     role: 'Founder',
-    company: 'Maestrocast',
-    period: '2025 — Present',
+    company: 'Maestrocast & Ricordi',
+    period: '2024 — Present',
     blurb:
-      'Founded and built a real-time video platform for online music teaching, from product and brand through to infrastructure.',
+      'Founded and built two of my own products from nothing — the software, the AI, the brand, the support — and put them in front of real paying users.',
   },
   {
-    role: 'Full Stack Developer',
+    role: 'Software Engineer',
     company: 'Rapid Global',
     period: '2023 — 2025',
     blurb:
-      'Delivered AI features to production fast — a multi-modal safety agent, real-time AI chat, and a rebuilt site-compliance system — across a diverse set of services and stacks.',
+      'Shipped AI to production fast for an industrial safety-and-compliance company — a live safety-monitoring agent and a plain-language site assistant among them.',
   },
   {
-    role: 'Full Stack Developer',
+    role: 'Software Engineer',
     company: 'Nirovision',
     period: '2020 — 2023',
     blurb:
-      'Architected a modular integrations platform (MYOB, Employment Hero, and more) and an automated Stripe + Xero billing flow that removed manual work for finance.',
+      'Built the systems that connected a security product to the accounting and payroll tools its customers already used, and automated their billing.',
   },
 ]
 
+// Kept for /llms.txt and AI-citation context — not rendered as a section on the site
+// (the jargon scares the people I'm actually selling to). Outcomes do the selling now.
 export const skills: { label: string; items: string }[] = [
   {
-    label: 'Languages & frameworks',
+    label: 'AI & automation',
     items:
-      'TypeScript · Node.js · Ruby on Rails · Python · Scala · React · Svelte · Vue · Hotwire',
+      'LLM apps · AI agents · computer vision · voice & transcription · Anthropic API · OpenAI API · retrieval (RAG) · AI-assisted development',
   },
   {
-    label: 'AI & product',
+    label: 'Building software',
     items:
-      'OpenAI API · GPT vision · AI agent design · AI-assisted dev workflows · activation analytics · A/B testing',
+      'Full-stack web apps · iPhone apps · real-time video · automations & integrations · payments & billing · dashboards',
   },
   {
-    label: 'Infra & services',
+    label: 'Under the hood',
     items:
-      'AWS Lambda · Kinesis · SQS · PostgreSQL · Redis · Sidekiq · Stripe · Xero · Mux · WebRTC · Zoom API · Google Calendar API',
+      'TypeScript · Ruby on Rails · Node.js · Python · React · Hotwire · PostgreSQL · AWS · Stripe',
   },
 ]
 
-// The human bit — differentiator, not headline.
+// The human bit — a real, trustworthy person, not a faceless agency or offshore team.
 export const personal = {
-  heading: 'The other half',
+  heading: 'The person you’d actually be working with',
   body:
-    'Before software I was a professional drummer. I hold a Bachelor of Jazz Performance from the Sydney Conservatorium of Music, received the James Morrison Jazz Scholarship, finished on the podium at the Australian National Jazz Awards, and recorded albums reviewed in the Sydney Morning Herald. Being a musician implicitly taught me how theory and embodied knowledge must combine to really affect the world around you.',
+    'Before software I was a professional jazz drummer — a Bachelor of Jazz Performance from the Sydney Conservatorium, the James Morrison Jazz Scholarship, a podium finish at the Australian National Jazz Awards, and albums reviewed in the Sydney Morning Herald. What that taught me: theory only matters when it actually changes what happens in the room. You’d be working with one real person who picks up the phone — not a sales team, not an offshore shop, not someone who vanishes after the invoice clears.',
 }
 
 export type Link = { label: string; href: string; icon: string }

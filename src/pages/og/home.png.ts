@@ -8,7 +8,7 @@ export const GET: APIRoute = async () =>
     await generateOpenGraphImage({
       title: 'Oli Nelson',
       description:
-        'AI Product Engineer & Founder — I ship AI-native products end-to-end. Open to freelance and technical-cofounder work.',
+        'Custom AI software for small business & trades — built, supported, and improved by one real person. Builds from around $5,000 AUD.',
       logo: { path: './src/assets/images/profile.jpg', size: [128] },
       bgGradient: [
         [30, 27, 24],

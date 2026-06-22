@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro'
 import { getCollection } from 'astro:content'
-import { profile, work, experience, skills, links } from '../data/profile'
+import { profile, services, pricing, work, experience, skills, links } from '../data/profile'
 
 // /llms.txt — the llmstxt.org convention: a clean, structured Markdown brief that
 // lets AI agents understand who Oli is, what he offers, and where to read more,
@@ -25,6 +25,12 @@ export const GET: APIRoute = async () => {
 
   const skillsLines = skills.map((s) => `- **${s.label}:** ${s.items}`).join('\n')
 
+  const servicesLines = services.items.map((s) => `- **${s.title}:** ${s.body}`).join('\n')
+
+  const pricingLines = pricing.tiers
+    .map((t) => `- **${t.label}:** ${t.amount} ${t.unit} — ${t.note}`)
+    .join('\n')
+
   const postLines = posts
     .map((p) => `- [${p.data.title}](${SITE}/words/${p.id}.html): ${p.data.preview}`)
     .join('\n')
@@ -35,32 +41,44 @@ export const GET: APIRoute = async () => {
 
   const body = `# Oli Nelson
 
-> ${profile.role} based in ${profile.location}. ${profile.subhead} ${profile.available}
+> ${profile.role}, based in ${profile.location}. ${profile.subhead}
 
-Contact: ${profile.email}
+Contact: ${profile.email} · ${profile.phone}
 Website: ${SITE}
 
 ## About
 
-Oli Nelson is a product engineer and founder who ships AI-native products end-to-end —
-discovery, design, full-stack build, branding, and deploy. He has founded multiple 0→1
-products and brings that same ownership to teams. Before software he was a professional
-jazz drummer (Bachelor of Jazz Performance, Sydney Conservatorium of Music; James Morrison
-Jazz Scholarship). Currently a Product Engineer at Uscreen and founder of Ricordi and
-Maestrocast.
+Oli Nelson builds custom AI software for small businesses and trades — the kind of
+businesses custom software was never worth it for, until AI changed the economics. He
+finds where AI can save an owner hours or win them more work, then builds it, supports it,
+and keeps improving it. He works as one real person (not an agency or offshore team) and
+has shipped AI to production for his own products and for other companies. Before software
+he was a professional jazz drummer (Bachelor of Jazz Performance, Sydney Conservatorium of
+Music; James Morrison Jazz Scholarship). He is also a Product Engineer at Uscreen and the
+founder of Ricordi and Maestrocast.
 
-**Open to:** technical-cofounder roles, product-engineer roles, and freelance/contract work.
-Available remotely worldwide.
+**Based in** Coffs Harbour on the NSW Mid North Coast, Australia — working with local
+businesses and clients anywhere. ${profile.available}
 
-## Selected work
+## What Oli builds for businesses
+
+${servicesLines}
+
+## Pricing
+
+${pricingLines}
+
+${pricing.note}
+
+## Proof — things Oli has built
 
 ${workLines}
 
-## Experience
+## Track record
 
 ${experienceLines}
 
-## Skills
+## Technical capability
 
 ${skillsLines}
 
@@ -72,9 +90,10 @@ ${postLines}
 
 ${linkLines}
 
-## Hire
+## Work with Oli
 
-To work with Oli, email ${profile.email} or see ${SITE}/hire.html.
+To work with Oli, email ${profile.email}, call ${profile.phone}, or see ${SITE}/hire.html.
+The first call is free, and you get a fixed price before any work starts.
 Full text of every article is available at ${SITE}/llms-full.txt and ${SITE}/feed.xml.
 `
 

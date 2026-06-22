@@ -13,27 +13,28 @@ const WEBSITE_ID = `${SITE}/#website`
 const sameAs = links.map((l) => l.href).filter((href) => href.startsWith('http'))
 
 const description =
-  'Product engineer and founder based in Australia, working remotely worldwide. ' +
-  'I ship AI-native products end-to-end — discovery, design, full-stack build, and deploy. ' +
-  'Open to technical-cofounder, product-engineer, and freelance work.'
+  'Oli Nelson builds custom AI software for small businesses and trades — based in ' +
+  'Australia, working with clients anywhere. Practical, affordable AI: missed-call and ' +
+  'after-hours enquiry handling, instant quoting, automated follow-ups, paperwork and ' +
+  'compliance from a voice note, and clear financial reporting. A typical build is around ' +
+  '$5,000 AUD plus optional ongoing support; smaller automations cost less.'
 
 const knowsAbout = [
   'Artificial intelligence',
-  'AI product engineering',
+  'AI for small business',
+  'AI automation',
   'AI agents',
+  'Custom software development',
+  'AI customer enquiry handling',
+  'Automated quoting and estimates',
+  'Business process automation',
   'Large language model applications',
-  'OpenAI API',
+  'Computer vision',
   'Anthropic API',
-  'Ruby on Rails',
-  'Hotwire',
-  'TypeScript',
-  'React',
-  'Node.js',
-  'Python',
+  'OpenAI API',
   'Full-stack web development',
-  'Product engineering',
-  'WebRTC',
-  'Startup founding',
+  'iPhone app development',
+  'Software for trades and small business',
 ]
 
 export function personSchema(imageUrl: string) {
@@ -44,10 +45,16 @@ export function personSchema(imageUrl: string) {
     alternateName: 'Oliver Nelson',
     url: SITE,
     image: imageUrl,
-    jobTitle: 'Product Engineer & Founder',
+    jobTitle: 'AI Software Developer for Small Business',
     description,
     email: `mailto:${profile.email}`,
-    address: { '@type': 'PostalAddress', addressCountry: 'AU' },
+    telephone: profile.phoneHref,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Coffs Harbour',
+      addressRegion: 'NSW',
+      addressCountry: 'AU',
+    },
     knowsAbout,
     knowsLanguage: 'en',
     alumniOf: {
@@ -80,7 +87,7 @@ export function profilePageSchema() {
     '@type': 'ProfilePage',
     '@id': `${SITE}/#profilepage`,
     url: SITE,
-    name: 'Oli Nelson — Product Engineer & Founder',
+    name: 'Oli Nelson — Custom AI software for small business',
     isPartOf: { '@id': WEBSITE_ID },
     mainEntity: { '@id': PERSON_ID },
     inLanguage: 'en',
@@ -123,19 +130,32 @@ export function breadcrumbSchema(items: { name: string; item: string }[]) {
 export function serviceSchema() {
   return {
     '@type': 'ProfessionalService',
-    '@id': `${SITE}/hire.html#service`,
-    name: 'Freelance AI Product Engineering & Technical Cofounding',
+    '@id': `${SITE}/#service`,
+    name: 'Custom AI Software for Small Business',
     description,
     provider: { '@id': PERSON_ID },
-    areaServed: { '@type': 'Place', name: 'Worldwide (remote)' },
-    serviceType: [
-      'AI product engineering',
-      'Technical cofounder',
-      'Full-stack development',
-      'MVP and 0-to-1 product builds',
-      'AI agent and LLM integration',
+    areaServed: [
+      { '@type': 'City', name: 'Coffs Harbour' },
+      { '@type': 'Place', name: 'Mid North Coast, NSW' },
+      { '@type': 'Country', name: 'Australia' },
+      { '@type': 'Place', name: 'Worldwide (remote)' },
     ],
-    url: `${SITE}/hire.html`,
+    serviceType: [
+      'Custom AI software for small business',
+      'AI automation for trades and small business',
+      'After-hours and missed-call enquiry handling',
+      'Automated quoting and estimates',
+      'AI agent and LLM integration',
+      'Business reporting and dashboards',
+    ],
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'AUD',
+      price: '5000',
+      description:
+        'A typical build is around $5,000 AUD, plus an optional $500/month for unlimited fixes and improvements. Smaller automations cost less.',
+    },
+    url: SITE,
   }
 }
 

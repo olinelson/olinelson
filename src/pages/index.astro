@@ -2,30 +2,35 @@
 import DefaultLayout from '../layouts/default.astro'
 import Seo from '../components/seo/index.astro'
 import Hero from '../components/sections/hero.astro'
+import Services from '../components/sections/services.astro'
 import SelectedWork from '../components/sections/selectedWork.astro'
+import Trust from '../components/sections/trust.astro'
+import Pricing from '../components/sections/pricing.astro'
 import Experience from '../components/sections/experience.astro'
-import Skills from '../components/sections/skills.astro'
 import Personal from '../components/sections/personal.astro'
 import BlogsList from '../components/blogsList.astro'
 import ContactCta from '../components/sections/contactCta.astro'
 import profileImage from '../assets/images/profile.jpg'
-import { personSchema, websiteSchema, profilePageSchema } from '../lib/schema'
+import { personSchema, websiteSchema, profilePageSchema, serviceSchema } from '../lib/schema'
 
 const image = `https://olinelson.com${profileImage.src}`
-const schema = [personSchema(image), websiteSchema(), profilePageSchema()]
+const schema = [personSchema(image), websiteSchema(), profilePageSchema(), serviceSchema()]
 ---
 
 <DefaultLayout>
   <Seo
     slot="seo"
-    title="Oli Nelson — AI Product Engineer & Founder"
+    title="Oli Nelson — Custom AI software for small business"
+    description="I build practical, affordable AI software for small businesses and trades — from missed-call enquiry handling to instant quotes to knowing your numbers. Based in Coffs Harbour on the NSW Mid North Coast, working with clients anywhere. Builds from around $5,000 AUD."
     schema={schema}
   />
   <main>
     <Hero />
+    <Services />
     <SelectedWork />
+    <Trust />
+    <Pricing />
     <Experience />
-    <Skills />
     <Personal />
     <BlogsList />
     <ContactCta />

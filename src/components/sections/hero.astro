@@ -3,7 +3,7 @@ import { Image } from 'astro:assets'
 import profileImage from '../../assets/images/profile.jpg'
 import { profile } from '../../data/profile'
 import Mail from '../../icons/mail.astro'
-import BrandGithub from '../../icons/brandGithub.astro'
+import Phone from '../../icons/phone.astro'
 ---
 
 <section id="top" class="relative mx-auto max-w-5xl px-6 pt-20 pb-16 sm:pt-28 sm:pb-24">
@@ -36,9 +36,8 @@ import BrandGithub from '../../icons/brandGithub.astro'
         data-reveal
         style="--reveal-delay: 80ms"
       >
-        {profile.headline.split('—')[0]}<span class="text-primary"
-          >—{profile.headline.split('—')[1]}</span
-        >
+        {profile.headline}<br class="hidden sm:block" />
+        <span class="text-primary">{profile.headlineAccent}</span>
       </h1>
 
       <p
@@ -51,26 +50,33 @@ import BrandGithub from '../../icons/brandGithub.astro'
 
       <div class="mt-9 flex flex-wrap items-center gap-3" data-reveal style="--reveal-delay: 240ms">
         <a
-          href={`mailto:${profile.email}`}
+          href={`mailto:${profile.email}?subject=Quick%20chat%20about%20AI%20for%20my%20business`}
           data-lead-source="hero"
           class="btn btn-primary rounded-full px-6 shadow-none"
         >
           <Mail /> Email me
         </a>
         <a
-          href="https://github.com/olinelson"
-          target="_blank"
-          rel="noopener"
-          class="btn btn-ghost hidden rounded-full border border-base-300 px-6 sm:inline-flex"
+          href={`tel:${profile.phoneHref}`}
+          data-lead-source="hero-phone"
+          class="btn btn-ghost rounded-full border border-base-300 px-6"
         >
-          <BrandGithub /> GitHub
+          <Phone /> {profile.phone}
         </a>
       </div>
 
       <p
-        class="mt-7 flex items-center font-mono text-xs tracking-wide text-base-content/55"
+        class="mt-7 max-w-xl text-sm leading-relaxed text-base-content/60"
         data-reveal
-        style="--reveal-delay: 320ms"
+        style="--reveal-delay: 300ms"
+      >
+        {profile.priceLine}
+      </p>
+
+      <p
+        class="mt-5 flex items-center font-mono text-xs tracking-wide text-base-content/55"
+        data-reveal
+        style="--reveal-delay: 360ms"
       >
         <span class="mr-2 inline-block h-2 w-2 shrink-0 animate-pulse rounded-full bg-success"
         ></span>{profile.available}
