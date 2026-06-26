@@ -70,7 +70,7 @@ export const trust = {
     },
     {
       title: 'I don’t disappear',
-      body: 'For $500/month I keep it running, fix anything that breaks, and keep improving it — for as long as you want me around.',
+      body: 'Bug fixes are free, for as long as you want me around — no monthly fee. The only ongoing cost is the actual running cost (hosting, and any AI usage), passed straight on with no markup.',
     },
   ] satisfies Service[],
 }
@@ -86,10 +86,10 @@ export const pricing = {
       note: 'Designed, built, and live — a real piece of software solving a real problem in your business.',
     },
     {
-      label: 'Ongoing care',
-      amount: '$500',
-      unit: '/ month',
-      note: 'Unlimited fixes and small improvements, for as long as you want it. Most clients stay on it. Optional, never forced.',
+      label: 'Keeping it running',
+      amount: 'At cost',
+      unit: 'no markup',
+      note: 'Bug fixes are free — no monthly fee. You only ever pay the actual running cost (hosting, and any AI usage), passed straight through. New features or changes are quoted separately, so you decide what’s worth it.',
     },
   ],
   note: 'Got something smaller? A focused automation can cost less — just ask. The first call is free, and you’ll have a fixed price before anything starts.',

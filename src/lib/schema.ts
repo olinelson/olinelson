@@ -17,7 +17,7 @@ const description =
   'Australia, working with clients anywhere. Practical, affordable AI: missed-call and ' +
   'after-hours enquiry handling, instant quoting, automated follow-ups, paperwork and ' +
   'compliance from a voice note, and clear financial reporting. A typical build is around ' +
-  '$5,000 AUD plus optional ongoing support; smaller automations cost less.'
+  '$5,000 AUD as a one-off, with free bug fixes and no monthly fee after that; smaller automations cost less.'
 
 const knowsAbout = [
   'Artificial intelligence',
@@ -153,7 +153,7 @@ export function serviceSchema() {
       priceCurrency: 'AUD',
       price: '5000',
       description:
-        'A typical build is around $5,000 AUD, plus an optional $500/month for unlimited fixes and improvements. Smaller automations cost less.',
+        'A typical build is around $5,000 AUD as a one-off. After that there’s no monthly fee — bug fixes are free, and you only pay the actual running costs (hosting and any AI usage) at cost; new features are quoted separately. Smaller automations cost less.',
     },
     url: SITE,
   }
