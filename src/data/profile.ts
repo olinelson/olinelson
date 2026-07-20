@@ -12,6 +12,8 @@ export const profile = {
   subhead:
     'From missed calls to quoting, admin and reporting — I find what’s costing you time and build the simplest thing that fixes it.',
   location: 'Coffs Harbour, NSW · working anywhere',
+  // Lead-capture form — the primary CTA destination.
+  enquireUrl: 'https://bosun.olinelson.com/enquire/work-with-me',
   email: 'olivernelson@hey.com',
   phone: '0458 341 473',
   phoneHref: '+61458341473',
