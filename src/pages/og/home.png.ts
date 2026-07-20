@@ -6,15 +6,15 @@ import { generateOpenGraphImage } from 'astro-og-canvas'
 export const GET: APIRoute = async () =>
   new Response(
     await generateOpenGraphImage({
-      title: 'Oli Nelson',
+      title: 'Oli Nelson — AI consultant & builder',
       description:
-        'Custom AI software for small business & trades — built, supported, and improved by one real person. Builds from around $5,000 AUD.',
+        'I find what’s slowing your business down, recommend the simplest solution, build it, then keep it running. First consult free.',
       logo: { path: './src/assets/images/profile.jpg', size: [128] },
       bgGradient: [
         [30, 27, 24],
         [38, 34, 30],
       ],
-      border: { color: [216, 88, 58], width: 14, side: 'inline-start' },
+      border: { color: [116, 116, 210], width: 14, side: 'inline-start' },
       padding: 70,
       font: {
         title: { color: [247, 244, 240], weight: 'SemiBold', size: 68, lineHeight: 1.15 },

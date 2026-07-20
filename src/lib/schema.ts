@@ -14,10 +14,12 @@ const sameAs = links.map((l) => l.href).filter((href) => href.startsWith('http')
 
 const description =
   'Oli Nelson builds custom AI software for small businesses and trades — based in ' +
-  'Australia, working with clients anywhere. Practical, affordable AI: missed-call and ' +
-  'after-hours enquiry handling, instant quoting, automated follow-ups, paperwork and ' +
-  'compliance from a voice note, and clear financial reporting. A typical build is around ' +
-  '$5,000 AUD as a one-off, with free bug fixes and no monthly fee after that; smaller automations cost less.'
+  'Australia, working with clients anywhere. Advice first, software second: he recommends ' +
+  'the simplest fix, whether that is existing software, a custom build, or both, then builds ' +
+  'it and keeps it running. Practical, affordable AI for missed-call and after-hours enquiry ' +
+  'handling, instant quoting, automated follow-ups, paperwork and compliance from a voice ' +
+  'note, and clear financial reporting. The first consult is free, with a fixed quote before ' +
+  'any work starts and free bug fixes after.'
 
 const knowsAbout = [
   'Artificial intelligence',
@@ -45,7 +47,7 @@ export function personSchema(imageUrl: string) {
     alternateName: 'Oliver Nelson',
     url: SITE,
     image: imageUrl,
-    jobTitle: 'AI Software Developer for Small Business',
+    jobTitle: 'AI Consultant & Software Developer',
     description,
     email: `mailto:${profile.email}`,
     telephone: profile.phoneHref,
@@ -150,10 +152,8 @@ export function serviceSchema() {
     ],
     offers: {
       '@type': 'Offer',
-      priceCurrency: 'AUD',
-      price: '5000',
       description:
-        'A typical build is around $5,000 AUD as a one-off. After that there’s no monthly fee — bug fixes are free, and you only pay the actual running costs (hosting and any AI usage) at cost; new features are quoted separately. Smaller automations cost less.',
+        'The first consult is free. You get a fixed quote before any work starts, with no monthly fee after — bug fixes are free, and you only pay the actual running costs (hosting and any AI usage) at cost. Fixes range from setting up an existing tool to a full custom build.',
     },
     url: SITE,
   }

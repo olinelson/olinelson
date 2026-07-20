@@ -12,13 +12,14 @@
   --color-base-200: oklch(96.8% 0.012 83);
   --color-base-300: oklch(91% 0.014 80);
   --color-base-content: oklch(23% 0.02 55);
-  /* Vermilion accent */
-  --color-primary: oklch(60% 0.19 33);
-  --color-primary-content: oklch(98% 0.01 80);
-  --color-secondary: oklch(45% 0.06 55);
-  --color-secondary-content: oklch(98% 0.01 80);
-  --color-accent: oklch(60% 0.19 33);
-  --color-accent-content: oklch(98% 0.01 80);
+  /* Periwinkle primary — the factory pastel family (cf. bosun / ricordi / martha), tuned a
+     touch deeper than a pure pastel fill so it still reads as text, links and icons here. */
+  --color-primary: oklch(53% 0.148 274);
+  --color-primary-content: oklch(98% 0.012 275);
+  --color-secondary: oklch(62% 0.07 274);
+  --color-secondary-content: oklch(98% 0.012 275);
+  --color-accent: oklch(72% 0.11 232);
+  --color-accent-content: oklch(22% 0.04 260);
   --color-neutral: oklch(28% 0.02 55);
   --color-neutral-content: oklch(96% 0.01 80);
   --color-info: oklch(60% 0.1 230);
@@ -45,7 +46,7 @@
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   --color-ink: oklch(23% 0.02 55);
   --color-paper: oklch(96.8% 0.012 83);
-  --color-vermilion: oklch(60% 0.19 33);
+  --color-mark: oklch(53% 0.148 274);
 }
 
 @layer base {
@@ -91,7 +92,7 @@
     font-size: 0.72rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--color-vermilion);
+    color: var(--color-mark);
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
@@ -100,7 +101,7 @@
     content: "";
     width: 1.6rem;
     height: 1.5px;
-    background: var(--color-vermilion);
+    background: var(--color-mark);
   }
 
   /* Reveal-on-scroll: hidden until the reveal controller adds .is-in */

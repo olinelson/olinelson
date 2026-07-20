@@ -1,14 +1,27 @@
 ---
-import { personal } from '../../data/profile'
-import WaveSine from '../../icons/waveSine.astro'
+import { Image } from 'astro:assets'
+import profileImage from '../../assets/images/profile.jpg'
+import { personal, profile } from '../../data/profile'
 ---
 
-<section id="more" class="border-t border-base-300 bg-base-100">
+<section id="about" class="border-t border-base-300 bg-base-100">
   <div class="mx-auto max-w-5xl px-6 py-20 sm:py-28">
-    <div class="grid gap-10 md:grid-cols-[1fr_1.4fr] md:gap-16">
-      <div data-reveal>
-        <p class="eyebrow">{personal.heading}</p>
-        <div class="mt-6 text-primary/70"><WaveSine /></div>
+    <div class="grid gap-10 md:grid-cols-[auto_1fr] md:gap-16">
+      <div class="md:w-64" data-reveal>
+        <div class="relative">
+          <div class="absolute -inset-2 rotate-2 rounded-2xl border border-primary/30"></div>
+          <div class="relative aspect-[4/5] w-56 overflow-hidden rounded-2xl sm:w-64">
+            <!-- PLACEHOLDER: a second, more casual photo would suit the About section. -->
+            <Image
+              alt={profile.name}
+              src={profileImage}
+              width={560}
+              height={700}
+              class="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+        <p class="mt-6 eyebrow">{personal.heading}</p>
       </div>
 
       <div data-reveal style="--reveal-delay: 100ms">
@@ -29,15 +42,16 @@ import WaveSine from '../../icons/waveSine.astro'
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           ></iframe>
         </div>
-      </div>
 
-    <div class="mt-12 flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs text-base-content/55" data-reveal>
-      <a class="hover:text-primary" href="https://pianobeachstorybook.com" target="_blank" rel="noopener"
-        >↳ Piano Beach — piano + story for kids</a
-      >
-      <a class="hover:text-primary" href="https://allhandspianoacademy.com" target="_blank" rel="noopener"
-        >↳ All Hands Piano Academy</a
-      >
+        <div class="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs text-base-content/55">
+          <a class="hover:text-primary" href="https://pianobeachstorybook.com" target="_blank" rel="noopener"
+            >↳ Piano Beach — piano + story for kids</a
+          >
+          <a class="hover:text-primary" href="https://allhandspianoacademy.com" target="_blank" rel="noopener"
+            >↳ All Hands Piano Academy</a
+          >
+        </div>
+      </div>
     </div>
   </div>
 </section>

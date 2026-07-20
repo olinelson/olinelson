@@ -15,7 +15,7 @@ export const { getStaticPaths, GET } = await OGImageRoute({
       [30, 27, 24],
       [38, 34, 30],
     ],
-    border: { color: [216, 88, 58], width: 14, side: 'inline-start' },
+    border: { color: [116, 116, 210], width: 14, side: 'inline-start' },
     padding: 70,
     font: {
       title: { color: [247, 244, 240], weight: 'SemiBold', size: 62, lineHeight: 1.15 },

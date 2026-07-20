@@ -1,24 +1,24 @@
 // Single source of truth for the site's content.
 // olinelson.com is a solo AI studio: I build practical AI software for small
-// businesses — trades, owner-operators, and the kind of company custom software
+// businesses and trades — owner-operators and the kind of company custom software
 // was never worth it for, until AI changed the economics.
 
 export const profile = {
   name: 'Oli Nelson',
-  role: 'Custom AI software for small business',
-  // The hero thesis. headline reads plain; headlineAccent carries the turn.
-  headline: 'Custom software used to be only for the big players.',
-  headlineAccent: 'AI changed that — now I build it for businesses like yours.',
+  role: 'AI consultant & builder',
+  // Hero one-liner: the outcome, in plain language.
+  headline: 'I build practical AI that saves small businesses time and makes them more money.',
+  // What that looks like, in plain terms.
   subhead:
-    'I find where AI can save you hours or win you more work — then I build it, and keep it running.',
+    'From missed calls to quoting, admin and reporting — I find what’s costing you time and build the simplest thing that fixes it.',
   location: 'Coffs Harbour, NSW · working anywhere',
   email: 'olivernelson@hey.com',
   phone: '0458 341 473',
   phoneHref: '+61458341473',
-  available: 'Taking on new builds now — first call is free.',
-  // The price line that disarms the rip-off fear. Anchors $5k, keeps small jobs welcome.
+  available: 'The first consult is free — no pitch, just a straight answer.',
+  // Risk-reversal reassurance, shown low in the hero.
   priceLine:
-    'Builds from around $5,000 AUD. Got something smaller? Just ask.',
+    'Fixed quote before work starts. No ongoing development fees. You only pay the actual hosting and AI costs.',
 }
 
 export type Service = { title: string; body: string }
@@ -27,7 +27,7 @@ export type Service = { title: string; body: string }
 export const services = {
   heading: 'What I can do for you',
   intro:
-    'Most small businesses are losing time and money to jobs that a bit of well-aimed AI could just… handle. Here’s where it usually pays off.',
+    'Most businesses are losing time and money to jobs that a bit of well-aimed AI could just… handle. Here’s where it usually pays off.',
   items: [
     {
       title: 'Never miss another job',
@@ -81,9 +81,9 @@ export const pricing = {
   tiers: [
     {
       label: 'A typical build',
-      amount: '~$5,000',
-      unit: 'AUD · one-off',
-      note: 'Designed, built, and live — a real piece of software solving a real problem in your business.',
+      amount: 'Fixed price',
+      unit: 'agreed up front',
+      note: 'Designed, built, and live — a real piece of software solving a real problem in your business. You get a fixed quote before any work starts.',
     },
     {
       label: 'Keeping it running',
@@ -95,6 +95,39 @@ export const pricing = {
   note: 'Got something smaller? A focused automation can cost less — just ask. The first call is free, and you’ll have a fixed price before anything starts.',
 }
 
+// ── Homepage: how I work — the Consult → Diagnose → Fix flow ───────────────────
+// The step-by-step visual. The closer carries the "I build & run it, not just
+// advise" differentiator that the old two-column split used to hold.
+export type Step = { n: string; title: string; body: string; free?: boolean }
+export const flow = {
+  eyebrow: 'How I work',
+  heading: 'Advice first. Software second.',
+  intro:
+    'The goal isn’t to add AI to your business — it’s to remove work from your day. One person the whole way through: no hand-offs, no team of strangers, no PDF that leaves you to do the hard part alone.',
+  steps: [
+    {
+      n: '01',
+      title: 'Consult',
+      free: true,
+      body: 'A free first call. I learn how your business actually runs — the calls, the quotes, the admin that quietly eats your week.',
+    },
+    {
+      n: '02',
+      title: 'Diagnose',
+      body: 'I find and price what’s slowing you down, and hand you a plain-English plan — biggest wins first. Yours to keep, whether or not I build it.',
+    },
+    {
+      n: '03',
+      title: 'Fix',
+      body: 'I put it in place — an off-the-shelf tool, a custom build, or the right mix. Whatever solves it for the least to run.',
+    },
+  ] satisfies Step[],
+  closer: {
+    lead: 'And here’s the part most won’t do —',
+    body: 'I build the fix myself, move you onto it, train your team, and stay while it beds in. I run two of my own products for paying customers, so I don’t just ship and vanish.',
+  },
+}
+
 export type Project = {
   title: string
   tag: string
@@ -103,6 +136,9 @@ export type Project = {
   stack: string[]
   href?: string
   hrefLabel?: string
+  // Keys a real product screenshot in selectedWork.astro's `shots` map.
+  shot?: 'ricordi' | 'maestrocast'
+  shotAlt?: string
 }
 
 // Proof, reframed in outcomes. Lead with the trades-adjacent safety agent and the
@@ -131,6 +167,8 @@ export const work: Project[] = [
     stack: ['AI lesson analysis', 'Web + iPhone app'],
     href: 'https://ricordi.ai',
     hrefLabel: 'ricordi.ai',
+    shot: 'ricordi',
+    shotAlt: 'The Ricordi app: a lesson recording turned into a timestamped, chat-style practice plan.',
   },
   {
     title: 'Automatic thumbnail generator',
@@ -155,6 +193,8 @@ export const work: Project[] = [
     stack: ['Live video', 'Full product'],
     href: 'https://maestrocast.com',
     hrefLabel: 'maestrocast.com',
+    shot: 'maestrocast',
+    shotAlt: 'The Maestrocast lesson room: sheet music annotated live during an online music lesson.',
   },
 ]
 

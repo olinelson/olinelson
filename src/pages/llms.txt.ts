@@ -92,8 +92,8 @@ ${linkLines}
 
 ## Work with Oli
 
-To work with Oli, email ${profile.email}, call ${profile.phone}, or see ${SITE}/hire.html.
-The first call is free, and you get a fixed price before any work starts.
+To work with Oli, email ${profile.email} or call ${profile.phone}.
+The first consult is free, and you get a fixed price before any work starts.
 Full text of every article is available at ${SITE}/llms-full.txt and ${SITE}/feed.xml.
 `
 
