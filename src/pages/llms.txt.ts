@@ -1,6 +1,17 @@
 import type { APIRoute } from 'astro'
 import { getCollection } from 'astro:content'
-import { profile, services, pricing, work, experience, skills, links } from '../data/profile'
+import {
+  profile,
+  services,
+  trust,
+  flow,
+  pricing,
+  work,
+  experience,
+  skills,
+  personal,
+  links,
+} from '../data/profile'
 
 // /llms.txt — the llmstxt.org convention: a clean, structured Markdown brief that
 // lets AI agents understand who Oli is, what he offers, and where to read more,
@@ -27,6 +38,12 @@ export const GET: APIRoute = async () => {
 
   const servicesLines = services.items.map((s) => `- **${s.title}:** ${s.body}`).join('\n')
 
+  const trustLines = trust.items.map((t) => `- **${t.title}:** ${t.body}`).join('\n')
+
+  const flowLines = flow.steps
+    .map((s) => `${s.n}. **${s.title}${s.free ? ' (free)' : ''}** — ${s.body}`)
+    .join('\n')
+
   const pricingLines = pricing.tiers
     .map((t) => `- **${t.label}:** ${t.amount} ${t.unit} — ${t.note}`)
     .join('\n')
@@ -41,21 +58,25 @@ export const GET: APIRoute = async () => {
 
   const body = `# Oli Nelson
 
-> ${profile.role}, based in ${profile.location}. ${profile.subhead}
+> ${profile.role}, based in ${profile.location}. ${profile.headline}
+
+${profile.subhead}
 
 Contact: ${profile.email} · ${profile.phone}
+Enquire: ${profile.enquireUrl}
 Website: ${SITE}
 
 ## About
 
-Oli Nelson builds custom AI software for small businesses and trades — the kind of
-businesses custom software was never worth it for, until AI changed the economics. He
-finds where AI can save an owner hours or win them more work, then builds it, supports it,
-and keeps improving it. He works as one real person (not an agency or offshore team) and
-has shipped AI to production for his own products and for other companies. Before software
-he was a professional jazz drummer (Bachelor of Jazz Performance, Sydney Conservatorium of
-Music; James Morrison Jazz Scholarship). He is also a Product Engineer at Uscreen and the
-founder of Ricordi and Maestrocast.
+Oli Nelson runs a solo AI studio, building practical AI software for small businesses and
+trades — owner-operators and the kind of company custom software was never worth it for,
+until AI changed the economics. He finds what's costing an owner time or money, then builds
+the simplest thing that fixes it, supports it, and keeps it running. One real person the
+whole way through: no agency, no offshore team, no hand-offs. He has shipped AI to
+production for his own products and for other companies, and runs two of his own products
+for paying customers.
+
+${personal.body}
 
 **Based in** Coffs Harbour on the NSW Mid North Coast, Australia — working with local
 businesses and clients anywhere. ${profile.available}
@@ -63,6 +84,18 @@ businesses and clients anywhere. ${profile.available}
 ## What Oli builds for businesses
 
 ${servicesLines}
+
+## How Oli works
+
+${flow.heading} — ${flow.intro}
+
+${flowLines}
+
+${flow.closer.lead} ${flow.closer.body}
+
+## How Oli takes the risk out of it
+
+${trustLines}
 
 ## Pricing
 
@@ -92,8 +125,8 @@ ${linkLines}
 
 ## Work with Oli
 
-To work with Oli, email ${profile.email} or call ${profile.phone}.
-The first consult is free, and you get a fixed price before any work starts.
+To work with Oli, send an enquiry at ${profile.enquireUrl}, email ${profile.email}, or call
+${profile.phone}. The first consult is free, and you get a fixed price before any work starts.
 Full text of every article is available at ${SITE}/llms-full.txt and ${SITE}/feed.xml.
 `
 
