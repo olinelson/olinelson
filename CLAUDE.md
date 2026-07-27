@@ -37,7 +37,7 @@ holds the custom domain. There is no separate staging environment — `master` i
   no manual registration needed.
 - **Layouts/pages**: `src/pages/index.astro` is the homepage (the bulk of the site);
   blog pages live under `src/pages/words/`. All compose `layouts/default.astro` (html
-  shell + nav + Stimulus bootstrap) which pulls in `layouts/head.astro` (meta, Plausible
+  shell + nav + Stimulus bootstrap) which pulls in `layouts/head.astro` (meta, DataFast
   analytics, RSS autodiscovery, app.css) and a `seo` slot fed by
   `components/seo/index.astro` (uses `astro-seo`; accepts optional `title`/`description`/
   `canonical`/`type` props, defaulting to the homepage values).
