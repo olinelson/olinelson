@@ -6,11 +6,11 @@
 export const profile = {
   name: 'Oli Nelson',
   role: 'AI consultant & builder',
-  // Hero one-liner: the outcome, in plain language.
-  headline: 'I build practical AI that saves small businesses time and makes them more money.',
+  // Hero one-liner: the offer, in plain language — money + time first.
+  headline: 'I use AI to help businesses make more money and save time.',
   // What that looks like, in plain terms.
   subhead:
-    'From missed calls to quoting, admin and reporting — I find what’s costing you time and build the simplest thing that fixes it.',
+    'Missed calls, slow quotes, admin that eats your week — I find what’s costing you, then build the simplest AI that fixes it. Fixed price. You own it.',
   location: 'Coffs Harbour, NSW · working anywhere',
   // Lead-capture form — the primary CTA destination.
   enquireUrl: 'https://bosun.olinelson.com/enquire/work-with-me',
@@ -24,34 +24,50 @@ export const profile = {
 }
 
 export type Service = { title: string; body: string }
+export type ServiceGroup = { label: string; items: Service[] }
 
-// What I do, in the buyer's language — outcomes, not features.
+// What I offer, in the buyer's language — outcomes, not features.
+// Grouped under the two promises in the hero (more money / save time).
 export const services = {
-  heading: 'What I can do for you',
-  intro:
-    'Most businesses are losing time and money to jobs that a bit of well-aimed AI could just… handle. Here’s where it usually pays off.',
-  items: [
+  heading: 'What I offer',
+  title: 'More money in. Less time burned.',
+  intro: 'Where AI usually pays for itself.',
+  groups: [
     {
-      title: 'Never miss another job',
-      body: 'An assistant that answers calls, texts, and website enquiries the moment they land — day or night — and books the job or takes down the lead. Work stops slipping away while you’re up a ladder or asleep.',
+      label: 'More money',
+      items: [
+        {
+          title: 'Catch every enquiry',
+          body: 'Calls, texts, and website enquiries answered the moment they land — day or night — so work stops walking away while you’re on a job or asleep.',
+        },
+        {
+          title: 'Quotes in minutes',
+          body: 'Photos, a voice note, or a short description become a draft quote on the spot. Stop losing evenings to admin — and jobs to whoever replied first.',
+        },
+        {
+          title: 'Follow-ups that close',
+          body: 'Automatic chases on quotes, reminders before jobs, and review requests after — the revenue that usually falls through the gaps.',
+        },
+      ],
     },
     {
-      title: 'Quotes out in minutes, not evenings',
-      body: 'Turn a few photos, a voice note, or a quick description into a draft quote on the spot — instead of losing your nights to admin and losing jobs to whoever replied first.',
+      label: 'Save time',
+      items: [
+        {
+          title: 'Paperwork that writes itself',
+          body: 'Invoices, job reports, and compliance docs from a quick voice note. You speak; it writes.',
+        },
+        {
+          title: 'Numbers you can trust',
+          body: 'Bank, accounting, and job records pulled into one clear picture of how the business is tracking — no spreadsheet wrestling.',
+        },
+      ],
     },
-    {
-      title: 'Nothing slips through the cracks',
-      body: 'Automatic follow-ups on quotes, reminders before jobs, and review requests after — quietly chasing the revenue that normally falls through the gaps.',
-    },
-    {
-      title: 'Paperwork that does itself',
-      body: 'Invoices, job reports, and safety or compliance docs written up from a quick voice note. I built a live safety-monitoring AI for an industrial-compliance company — this is home turf.',
-    },
-    {
-      title: 'Actually know your numbers',
-      body: 'Pull the figures scattered across your bank, your accounting software, and your job records into one clear picture of how the business is really tracking — without you touching a spreadsheet.',
-    },
-  ] satisfies Service[],
+  ] satisfies ServiceGroup[],
+  proof:
+    'Built the same class of tools for an industrial safety company, a video platform, and my own products.',
+  closer: 'Not sure which is yours? Free call — I’ll say if AI is worth it.',
+  closerCta: 'Book a free consult',
 }
 
 // Risk reversal — the exact fears a first-time software buyer has, answered head-on.
@@ -105,7 +121,7 @@ export const flow = {
   eyebrow: 'How I work',
   heading: 'Advice first. Software second.',
   intro:
-    'The goal isn’t to add AI to your business — it’s to remove work from your day. One person the whole way through: no hand-offs, no team of strangers, no PDF that leaves you to do the hard part alone.',
+    'The goal isn’t “add AI.” It’s more money in, less time burned. One person the whole way through: no hand-offs, no team of strangers, no PDF that leaves you to do the hard part alone.',
   steps: [
     {
       n: '01',

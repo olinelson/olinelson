@@ -36,7 +36,12 @@ export const GET: APIRoute = async () => {
 
   const skillsLines = skills.map((s) => `- **${s.label}:** ${s.items}`).join('\n')
 
-  const servicesLines = services.items.map((s) => `- **${s.title}:** ${s.body}`).join('\n')
+  const servicesLines = services.groups
+    .map((g) => {
+      const items = g.items.map((s) => `  - **${s.title}:** ${s.body}`).join('\n')
+      return `### ${g.label}\n${items}`
+    })
+    .join('\n\n')
 
   const trustLines = trust.items.map((t) => `- **${t.title}:** ${t.body}`).join('\n')
 
@@ -68,22 +73,28 @@ Website: ${SITE}
 
 ## About
 
-Oli Nelson runs a solo AI studio, building practical AI software for small businesses and
-trades — owner-operators and the kind of company custom software was never worth it for,
-until AI changed the economics. He finds what's costing an owner time or money, then builds
-the simplest thing that fixes it, supports it, and keeps it running. One real person the
-whole way through: no agency, no offshore team, no hand-offs. He has shipped AI to
-production for his own products and for other companies, and runs two of his own products
-for paying customers.
+Oli Nelson uses AI to help businesses make more money and save time. He runs a solo AI
+studio for small businesses and trades — owner-operators and the kind of company custom
+software was never worth it for, until AI changed the economics. He finds what's costing
+an owner revenue or hours, then builds the simplest thing that fixes it, supports it, and
+keeps it running. One real person the whole way through: no agency, no offshore team, no
+hand-offs. He has shipped AI to production for his own products and for other companies,
+and runs two of his own products for paying customers.
 
 ${personal.body}
 
 **Based in** Coffs Harbour on the NSW Mid North Coast, Australia — working with local
 businesses and clients anywhere. ${profile.available}
 
-## What Oli builds for businesses
+## What Oli offers
+
+${services.title} — ${services.intro}
 
 ${servicesLines}
+
+${services.proof}
+
+${services.closer} ${services.closerCta}: ${profile.enquireUrl}
 
 ## How Oli works
 

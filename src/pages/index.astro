@@ -2,6 +2,7 @@
 import DefaultLayout from '../layouts/default.astro'
 import Seo from '../components/seo/index.astro'
 import Hero from '../components/sections/hero.astro'
+import Services from '../components/sections/services.astro'
 import Flow from '../components/sections/flow.astro'
 import Experience from '../components/sections/experience.astro'
 import Personal from '../components/sections/personal.astro'
@@ -17,12 +18,13 @@ const schema = [personSchema(image), websiteSchema(), profilePageSchema(), servi
 <DefaultLayout>
   <Seo
     slot="seo"
-    title="Oli Nelson — AI consultant & builder"
-    description="I'm an AI consultant and builder for small businesses and trades. I find what's slowing your business down, recommend the simplest solution, build it, and keep it running. I've built AI products used by real businesses — not demos. Based in Coffs Harbour on the NSW Mid North Coast, working anywhere. The first consult is free."
+    title="Oli Nelson — AI that makes businesses more money"
+    description="I use AI to help businesses make more money and save time. Missed calls, slow quotes, admin, follow-ups — I find what's costing you, build the simplest fix, and keep it running. Real products for real businesses, not demos. First consult free."
     schema={schema}
   />
   <main>
     <Hero />
+    <Services />
     <Flow />
     <Experience />
     <Personal />

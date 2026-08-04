@@ -13,13 +13,12 @@ const WEBSITE_ID = `${SITE}/#website`
 const sameAs = links.map((l) => l.href).filter((href) => href.startsWith('http'))
 
 const description =
-  'Oli Nelson builds custom AI software for small businesses and trades — based in ' +
-  'Australia, working with clients anywhere. Advice first, software second: he recommends ' +
-  'the simplest fix, whether that is existing software, a custom build, or both, then builds ' +
-  'it and keeps it running. Practical, affordable AI for missed-call and after-hours enquiry ' +
-  'handling, instant quoting, automated follow-ups, paperwork and compliance from a voice ' +
-  'note, and clear financial reporting. The first consult is free, with a fixed quote before ' +
-  'any work starts and free bug fixes after.'
+  'Oli Nelson uses AI to help businesses make more money and save time. Based in Australia, ' +
+  'working with clients anywhere. Advice first, software second: he finds what is costing an ' +
+  'owner revenue or hours, recommends the simplest fix, builds it, and keeps it running. ' +
+  'Practical AI for missed-call and after-hours enquiry handling, instant quoting, automated ' +
+  'follow-ups, paperwork and compliance from a voice note, and clear financial reporting. ' +
+  'The first consult is free, with a fixed quote before any work starts and free bug fixes after.'
 
 const knowsAbout = [
   'Artificial intelligence',
@@ -89,7 +88,7 @@ export function profilePageSchema() {
     '@type': 'ProfilePage',
     '@id': `${SITE}/#profilepage`,
     url: SITE,
-    name: 'Oli Nelson — Custom AI software for small business',
+    name: 'Oli Nelson — AI that makes businesses more money',
     isPartOf: { '@id': WEBSITE_ID },
     mainEntity: { '@id': PERSON_ID },
     inLanguage: 'en',
