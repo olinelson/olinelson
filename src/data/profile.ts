@@ -7,7 +7,7 @@ export const profile = {
   name: 'Oli Nelson',
   role: 'AI consultant & builder',
   // Hero one-liner: the offer, in plain language — money + time first.
-  headline: 'I use AI to help businesses make more money and save time.',
+  headline: 'I build AI that makes businesses more money.',
   // What that looks like, in plain terms.
   subhead:
     'Missed calls, slow quotes, admin that eats your week — I find what’s costing you, then build the simplest AI that fixes it. Fixed price. You own it.',
@@ -297,3 +297,26 @@ export const links: Link[] = [
   },
   { label: 'Instagram', href: 'https://www.instagram.com/olinelson__', icon: 'instagram' },
 ]
+
+// Featured case study — the emotional centerpiece of the homepage.
+export type FeaturedCase = {
+  business: string
+  person: string
+  role: string
+  website: string
+  narrative: string
+  quote: string
+  quotePending?: boolean
+}
+
+export const featuredCase: FeaturedCase = {
+  business: 'Coffs Coast Building & Pest Inspections',
+  person: 'Ben Nyhuis',
+  role: 'Owner & Building Inspector',
+  website: 'ccbpi.com.au',
+  narrative:
+    'Ben spends his days under houses and in roof voids — the kind of work that leaves you spent by evening. Then came the real job: turning a hundred and fifty photos and notes into compliant, client-ready reports. Two hours a report, often two jobs a day, with the paperwork bleeding into the night after twelve-hour days on site. We built him a system that keeps his standards — his format, his voice, Australian Standard–compliant — and gives him the nights back.',
+  quote:
+    'Quote pending approval — a system that keeps the standard I have built, delivers reports clients call professional, and gives me back time I did not think I would get.',
+  quotePending: true,
+}
