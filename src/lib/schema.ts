@@ -46,7 +46,7 @@ export function personSchema(imageUrl: string) {
     alternateName: 'Oliver Nelson',
     url: SITE,
     image: imageUrl,
-    jobTitle: 'AI Consultant & Software Developer',
+    jobTitle: 'AI Consultant & Software Engineer',
     description,
     email: `mailto:${profile.email}`,
     telephone: profile.phoneHref,

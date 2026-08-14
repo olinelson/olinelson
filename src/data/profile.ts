@@ -5,7 +5,7 @@
 
 export const profile = {
   name: 'Oli Nelson',
-  role: 'AI consultant & builder',
+  role: 'AI consultant & software engineer',
   // Hero one-liner: the offer, in plain language — money + time first.
   headline: 'I use AI to help businesses make more money and save time.',
   // What that looks like, in plain terms.
