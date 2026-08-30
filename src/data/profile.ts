@@ -297,3 +297,118 @@ export const links: Link[] = [
   },
   { label: 'Instagram', href: 'https://www.instagram.com/olinelson__', icon: 'instagram' },
 ]
+
+// ── Homepage: the tier sheet ──────────────────────────────────────────────────
+// Every string the homepage renders. An essay paragraph is a `lead` sentence set
+// in ink, followed by `rest` set in #c7c7c7.
+export type Essay = { lead: string; rest?: string }
+export type Size = {
+  label: string
+  note: string
+  price: string
+  from?: boolean
+  // Three month pips: how much of a quarter the build takes.
+  pips: ('on' | 'off' | 'onward')[]
+}
+export type Speed = {
+  label: string
+  badge?: string
+  note: string
+  price: string
+  // Which of the month's 20 business days ship finished work.
+  ships: number[]
+  invert?: boolean
+}
+
+const everyDay = Array.from({ length: 20 }, (_, i) => i)
+
+export const home = {
+  greeting: 'Hi. I’m Oli',
+  intro: {
+    lead: 'I build custom software for small businesses, one at a time.',
+    rest: 'Design, code, AI, hosting, the lot. From what your business actually does, to a working app on your own domain, in about a month.',
+  } satisfies Essay,
+  noQuote: {
+    lead: 'You never get a quote. The only thing you choose is speed.',
+  } satisfies Essay,
+  sizes: [
+    {
+      label: 'Small',
+      note: 'About a month, and you’re live.',
+      price: '$5,000',
+      pips: ['on', 'off', 'off'],
+    },
+    {
+      label: 'Medium',
+      note: 'About two months.',
+      price: '$10,000',
+      pips: ['on', 'on', 'off'],
+    },
+    {
+      label: 'Large',
+      note: 'Three months or more.',
+      price: '$15,000',
+      from: true,
+      pips: ['on', 'on', 'onward'],
+    },
+  ] satisfies Size[],
+  estimate: {
+    lead: 'Every app I’ve built so far has been a Small.',
+    rest: 'The size is my honest estimate and your minimum, never a meter. You watch work ship every week, so you always know where it stands.',
+  } satisfies Essay,
+  pickSpeed: {
+    lead: 'Then you pick a speed.',
+    rest: 'Unlimited requests on every one. All that changes is how often finished work lands.',
+  } satisfies Essay,
+  speedHeader: { left: 'ONE MONTH OF SHIPS', right: 'PER MONTH' },
+  speeds: [
+    {
+      label: 'Lights-on',
+      note: 'It keeps working. Nothing new gets built.',
+      price: '~$60',
+      ships: [],
+    },
+    {
+      label: 'Weekly',
+      badge: 'MOST CLIENTS',
+      note: 'Something finished, every week.',
+      price: '$1,000',
+      ships: [4, 9, 14, 19],
+      invert: true,
+    },
+    {
+      label: 'Twice-weekly',
+      note: 'Also the speed I build at.',
+      price: '$5,000',
+      ships: [1, 4, 6, 9, 11, 14, 16, 19],
+    },
+    {
+      label: 'Daily',
+      note: 'Most business days, something new.',
+      price: '$10,000',
+      ships: everyDay,
+    },
+  ] satisfies Speed[],
+  log: {
+    lead: 'Every one of those squares is a deploy you can read in the log.',
+    rest: 'That log is the receipt for the month. Move up or down whenever you like; a big job on a slow speed is never refused, only slower.',
+  } satisfies Essay,
+  billing: {
+    lead: 'Billing is monthly, in advance.',
+    rest: 'Every month is paid before it’s worked, so leaving costs you nothing.',
+  } satisfies Essay,
+  ownership: {
+    lead: 'The code, the repo and your data are yours from day one.',
+    rest: 'I keep the factory. You keep the app.',
+  } satisfies Essay,
+  close: {
+    title: 'Tell me what your business does all day.',
+    body: 'First conversation is free. I’ll tell you which size you are, or that you don’t need me.',
+    start: 'Start',
+  },
+  footer: {
+    name: 'Oli Nelson',
+    place: 'Coffs Harbour, NSW — working anywhere',
+    placeShort: 'Coffs Harbour, NSW',
+  },
+}

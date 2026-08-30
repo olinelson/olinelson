@@ -19,32 +19,21 @@ const fmt = (d) =>
     canonical="https://olinelson.com/words.html"
   />
 
-  <main class="mx-auto max-w-3xl px-6 pt-28 pb-24 sm:pt-32">
-    <a
-      href="/#words"
-      class="font-mono text-xs tracking-wide text-base-content/55 transition-colors hover:text-primary"
-      >← Home</a
-    >
+  <main class="pt-[116px] md:pt-[168px]">
+    <h1 class="essay">Occasional writing.</h1>
 
-    <header class="mt-8">
-      <p class="eyebrow">Words</p>
-      <h1 class="mt-5 text-4xl leading-tight sm:text-5xl">Occasional writing.</h1>
-    </header>
-
-    <ul class="mt-12 border-t border-base-300">
+    <ul class="mt-11 flex flex-col gap-[10px] md:mt-[66px] md:gap-3">
       {
         posts.map((p) => (
-          <li class="group relative border-b border-base-300">
-            <div class="grid gap-1 py-6 sm:grid-cols-[9rem_1fr] sm:gap-8">
-              <p class="font-mono text-xs tracking-wide text-base-content/55 sm:pt-1">
-                {fmt(p.data.published)}
-              </p>
-              <div>
-                <h2 class="text-xl transition-colors group-hover:text-primary">{p.data.title}</h2>
-                <p class="mt-1.5 text-sm leading-relaxed text-base-content/65">{p.data.preview}</p>
-              </div>
-            </div>
-            <a class="absolute inset-0" href={`/words/${p.id}.html`} aria-label={p.data.title} />
+          <li>
+            <a
+              href={`/words/${p.id}.html`}
+              class="tile flex flex-col gap-[6px] rounded-2xl bg-card px-5 py-[18px] md:px-[22px] md:py-5"
+            >
+              <span class="mono text-faint">{fmt(p.data.published)}</span>
+              <span class="text-[17px]/[25.5px] font-semibold">{p.data.title}</span>
+              <span class="text-[15px]/[22px] text-muted md:text-base/6">{p.data.preview}</span>
+            </a>
           </li>
         ))
       }

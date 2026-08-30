@@ -1,24 +1,25 @@
 ---
+import { Image } from 'astro:assets'
 import { profile } from '../data/profile'
+import profileImage from '../assets/images/profile.jpg'
 ---
 
-<header class="sticky top-0 z-50 border-b border-base-300 bg-base-200/80 backdrop-blur-md">
-  <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-3.5">
-    <a href="/#top" class="font-display text-lg font-medium tracking-tight">Oli Nelson</a>
+<header class="flex items-center justify-between pt-5 md:pt-8">
+  <a href="/" class="flex items-center gap-[9px] md:gap-[10px]">
+    <Image
+      src={profileImage}
+      alt={profile.name}
+      width={64}
+      height={64}
+      class="size-6 rounded-full object-cover md:size-[26px]"
+    />
+    <span class="text-[15px] font-semibold md:text-base">olinelson.com</span>
+  </a>
 
-    <div class="hidden items-center gap-7 font-mono text-xs tracking-wide text-base-content/60 sm:flex">
-      <a class="transition-colors hover:text-primary" href="/#what-i-do">What I offer</a>
-      <a class="transition-colors hover:text-primary" href="/#experience">Track record</a>
-      <a class="transition-colors hover:text-primary" href="/#about">About</a>
-      <a class="transition-colors hover:text-primary" href="/#words">Words</a>
-    </div>
-
-    <a
-      href={`mailto:${profile.email}`}
-      data-lead-source="nav"
-      class="btn btn-primary btn-sm rounded-full px-4 shadow-none"
-    >
-      Free consult
+  <nav class="flex items-center gap-5 md:gap-7">
+    <a href="/words.html" class="text-sm transition-colors hover:text-muted">Words</a>
+    <a href={profile.enquireUrl} data-lead-source="nav" class="pill px-[18px] py-[10px]">
+      Contact
     </a>
   </nav>
 </header>

@@ -1,20 +1,22 @@
 ---
 import Nav from '../components/nav.astro'
 import Head from './head.astro'
-
 ---
+
 <!doctype html>
-<html class="bg-base-200" lang="en" data-theme="olinelson">
-    <slot name="seo" slot="seo" />
+<html lang="en">
+  <slot name="seo" slot="seo" />
   <head>
-      <Head/>
+    <Head />
   </head>
-  <body data-controller="reveal leads" data-action="click->leads#track">
-      <Nav/>
-      <slot/>
+  <body data-controller="leads" data-action="click->leads#track">
+    <div class="mx-auto flex w-full max-w-[896px] flex-col px-5 pb-[72px] md:pb-[140px]">
+      <Nav />
+      <slot />
+    </div>
   </body>
 </html>
 
 <script>
-    import "../scripts/application.js";
+  import '../scripts/application.js'
 </script>

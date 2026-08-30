@@ -1,0 +1,14 @@
+---
+import type { Essay } from '../data/profile'
+
+interface Props {
+  essay: Essay
+  class?: string
+}
+
+const { essay, class: className } = Astro.props
+---
+
+<p class:list={['essay', className]}>
+  {essay.lead}{essay.rest && <span class="text-dim">{` ${essay.rest}`}</span>}
+</p>

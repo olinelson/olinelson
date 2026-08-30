@@ -12,14 +12,14 @@ export const { getStaticPaths, GET } = await OGImageRoute({
     description: page.preview,
     logo: { path: './src/assets/images/profile.jpg', size: [72] },
     bgGradient: [
-      [30, 27, 24],
-      [38, 34, 30],
+      [35, 35, 35],
+      [35, 35, 35],
     ],
-    border: { color: [116, 116, 210], width: 14, side: 'inline-start' },
+    border: { color: [242, 242, 242], width: 14, side: 'inline-start' },
     padding: 70,
     font: {
-      title: { color: [247, 244, 240], weight: 'SemiBold', size: 62, lineHeight: 1.15 },
-      description: { color: [168, 158, 150], size: 28, lineHeight: 1.4 },
+      title: { color: [255, 255, 255], weight: 'SemiBold', size: 62, lineHeight: 1.15 },
+      description: { color: [166, 166, 166], size: 28, lineHeight: 1.4 },
     },
   }),
 })
