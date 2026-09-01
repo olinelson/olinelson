@@ -1,0 +1,44 @@
+---
+interface Props {
+  ships: number[]
+  lead?: boolean
+  class?: string
+}
+
+const { ships, lead, class: className } = Astro.props
+
+const W = 480
+const H = 96
+const DAYS = 20
+const TRACK = 52
+const x = (i: number) => 16 + (i * (W - 36)) / (DAYS - 1)
+
+const ticks = Array.from(
+  { length: DAYS },
+  (_, i) => `<path d="M ${x(i).toFixed(1)},${TRACK + 13} L ${x(i).toFixed(1)},${TRACK + 23}" />`,
+).join('')
+
+// Chart convention: a fix is a dot inside a ring. One per day a major feature
+// goes live, so the density of the marks is the whole reading.
+const fixes = ships
+  .map(
+    (d) =>
+      `<circle cx="${x(d).toFixed(1)}" cy="${TRACK}" r="8.2" fill="none" stroke-width="1.9" />` +
+      `<circle cx="${x(d).toFixed(1)}" cy="${TRACK}" r="3.5" fill="currentColor" stroke="none" />`,
+  )
+  .join('')
+
+const plate = `<g filter="url(#trkPen)" fill="none" stroke="currentColor" stroke-linecap="round">
+    <path d="M 10,${TRACK} L ${W - 14},${TRACK}" stroke-width="2" opacity="0.5"${ships.length ? '' : ' stroke-dasharray="1 6"'} />
+    <path d="M ${W - 28},${TRACK - 7} L ${W - 10},${TRACK} L ${W - 28},${TRACK + 7}" stroke-width="2" opacity="0.55" />
+    <g stroke-width="1.4" opacity="0.3">${ticks}</g>
+    <g opacity="0.85">${fixes}</g>
+  </g>`
+---
+
+<svg
+  viewBox={`0 0 ${W} ${H}`}
+  class:list={['plate', lead ? 'text-accent' : 'text-ink', className]}
+  aria-hidden="true"
+  set:html={plate}
+/>

@@ -5,16 +5,17 @@
   --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-  --color-ground: #ffffff;
-  --color-ink: #232323;
-  --color-dim: #c7c7c7;
-  --color-muted: #6f6f6f;
-  --color-faint: #a5a5a5;
-  --color-card: #f2f2f2;
-  --color-card-hover: #eaeaea;
-  --color-line: #d8d8d8;
-  --color-cell: #e0e0e0;
-  --color-pip: #dedede;
+  --color-ground: #f3f1e9;
+  --color-ink: #12293f;
+  --color-dim: #c3bfb2;
+  --color-muted: #7a8391;
+  --color-faint: #9aa1ac;
+  --color-card: rgb(18 41 63 / 0.032);
+  --color-card-hover: rgb(18 41 63 / 0.055);
+  --color-line: rgb(18 41 63 / 0.16);
+  --color-accent: #e0885a;
+  --color-cell: #dcd8ca;
+  --color-pip: #dcd8ca;
 }
 
 @layer base {
@@ -36,7 +37,8 @@
     text-decoration: none;
   }
 
-  p {
+  p,
+  dd {
     margin: 0;
     text-wrap: pretty;
   }
@@ -64,6 +66,35 @@
     letter-spacing: -0.005em;
   }
 
+  .essay a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--color-line);
+  }
+
+  .essay a:hover {
+    text-decoration-color: currentColor;
+  }
+
+  /* Only the faint start is keyed, so the inherited ink stays the resolved base.
+     Key a `to` instead and the prose is stuck at --color-dim wherever scroll-driven
+     CSS is missing or reduced-motion is on. */
+  @keyframes read {
+    from {
+      color: var(--color-dim);
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    .essay {
+      animation: read linear both;
+      animation-timeline: view();
+      animation-range: cover 12% cover 42%;
+    }
+  }
+
   .price {
     font-size: 19px;
     line-height: 24px;
@@ -72,7 +103,107 @@
 
   .from {
     font-size: 12px;
-    color: #8a8a8a;
+    color: var(--color-faint);
+  }
+
+  /* The illustrations are washes: they multiply onto the page so the ground
+     shows through them. Give them an opaque backdrop and they turn to mud. */
+  .field {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .plate {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .lead-dot {
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 999px;
+    background: var(--color-accent);
+  }
+
+  @keyframes roll {
+    to {
+      transform: translateX(-520px);
+    }
+  }
+
+  @keyframes gust {
+    0%,
+    100% {
+      transform: scaleY(0.3);
+    }
+    50% {
+      transform: scaleY(1.5);
+    }
+  }
+
+  @keyframes imPull {
+    0%,
+    100% {
+      transform: rotate(-15deg);
+    }
+    50% {
+      transform: rotate(17deg);
+    }
+  }
+
+  @keyframes imDip {
+    0%,
+    100% {
+      transform: rotate(-36deg);
+    }
+    50% {
+      transform: rotate(36deg);
+    }
+  }
+
+  @keyframes imLean {
+    0%,
+    100% {
+      transform: rotate(-5deg);
+    }
+    50% {
+      transform: rotate(6deg);
+    }
+  }
+
+  @keyframes imBob {
+    0%,
+    100% {
+      transform: translateY(0) rotate(-0.4deg);
+    }
+    50% {
+      transform: translateY(-2.5px) rotate(0.5deg);
+    }
+  }
+
+  @keyframes imSpray {
+    0%,
+    100% {
+      opacity: 0.1;
+    }
+    45% {
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes imGlint {
+    0%,
+    100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.72;
+    }
   }
 
   .pip {
@@ -159,6 +290,15 @@
     .tile,
     .pill {
       transition: none;
+    }
+
+    .essay {
+      animation: none;
+    }
+
+    .field *,
+    .plate * {
+      animation: none !important;
     }
   }
 }

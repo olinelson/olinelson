@@ -1,26 +1,19 @@
 // Single source of truth for the site's content.
-// olinelson.com is a solo AI studio: I build practical AI software for small
-// businesses and trades — owner-operators and the kind of company custom software
-// was never worth it for, until AI changed the economics.
 
 export const profile = {
   name: 'Oli Nelson',
   role: 'AI consultant & software engineer',
-  // Hero one-liner: the offer, in plain language — money + time first.
-  headline: 'I use AI to help businesses make more money and save time.',
-  // What that looks like, in plain terms.
+  headline: 'I run a solo software development agency.',
   subhead:
-    'Missed calls, slow quotes, admin that eats your week — I find what’s costing you, then build the simplest AI that fixes it. Fixed price. You own it.',
+    'I handle everything from the initial chat to your own app up and running, saving you time and money.',
   location: 'Coffs Harbour, NSW · working anywhere',
-  // Lead-capture form — the primary CTA destination.
   enquireUrl: 'https://bosun.olinelson.com/enquire/work-with-me',
   email: 'olivernelson@hey.com',
   phone: '0458 341 473',
   phoneHref: '+61458341473',
-  available: 'The first consult is free — no pitch, just a straight answer.',
-  // Risk-reversal reassurance, shown low in the hero.
+  available: 'The first call is free. I’ll say if I can help.',
   priceLine:
-    'Fixed quote before work starts. No ongoing development fees. You only pay the actual hosting and AI costs.',
+    'A one-off fee to get live, then keep the lights on or keep building.',
 }
 
 export type Service = { title: string; body: string }
@@ -312,10 +305,10 @@ export type Size = {
 }
 export type Speed = {
   label: string
-  badge?: string
-  note: string
   price: string
-  // Which of the month's 20 business days ship finished work.
+  major: string
+  small: string
+  note: string
   ships: number[]
   invert?: boolean
 }
@@ -325,16 +318,21 @@ const everyDay = Array.from({ length: 20 }, (_, i) => i)
 export const home = {
   greeting: 'Hi. I’m Oli',
   intro: {
-    lead: 'I build custom software for small businesses, one at a time.',
-    rest: 'Design, code, AI, hosting, the lot. From what your business actually does, to a working app on your own domain, in about a month.',
+    lead: 'I run a solo software development agency.',
+    rest: 'I handle everything from the initial chat to your own app up and running, saving you time and money.',
   } satisfies Essay,
-  noQuote: {
-    lead: 'You never get a quote. The only thing you choose is speed.',
+  chat: {
+    lead: 'How this usually goes.',
+    rest: 'We have a chat. You tell me what’s slowing your business down, eating time and money.',
+  } satisfies Essay,
+  kickoff: {
+    lead: 'To kick things off, there is a one-off fee.',
+    rest: 'It depends on how big a solution you need. Most solutions are Small.',
   } satisfies Essay,
   sizes: [
     {
       label: 'Small',
-      note: 'About a month, and you’re live.',
+      note: 'About a month, then you’re live.',
       price: '$5,000',
       pips: ['on', 'off', 'off'],
     },
@@ -352,59 +350,91 @@ export const home = {
       pips: ['on', 'on', 'onward'],
     },
   ] satisfies Size[],
-  estimate: {
-    lead: 'Every app I’ve built so far has been a Small.',
-    rest: 'The size is my honest estimate and your minimum, never a meter. You watch work ship every week, so you always know where it stands.',
+  live: {
+    lead: 'Once the app is live, you choose.',
+    rest: 'Just keep the lights on, or keep building.',
   } satisfies Essay,
-  pickSpeed: {
-    lead: 'Then you pick a speed.',
-    rest: 'Unlimited requests on every one. All that changes is how often finished work lands.',
-  } satisfies Essay,
-  speedHeader: { left: 'ONE MONTH OF SHIPS', right: 'PER MONTH' },
+  speedHeader: { left: 'ONE MONTH', right: 'PER MONTH' },
+  speedColumns: {
+    name: 'Name',
+    price: 'Price',
+    major: 'Major features',
+    small: 'Small changes',
+  },
   speeds: [
     {
       label: 'Lights-on',
-      note: 'It keeps working. Nothing new gets built.',
       price: '~$60',
+      major: '—',
+      small: '—',
+      note: 'At cost, plus 20%. Bug fixes only.',
       ships: [],
     },
     {
-      label: 'Weekly',
-      badge: 'MOST CLIENTS',
-      note: 'Something finished, every week.',
+      label: 'Steady',
       price: '$1,000',
-      ships: [4, 9, 14, 19],
+      major: '2',
+      small: '4',
+      note: '2 major features, 4 small changes.',
+      ships: [4, 14],
+    },
+    {
+      label: 'Brisk',
+      price: '$5,000',
+      major: '10',
+      small: '20',
+      note: '10 major features, 20 small changes.',
+      ships: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19],
       invert: true,
     },
     {
-      label: 'Twice-weekly',
-      note: 'Also the speed I build at.',
-      price: '$5,000',
-      ships: [1, 4, 6, 9, 11, 14, 16, 19],
-    },
-    {
-      label: 'Daily',
-      note: 'Most business days, something new.',
+      label: 'Hammer and tongs',
       price: '$10,000',
+      major: '20',
+      small: '40',
+      note: '20 major features, 40 small changes.',
       ships: everyDay,
     },
   ] satisfies Speed[],
   log: {
-    lead: 'Every one of those squares is a deploy you can read in the log.',
-    rest: 'That log is the receipt for the month. Move up or down whenever you like; a big job on a slow speed is never refused, only slower.',
+    lead: 'The ticks are the twenty working days in a month.',
+    rest: 'A ringed mark is a day when a major feature goes live.',
+  } satisfies Essay,
+  bugs: {
+    lead: 'Bug fixes are unlimited on every plan.',
+    rest: 'Lights-on is at cost, plus 20% for those fixes. The others add new work on top.',
   } satisfies Essay,
   billing: {
-    lead: 'Billing is monthly, in advance.',
-    rest: 'Every month is paid before it’s worked, so leaving costs you nothing.',
+    lead: 'You pay at the start of each month.',
+    rest: 'Stop when you want. Nothing extra is due when you leave.',
   } satisfies Essay,
   ownership: {
-    lead: 'The code, the repo and your data are yours from day one.',
-    rest: 'I keep the factory. You keep the app.',
+    lead: 'The software and your data are yours from day one.',
+    rest: 'If we stop, you keep the app.',
   } satisfies Essay,
+  experience: {
+    lead: 'I have been a software engineer since 2020.',
+    rest: 'I build product and AI at Uscreen, a video platform for creators. Before that I shipped live camera AI for Rapid Global, an industrial safety company. I was a professional jazz drummer first.',
+  } satisfies Essay,
+  products: {
+    lead: 'I also run two of my own.',
+    items: [
+      {
+        name: 'Ricordi',
+        href: 'https://ricordi.ai',
+        gloss: 'turns a music lesson into a practice plan',
+      },
+      {
+        name: 'Maestrocast',
+        href: 'https://maestrocast.com',
+        gloss: 'is a video platform for online lessons — a studio runs about 30 a week on it',
+      },
+    ],
+  },
   close: {
-    title: 'Tell me what your business does all day.',
-    body: 'First conversation is free. I’ll tell you which size you are, or that you don’t need me.',
-    start: 'Start',
+    title: 'Tell me what you need.',
+    body: 'The first call is free. I’ll say if I can help.',
+    start: 'Get in touch',
   },
   footer: {
     name: 'Oli Nelson',

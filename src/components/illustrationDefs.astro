@@ -1,0 +1,10 @@
+---
+const defs = `<defs>
+  <filter id="trkPen" x="-15%" y="-40%" width="130%" height="180%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="3" seed="13" result="n" />
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="1.9" xChannelSelector="R" yChannelSelector="G" />
+  </filter>
+</defs>`
+---
+
+<svg width="0" height="0" class="absolute" aria-hidden="true" set:html={defs} />

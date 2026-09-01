@@ -1,0 +1,34 @@
+---
+import { Image } from 'astro:assets'
+import small from '../assets/images/boats/small.jpg'
+import medium from '../assets/images/boats/medium.jpg'
+import large from '../assets/images/boats/large.jpg'
+
+interface Props {
+  months: 1 | 2 | 3
+  class?: string
+}
+
+const { months, class: className } = Astro.props
+
+// The files are flat-fielded to a true white ground and composed on a shared
+// waterline, so multiply alone leaves no box and the three sit in one sea. The
+// small lift only clears JPEG noise in the ground.
+const LIFT = 1.01
+const PLATES = [
+  { src: small, alt: 'A watercolour rowing boat on still water' },
+  { src: medium, alt: 'A watercolour sloop under sail' },
+  { src: large, alt: 'A watercolour square-rigged ship under full sail' },
+]
+
+const { src, alt } = PLATES[months - 1]
+---
+
+<Image
+  src={src}
+  alt={alt}
+  widths={[340, 680]}
+  sizes="(min-width: 48rem) 280px, 100vw"
+  class:list={['plate', className]}
+  style={`mix-blend-mode: multiply; filter: brightness(${LIFT})`}
+/>

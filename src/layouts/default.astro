@@ -1,6 +1,8 @@
 ---
 import Nav from '../components/nav.astro'
 import Head from './head.astro'
+import WaterField from '../components/waterField.astro'
+import IllustrationDefs from '../components/illustrationDefs.astro'
 ---
 
 <!doctype html>
@@ -10,6 +12,8 @@ import Head from './head.astro'
     <Head />
   </head>
   <body data-controller="leads" data-action="click->leads#track">
+    <WaterField />
+    <IllustrationDefs />
     <div class="mx-auto flex w-full max-w-[896px] flex-col px-5 pb-[72px] md:pb-[140px]">
       <Nav />
       <slot />

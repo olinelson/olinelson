@@ -2,10 +2,7 @@ import type { APIRoute } from 'astro'
 import { getCollection } from 'astro:content'
 import {
   profile,
-  services,
-  trust,
-  flow,
-  pricing,
+  home,
   work,
   experience,
   skills,
@@ -36,21 +33,12 @@ export const GET: APIRoute = async () => {
 
   const skillsLines = skills.map((s) => `- **${s.label}:** ${s.items}`).join('\n')
 
-  const servicesLines = services.groups
-    .map((g) => {
-      const items = g.items.map((s) => `  - **${s.title}:** ${s.body}`).join('\n')
-      return `### ${g.label}\n${items}`
-    })
-    .join('\n\n')
-
-  const trustLines = trust.items.map((t) => `- **${t.title}:** ${t.body}`).join('\n')
-
-  const flowLines = flow.steps
-    .map((s) => `${s.n}. **${s.title}${s.free ? ' (free)' : ''}** — ${s.body}`)
+  const sizeLines = home.sizes
+    .map((s) => `- **${s.label}:** ${s.from ? 'from ' : ''}${s.price} — ${s.note}`)
     .join('\n')
 
-  const pricingLines = pricing.tiers
-    .map((t) => `- **${t.label}:** ${t.amount} ${t.unit} — ${t.note}`)
+  const speedLines = home.speeds
+    .map((s) => `- **${s.label}:** ${s.price} per month — ${s.note}`)
     .join('\n')
 
   const postLines = posts
@@ -73,46 +61,38 @@ Website: ${SITE}
 
 ## About
 
-Oli Nelson uses AI to help businesses make more money and save time. He runs a solo AI
-studio for small businesses and trades — owner-operators and the kind of company custom
-software was never worth it for, until AI changed the economics. He finds what's costing
-an owner revenue or hours, then builds the simplest thing that fixes it, supports it, and
-keeps it running. One real person the whole way through: no agency, no offshore team, no
-hand-offs. He has shipped AI to production for his own products and for other companies,
-and runs two of his own products for paying customers.
+${home.intro.lead} ${home.intro.rest} ${home.chat.lead} ${home.chat.rest} ${home.kickoff.lead} ${home.kickoff.rest}
 
 ${personal.body}
 
 **Based in** Coffs Harbour on the NSW Mid North Coast, Australia — working with local
 businesses and clients anywhere. ${profile.available}
 
-## What Oli offers
+## Sizes
 
-${services.title} — ${services.intro}
+${home.kickoff.lead} ${home.kickoff.rest}
 
-${servicesLines}
+${sizeLines}
 
-${services.proof}
+## After the app is live
 
-${services.closer} ${services.closerCta}: ${profile.enquireUrl}
+${home.live.lead} ${home.live.rest}
 
-## How Oli works
+${speedLines}
 
-${flow.heading} — ${flow.intro}
+${home.log.lead} ${home.log.rest}
 
-${flowLines}
+${home.bugs.lead} ${home.bugs.rest}
 
-${flow.closer.lead} ${flow.closer.body}
+## Billing and ownership
 
-## How Oli takes the risk out of it
+${home.billing.lead} ${home.billing.rest} ${home.ownership.lead} ${home.ownership.rest}
 
-${trustLines}
+## Experience
 
-## Pricing
+${home.experience.lead} ${home.experience.rest}
 
-${pricingLines}
-
-${pricing.note}
+${home.products.lead} ${home.products.items.map((p) => `[${p.name}](${p.href}) ${p.gloss}`).join('. ')}.
 
 ## Proof — things Oli has built
 
@@ -137,7 +117,7 @@ ${linkLines}
 ## Work with Oli
 
 To work with Oli, send an enquiry at ${profile.enquireUrl}, email ${profile.email}, or call
-${profile.phone}. The first consult is free, and you get a fixed price before any work starts.
+${profile.phone}. ${home.close.body}
 Full text of every article is available at ${SITE}/llms-full.txt and ${SITE}/feed.xml.
 `
 

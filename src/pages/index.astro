@@ -4,21 +4,21 @@ import DefaultLayout from '../layouts/default.astro'
 import Seo from '../components/seo/index.astro'
 import Essay from '../components/essay.astro'
 import ArrowRight from '../icons/arrowRight.astro'
+import BoatPlate from '../components/boatPlate.astro'
+import TrackPlate from '../components/trackPlate.astro'
 import profileImage from '../assets/images/profile.jpg'
 import { profile, home } from '../data/profile'
 import { personSchema, websiteSchema, profilePageSchema, serviceSchema } from '../lib/schema'
 
 const image = `https://olinelson.com${profileImage.src}`
 const schema = [personSchema(image), websiteSchema(), profilePageSchema(), serviceSchema()]
-
-const days = Array.from({ length: 20 }, (_, i) => i)
 ---
 
 <DefaultLayout>
   <Seo
     slot="seo"
-    title="Oli Nelson — Custom software for small businesses"
-    description="I build custom software for small businesses, one at a time. Design, code, AI, hosting, the lot. You never get a quote — you choose a size and a speed, and you watch work ship every week."
+    title="Oli Nelson — Software for small businesses"
+    description="I run a solo software development agency. A one-off fee to get your app live, then keep the lights on or keep building."
     schema={schema}
   />
 
@@ -35,60 +35,37 @@ const days = Array.from({ length: 20 }, (_, i) => i)
     </h1>
 
     <Essay class="mt-10 md:mt-[60px]" essay={home.intro} />
-    <Essay class="mt-10 md:mt-[60px]" essay={home.noQuote} />
+    <Essay class="mt-10 md:mt-[60px]" essay={home.chat} />
+    <Essay class="mt-10 md:mt-[60px]" essay={home.kickoff} />
 
-    <div
-      class="mt-11 grid gap-[10px] md:mt-[66px] md:grid-cols-[256px_256px_256px] md:gap-3 md:pl-8"
-    >
+    <div class="mt-10 grid gap-8 md:mt-[62px] md:grid-cols-3 md:gap-6 md:pl-8">
       {
-        home.sizes.map((size) => (
+        home.sizes.map((size, i) => (
           <a
             href={profile.enquireUrl}
             data-lead-source={`size-${size.label.toLowerCase()}`}
-            class="tile flex flex-col gap-[14px] rounded-2xl bg-card px-5 py-[18px] md:h-[180px] md:justify-between md:gap-0 md:px-[22px] md:pt-5 md:pb-[18px]"
+            class="group flex flex-col"
           >
-            <div class="flex items-end justify-between gap-4 md:block">
-              <div class="flex flex-col gap-[2px]">
-                <h2 class="text-[17px]/[25.5px] font-semibold">{size.label}</h2>
-                <span class="text-[15px]/[22px] text-muted md:text-base/6">{size.note}</span>
-              </div>
-              <span class="mono price shrink-0 md:hidden">
+            <h2 class="text-[17px]/[25.5px] font-semibold">{size.label}</h2>
+            <span class="mt-[2px] text-[15px]/[22px] text-muted md:text-base/6">{size.note}</span>
+            <BoatPlate months={(i + 1) as 1 | 2 | 3} class="mt-3" />
+            <div class="mt-3 flex items-end justify-between">
+              <span class="mono price">
                 {size.from && <span class="from">from </span>}
                 {size.price}
               </span>
-            </div>
-
-            <div class="flex flex-col gap-4">
-              <div class="grid grid-cols-3 gap-1">
-                {size.pips.map((pip) => (
-                  <div
-                    class:list={[
-                      'pip',
-                      pip === 'on' && 'pip-on',
-                      pip === 'onward' && 'pip-onward',
-                    ]}
-                  />
-                ))}
-              </div>
-              <div class="hidden items-end justify-between md:flex">
-                <span class="mono price">
-                  {size.from && <span class="from">from </span>}
-                  {size.price}
-                </span>
-                <ArrowRight class="mb-1 size-[15px]" />
-              </div>
+              <ArrowRight class="mb-1 size-[15px] opacity-0 transition-opacity group-hover:opacity-60" />
             </div>
           </a>
         ))
       }
     </div>
 
-    <Essay class="mt-11 md:mt-[66px]" essay={home.estimate} />
-    <Essay class="mt-10 md:mt-[60px]" essay={home.pickSpeed} />
+    <Essay class="mt-11 md:mt-[66px]" essay={home.live} />
 
-    <div class="mt-11 flex flex-col gap-[10px] md:mt-[66px] md:gap-3 md:pl-8">
+    <div class="mt-10 flex flex-col gap-7 md:mt-[62px] md:gap-5 md:pl-8">
       <div
-        class="mono flex items-baseline justify-between px-5 pb-1 text-[11px] text-faint md:px-[22px] md:pb-1.5 md:text-[13px]"
+        class="mono flex items-baseline justify-between px-1 pb-1 text-[11px] text-faint md:px-4 md:pb-0 md:text-[13px]"
       >
         <span>{home.speedHeader.left}</span>
         <span>{home.speedHeader.right}</span>
@@ -96,51 +73,48 @@ const days = Array.from({ length: 20 }, (_, i) => i)
 
       {
         home.speeds.map((speed) => (
-          <div
-            class:list={[
-              'grid grid-cols-[1fr_auto] items-baseline gap-x-[14px] gap-y-[2px] rounded-2xl px-5 py-[18px] md:grid-cols-[224px_minmax(0,1fr)_96px] md:items-center md:gap-x-7 md:px-[22px] md:py-5',
-              speed.invert ? 'inverted bg-ink text-ground' : 'bg-card',
-            ]}
-          >
-            <div class="flex items-baseline gap-[9px] md:col-start-1 md:row-start-1 md:gap-[10px]">
+          <div class="grid grid-cols-[1fr_auto] items-baseline gap-x-[14px] gap-y-[2px] md:grid-cols-[232px_minmax(0,1fr)_92px] md:items-center md:gap-x-5 md:px-4">
+            <div class="flex items-center gap-[9px] md:col-start-1 md:row-start-1">
+              {speed.invert && <span class="lead-dot" />}
               <h2 class="text-[17px]/[25.5px] font-semibold">{speed.label}</h2>
-              {speed.badge && (
-                <span class="mono text-[11px] text-white/50">{speed.badge}</span>
-              )}
             </div>
 
             <span class="mono justify-self-end md:col-start-3 md:row-span-2 md:row-start-1 md:self-center md:justify-self-stretch md:text-right">
               {speed.price}
             </span>
 
-            <p
-              class:list={[
-                'col-span-2 text-[15px]/[22px] md:col-span-1 md:col-start-1 md:row-start-2 md:text-base/6',
-                speed.invert ? 'text-white/[0.62]' : 'text-muted',
-              ]}
-            >
+            <p class="col-span-2 text-[15px]/[22px] text-muted md:col-span-1 md:col-start-1 md:row-start-2">
               {speed.note}
             </p>
 
-            <div
-              class="col-span-2 mt-3 grid grid-cols-[repeat(20,minmax(0,1fr))] gap-1 md:col-span-1 md:col-start-2 md:row-span-2 md:row-start-1 md:mt-0 md:gap-1.5 md:self-center"
-              aria-hidden="true"
-            >
-              {days.map((day) => (
-                <div class:list={['cell', speed.ships.includes(day) && 'cell-on']} />
-              ))}
-            </div>
+            <TrackPlate
+              ships={speed.ships}
+              lead={speed.invert}
+              class="col-span-2 mt-3 md:col-span-1 md:col-start-2 md:row-span-2 md:row-start-1 md:mt-0 md:self-center"
+            />
           </div>
         ))
       }
     </div>
 
     <Essay class="mt-11 md:mt-[66px]" essay={home.log} />
+    <Essay class="mt-10 md:mt-[60px]" essay={home.bugs} />
     <Essay class="mt-10 md:mt-[60px]" essay={home.billing} />
     <Essay class="mt-10 md:mt-[60px]" essay={home.ownership} />
+    <Essay class="mt-10 md:mt-[60px]" essay={home.experience} />
+    <Essay class="mt-10 md:mt-[60px]" essay={{ lead: home.products.lead }}>
+      {
+        home.products.items.map((item, i) => (
+          <>
+            <a href={item.href}>{item.name}</a> {item.gloss}
+            {i < home.products.items.length - 1 ? '. ' : '.'}
+          </>
+        ))
+      }
+    </Essay>
 
     <div
-      class="mt-14 flex flex-col gap-[18px] rounded-2xl bg-card px-5 py-[22px] md:mt-24 md:flex-row md:items-center md:justify-between md:gap-10 md:py-[26px] md:pr-7 md:pl-8"
+      class="mt-14 flex flex-col gap-[18px] md:mt-24 md:flex-row md:items-center md:justify-between md:gap-10"
     >
       <div class="flex flex-col gap-1">
         <h2 class="text-[17px]/[25.5px] font-semibold">{home.close.title}</h2>

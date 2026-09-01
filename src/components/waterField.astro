@@ -1,0 +1,48 @@
+---
+const H = 900
+const wavePath = (amp: number, mid: number, period: number, reps: number, x0: number) => {
+  let d = `M ${x0},${mid}`
+  for (let i = 0; i < reps; i++) {
+    const x = x0 + i * period
+    d += ` C ${x + period * 0.28},${mid - amp} ${x + period * 0.72},${mid + amp} ${x + period},${mid}`
+  }
+  return d
+}
+
+const bands: string[][] = []
+let cur: string[] = []
+for (let i = 0, y = 20; y < H; i++, y += 16) {
+  const op = (0.04 + i * 0.0004).toFixed(4)
+  cur.push(
+    `<path d="${wavePath(8 + i * 0.1, y, 520, 4, -((i * 173) % 520))}" fill="none" stroke="currentColor" stroke-width="1" opacity="${op}" />`,
+  )
+  if (cur.length === 4) {
+    bands.push(cur)
+    cur = []
+  }
+}
+if (cur.length) bands.push(cur)
+
+const groups: string[][] = Array.from({ length: 5 }, () => [])
+bands.forEach((b, k) =>
+  groups[k % 5].push(
+    `<g style="transform-box: view-box; transform-origin: 0 ${36 + k * 64}px; animation: gust 9s ease-in-out ${(-k * 0.9).toFixed(2)}s infinite">${b.join('')}</g>`,
+  ),
+)
+
+const field = groups
+  .map(
+    (g, n) =>
+      `<g style="animation: roll ${(19 + n * 1.7).toFixed(1)}s linear ${(-n * 3.1).toFixed(1)}s infinite">${g.join('')}</g>`,
+  )
+  .join('')
+---
+
+<div class="field text-ink" aria-hidden="true">
+  <svg
+    viewBox={`0 0 1120 ${H}`}
+    preserveAspectRatio="none"
+    class="absolute top-0 left-0 h-full w-[200%]"
+    set:html={field}
+  />
+</div>
