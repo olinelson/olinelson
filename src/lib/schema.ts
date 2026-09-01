@@ -13,12 +13,12 @@ const WEBSITE_ID = `${SITE}/#website`
 const sameAs = links.map((l) => l.href).filter((href) => href.startsWith('http'))
 
 const description =
-  'Oli Nelson uses AI to help businesses make more money and save time. Based in Australia, ' +
-  'working with clients anywhere. Advice first, software second: he finds what is costing an ' +
-  'owner revenue or hours, recommends the simplest fix, builds it, and keeps it running. ' +
-  'Practical AI for missed-call and after-hours enquiry handling, instant quoting, automated ' +
-  'follow-ups, paperwork and compliance from a voice note, and clear financial reporting. ' +
-  'The first consult is free, with a fixed quote before any work starts and free bug fixes after.'
+  'Oli Nelson runs a solo software development agency in Coffs Harbour, Australia, working with ' +
+  'clients anywhere. He handles the work from the first chat to an app live on the client’s domain. ' +
+  'A one-off fee depends on size (Small $5,000, Medium $10,000, Large from $15,000). After launch, ' +
+  'clients keep the lights on or keep building, from about $60 a month to $10,000 a month. Every ' +
+  'plan includes unlimited bug fixes. Lights-on is at cost, plus 20% for those fixes. The ' +
+  'software and data belong to the client from day one. The first call is free.'
 
 const knowsAbout = [
   'Artificial intelligence',
@@ -88,7 +88,7 @@ export function profilePageSchema() {
     '@type': 'ProfilePage',
     '@id': `${SITE}/#profilepage`,
     url: SITE,
-    name: 'Oli Nelson — AI that makes businesses more money',
+    name: 'Oli Nelson — Software for small businesses',
     isPartOf: { '@id': WEBSITE_ID },
     mainEntity: { '@id': PERSON_ID },
     inLanguage: 'en',
@@ -132,7 +132,7 @@ export function serviceSchema() {
   return {
     '@type': 'ProfessionalService',
     '@id': `${SITE}/#service`,
-    name: 'Custom AI Software for Small Business',
+    name: 'Custom software for small business',
     description,
     provider: { '@id': PERSON_ID },
     areaServed: [
@@ -152,7 +152,7 @@ export function serviceSchema() {
     offers: {
       '@type': 'Offer',
       description:
-        'The first consult is free. You get a fixed quote before any work starts, with no monthly fee after — bug fixes are free, and you only pay the actual running costs (hosting and any AI usage) at cost. Fixes range from setting up an existing tool to a full custom build.',
+        'The first call is free. A one-off fee gets the app live. After that you keep the lights on or keep building. Every plan includes unlimited bug fixes. Lights-on is at cost, plus 20% for those fixes. Software and data are yours from day one. Stop any month with nothing extra to pay.',
     },
     url: SITE,
   }

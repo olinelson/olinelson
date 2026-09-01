@@ -44,7 +44,7 @@ export async function GET(context) {
   return rss({
     title: 'Oli Nelson — Words',
     description:
-      'Occasional writing by Oli Nelson on software, AI, building products, and music.',
+      'Writing by Oli Nelson on software, AI, building products, and music.',
     site: context.site,
     items,
   })

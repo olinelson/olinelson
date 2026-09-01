@@ -6,9 +6,9 @@ import { generateOpenGraphImage } from 'astro-og-canvas'
 export const GET: APIRoute = async () =>
   new Response(
     await generateOpenGraphImage({
-      title: 'Oli Nelson — Custom software for small businesses',
+      title: 'Oli Nelson — Software for small businesses',
       description:
-        'One at a time. Design, code, AI, hosting, the lot. You never get a quote — you choose a size and a speed.',
+        'A one-off fee to get live, then keep the lights on or keep building.',
       logo: { path: './src/assets/images/profile.jpg', size: [128] },
       bgGradient: [
         [35, 35, 35],

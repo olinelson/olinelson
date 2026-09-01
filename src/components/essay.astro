@@ -10,5 +10,15 @@ const { essay, class: className } = Astro.props
 ---
 
 <p class:list={['essay', className]}>
-  {essay.lead}{essay.rest && <span class="text-dim">{` ${essay.rest}`}</span>}
+  {essay.lead}
+  {
+    Astro.slots.has('default') ? (
+      <Fragment>
+        {' '}
+        <slot />
+      </Fragment>
+    ) : (
+      essay.rest && ` ${essay.rest}`
+    )
+  }
 </p>
