@@ -220,18 +220,18 @@ export type Job = {
 // real, experienced engineer" reassurance for anyone who reads this far.
 export const experience: Job[] = [
   {
-    role: 'Product Engineer',
-    company: 'Uscreen',
-    period: '2025 — Present',
-    blurb:
-      'Build new features end-to-end for a video platform used by thousands of creators — including its AI tools — and lead the team’s use of AI to build faster.',
-  },
-  {
     role: 'Founder',
-    company: 'Maestrocast & Ricordi',
-    period: '2024 — Present',
+    company: 'Ricordi & Maestrocast',
+    period: '2025 — now',
     blurb:
       'Founded and built two of my own products from nothing — the software, the AI, the brand, the support — and put them in front of real paying users.',
+  },
+  {
+    role: 'Product Engineer',
+    company: 'Uscreen',
+    period: '2025 — 2026',
+    blurb:
+      'Built new features end-to-end for a video platform used by thousands of creators — including its AI tools — and led the team’s use of AI to build faster.',
   },
   {
     role: 'Software Engineer',
@@ -291,6 +291,50 @@ export const links: Link[] = [
   { label: 'Instagram', href: 'https://www.instagram.com/olinelson__', icon: 'instagram' },
 ]
 
+export type Client = {
+  name: string
+  role: string
+  business: string
+  href: string
+  built: string
+  quote: string
+  // ISO date of the email or message the quote came from.
+  date?: string
+  // A draft in the client's voice, not yet approved by them. Do not publish
+  // while this is set.
+  pending?: boolean
+}
+
+export const clients: Client[] = [
+  {
+    name: 'Ben Nyhuis',
+    role: 'Owner',
+    business: 'Coffs Coast Building & Pest Inspections',
+    href: 'https://ccbpi.com.au',
+    built: 'An app that turns a day of inspection photos and notes into a print-ready report.',
+    quote: 'Love the new features. Once again my time will be reduced in processing these reports.',
+    date: '2026-08-23',
+  },
+  {
+    name: 'Sam Johnston',
+    role: 'Managing Director',
+    business: 'Vault Moving & Storage',
+    href: 'https://www.vaultmoving.com.au',
+    built: 'One feed of every tender from three broker portals, with the jobs that fit a truck matched up.',
+    quote: 'Every tender from every portal lands in one place now. I open it in the morning and I can see what to bid on.',
+    pending: true,
+  },
+  {
+    name: 'Matt Gosling',
+    role: 'CEO',
+    business: 'Gosling Group',
+    href: 'https://www.goslinggroup.com.au',
+    built: 'Revenue forecasts per job for an electrical contractor, synced from three Simpro accounts.',
+    quote: 'Oli sat with our project managers and quoters, worked out how the business actually runs, and built the thing that replaced the spreadsheets.',
+    pending: true,
+  },
+]
+
 // ── Homepage: the tier sheet ──────────────────────────────────────────────────
 // Every string the homepage renders. An essay paragraph is a `lead` sentence set
 // in ink, followed by `rest` set in #c7c7c7.
@@ -309,25 +353,23 @@ export type Speed = {
   major: string
   small: string
   note: string
-  ships: number[]
+  crests: number
   invert?: boolean
 }
 
-const everyDay = Array.from({ length: 20 }, (_, i) => i)
-
 export const home = {
-  greeting: 'Hi. I’m Oli',
+  headline: 'Your own app, live in about a month.',
   intro: {
-    lead: 'I run a solo software development agency.',
-    rest: 'I handle everything from the initial chat to your own app up and running, saving you time and money.',
+    lead: 'I’m Oli. I run a solo software development agency in Coffs Harbour.',
+    rest: 'Chat, design, build, deploy. From the first call to a live app.',
   } satisfies Essay,
-  chat: {
-    lead: 'How this usually goes.',
-    rest: 'We have a chat. You tell me what’s slowing your business down, eating time and money.',
+  punch: {
+    lead: 'You talk to one person, and that person does the work.',
+    rest: 'No hand-offs.',
   } satisfies Essay,
   kickoff: {
-    lead: 'To kick things off, there is a one-off fee.',
-    rest: 'It depends on how big a solution you need. Most solutions are Small.',
+    lead: 'A one-off fee gets you live.',
+    rest: 'It depends on the size. Most solutions are Small.',
   } satisfies Essay,
   sizes: [
     {
@@ -368,7 +410,7 @@ export const home = {
       major: '—',
       small: '—',
       note: 'At cost, plus 20%. Bug fixes only.',
-      ships: [],
+      crests: 0,
     },
     {
       label: 'Steady',
@@ -376,7 +418,7 @@ export const home = {
       major: '2',
       small: '4',
       note: '2 major features, 4 small changes.',
-      ships: [4, 14],
+      crests: 2,
     },
     {
       label: 'Brisk',
@@ -384,7 +426,7 @@ export const home = {
       major: '10',
       small: '20',
       note: '10 major features, 20 small changes.',
-      ships: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19],
+      crests: 10,
       invert: true,
     },
     {
@@ -393,51 +435,45 @@ export const home = {
       major: '20',
       small: '40',
       note: '20 major features, 40 small changes.',
-      ships: everyDay,
+      crests: 20,
     },
   ] satisfies Speed[],
   log: {
-    lead: 'The ticks are the twenty working days in a month.',
-    rest: 'A ringed mark is a day when a major feature goes live.',
+    lead: 'Each crest is a major feature going live.',
+    rest: 'Lights-on is flat water. Hammer and tongs is a crest every working day.',
   } satisfies Essay,
-  bugs: {
+  terms: {
     lead: 'Bug fixes are unlimited on every plan.',
-    rest: 'Lights-on is at cost, plus 20% for those fixes. The others add new work on top.',
+    rest: 'You pay at the start of each month and stop when you want. The software and your data are yours from day one.',
   } satisfies Essay,
-  billing: {
-    lead: 'You pay at the start of each month.',
-    rest: 'Stop when you want. Nothing extra is due when you leave.',
-  } satisfies Essay,
-  ownership: {
-    lead: 'The software and your data are yours from day one.',
-    rest: 'If we stop, you keep the app.',
+  clients: {
+    lead: 'Some of the people I build for.',
   } satisfies Essay,
   experience: {
-    lead: 'I have been a software engineer since 2020.',
-    rest: 'I build product and AI at Uscreen, a video platform for creators. Before that I shipped live camera AI for Rapid Global, an industrial safety company. I was a professional jazz drummer first.',
-  } satisfies Essay,
-  products: {
-    lead: 'I also run two of my own.',
-    items: [
-      {
-        name: 'Ricordi',
-        href: 'https://ricordi.ai',
-        gloss: 'turns a music lesson into a practice plan',
-      },
-      {
-        name: 'Maestrocast',
-        href: 'https://maestrocast.com',
-        gloss: 'is a video platform for online lessons — a studio runs about 30 a week on it',
-      },
+    start: '2017-01-01',
+    before: 'I have been a software engineer for',
+    after: 'years. I was a professional jazz drummer first.',
+    places: [
+      { name: 'Uscreen', href: 'https://www.uscreen.tv', logo: 'uscreen' },
+      { name: 'Rapid Global', href: 'https://www.rapidglobal.com', logo: 'rapidglobal' },
+      { name: 'Nirovision', href: 'https://www.nirovision.com', logo: 'nirovision' },
+      { name: 'WithYouWithMe', href: 'https://withyouwithme.com', logo: 'withyouwithme' },
+      { name: 'Ricordi', href: 'https://ricordi.ai', logo: 'ricordi' },
+      { name: 'Maestrocast', href: 'https://maestrocast.com', logo: 'maestrocast' },
     ],
   },
-  close: {
-    title: 'Tell me what you need.',
-    body: 'The first call is free. I’ll say if I can help.',
-    start: 'Get in touch',
+  honest: {
+    lead: 'If it’s not a good fit, I’ll say so.',
+    rest: 'I won’t sell you.',
+  } satisfies Essay,
+  start: {
+    ask: 'Tell me what you need.',
+    rest: 'I reply within a day, usually faster.',
+    cta: 'Get in touch',
   },
   footer: {
     name: 'Oli Nelson',
+    tagline: 'Software for small business',
     place: 'Coffs Harbour, NSW — working anywhere',
     placeShort: 'Coffs Harbour, NSW',
   },

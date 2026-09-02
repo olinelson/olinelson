@@ -62,7 +62,6 @@ export function personSchema(imageUrl: string) {
       '@type': 'CollegeOrUniversity',
       name: 'Sydney Conservatorium of Music, University of Sydney',
     },
-    worksFor: { '@type': 'Organization', name: 'Uscreen', url: 'https://www.uscreen.tv' },
     sameAs,
     seeks: {
       '@type': 'Demand',

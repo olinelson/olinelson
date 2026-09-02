@@ -1,0 +1,49 @@
+---
+import { profile, home, links } from '../data/profile'
+
+interface Props {
+  class?: string
+}
+
+const { class: className } = Astro.props
+const social = links.filter((l) => ['GitHub', 'LinkedIn', 'X', 'Instagram'].includes(l.label))
+const rows = [
+  { label: 'Email', items: [{ label: profile.email, href: `mailto:${profile.email}` }] },
+  { label: 'Phone', items: [{ label: profile.phone, href: `tel:${profile.phoneHref}` }] },
+  { label: 'Words', items: [{ label: 'olinelson.com/words', href: '/words.html' }] },
+  { label: 'Social', items: social.map((l) => ({ label: l.label, href: l.href })) },
+]
+---
+
+<footer class:list={['flex flex-col gap-7 md:gap-8', className]}>
+  <div class="flex flex-col gap-[2px]">
+    <span class="text-[15px]/[22px] font-semibold md:text-base/6">{home.footer.name}</span>
+    <span class="text-[15px]/[22px] text-muted md:text-base/6">
+      {home.footer.tagline} · <span class="md:hidden">{home.footer.placeShort}</span><span class="hidden md:inline">{home.footer.place}</span>
+    </span>
+  </div>
+
+  <dl class="grid grid-cols-[88px_minmax(0,1fr)] gap-x-4 gap-y-[6px] text-[13px]/[19px] md:grid-cols-[104px_minmax(0,1fr)]">
+    {
+      rows.map((row) => (
+        <>
+          <dt class="mono text-[11px] text-faint uppercase">{row.label}</dt>
+          <dd class="flex flex-wrap gap-x-2">
+            {row.items.map((item, i) => (
+              <>
+                {i > 0 && <span class="text-faint">·</span>}
+                <a
+                  href={item.href}
+                  data-lead-source="footer"
+                  class="text-muted underline decoration-line underline-offset-4 hover:text-ink hover:decoration-current"
+                >
+                  {item.label}
+                </a>
+              </>
+            ))}
+          </dd>
+        </>
+      ))
+    }
+  </dl>
+</footer>

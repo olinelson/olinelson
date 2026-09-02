@@ -1,0 +1,13 @@
+---
+import ArrowRight from '../icons/arrowRight.astro'
+import { profile, home } from '../data/profile'
+---
+
+<a
+  href={profile.enquireUrl}
+  data-lead-source="sticky"
+  class="fixed bottom-5 left-1/2 z-10 inline-flex -translate-x-1/2 items-center gap-2 rounded-full bg-ink px-5 py-[11px] text-sm font-medium whitespace-nowrap text-ground shadow-[0_6px_24px_rgb(18_41_63/0.18)] transition-opacity hover:opacity-85"
+>
+  {home.start.cta}
+  <ArrowRight class="size-[14px]" />
+</a>

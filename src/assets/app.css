@@ -95,6 +95,15 @@
     }
   }
 
+  .quote {
+    font-size: 19px;
+    line-height: 30px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    text-indent: -0.42em;
+    hanging-punctuation: first;
+  }
+
   .price {
     font-size: 19px;
     line-height: 24px;
@@ -120,6 +129,30 @@
     display: block;
     width: 100%;
     height: auto;
+  }
+
+  .buoy {
+    background: rgb(255 255 255 / 0.55);
+    border: 1px solid var(--color-line);
+    rotate: var(--tilt);
+    animation: bob 6s ease-in-out infinite;
+    transition: background-color 0.15s ease;
+  }
+
+  .buoy:hover {
+    background: rgb(255 255 255 / 0.85);
+  }
+
+  @keyframes bob {
+    0%,
+    100% {
+      translate: 0 0;
+      rotate: var(--tilt);
+    }
+    50% {
+      translate: 0 -5px;
+      rotate: calc(var(--tilt) * -0.6);
+    }
   }
 
   .lead-dot {
@@ -271,6 +304,11 @@
       line-height: 60px;
     }
 
+    .quote {
+      font-size: 25px;
+      line-height: 40px;
+    }
+
     .price {
       font-size: 21px;
       line-height: 26px;
@@ -297,7 +335,8 @@
     }
 
     .field *,
-    .plate * {
+    .plate *,
+    .buoy {
       animation: none !important;
     }
   }

@@ -1,0 +1,35 @@
+---
+import { clients } from '../data/profile'
+
+interface Props {
+  class?: string
+}
+
+const { class: className } = Astro.props
+
+const when = (date?: string) =>
+  date
+    ? new Date(date).toLocaleDateString('en-AU', { day: '2-digit', month: 'short', year: 'numeric' })
+    : '—'
+---
+
+<div class:list={['flex flex-col gap-7 md:gap-5 md:pl-8', className]}>
+  <div class="mono flex items-baseline justify-between px-1 pb-1 text-[11px] text-faint md:px-4 md:pb-0 md:text-[13px]">
+    <span>LOG</span>
+    <span>RECEIVED</span>
+  </div>
+  {
+    clients.map((client) => (
+      <div class="grid grid-cols-[1fr_auto] gap-x-[14px] gap-y-2 md:grid-cols-[232px_minmax(0,1fr)_92px] md:gap-x-5 md:px-4">
+        <div class="flex flex-col gap-[2px] md:col-start-1">
+          <h2 class="text-[17px]/[25.5px] font-semibold">{client.name}</h2>
+          <a href={client.href} class="text-[15px]/[22px] text-muted underline decoration-line underline-offset-4 hover:decoration-current">
+            {client.business}
+          </a>
+        </div>
+        <span class="mono justify-self-end text-faint md:col-start-3 md:text-right">{when(client.date)}</span>
+        <p class="quote col-span-2 md:col-span-1 md:col-start-2 md:row-start-1">“{client.quote}”</p>
+      </div>
+    ))
+  }
+</div>

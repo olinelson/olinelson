@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content'
 import {
   profile,
   home,
+  clients,
   work,
   experience,
   skills,
@@ -41,6 +42,12 @@ export const GET: APIRoute = async () => {
     .map((s) => `- **${s.label}:** ${s.price} per month — ${s.note}`)
     .join('\n')
 
+  const clientLines = clients
+    .map((c) => `- **${c.name}, ${c.role}, [${c.business}](${c.href})** — ${c.built} “${c.quote}”`)
+    .join('\n')
+
+  const years = ((Date.now() - Date.parse(home.experience.start)) / (365.2425 * 24 * 60 * 60 * 1000)).toFixed(1)
+
   const postLines = posts
     .map((p) => `- [${p.data.title}](${SITE}/words/${p.id}.html): ${p.data.preview}`)
     .join('\n')
@@ -61,7 +68,7 @@ Website: ${SITE}
 
 ## About
 
-${home.intro.lead} ${home.intro.rest} ${home.chat.lead} ${home.chat.rest} ${home.kickoff.lead} ${home.kickoff.rest}
+${home.headline} ${home.intro.lead} ${home.intro.rest} ${home.punch.lead} ${home.punch.rest}
 
 ${personal.body}
 
@@ -82,17 +89,21 @@ ${speedLines}
 
 ${home.log.lead} ${home.log.rest}
 
-${home.bugs.lead} ${home.bugs.rest}
+## Terms
 
-## Billing and ownership
+${home.terms.lead} ${home.terms.rest}
 
-${home.billing.lead} ${home.billing.rest} ${home.ownership.lead} ${home.ownership.rest}
+## Clients
+
+${home.clients.lead}
+
+${clientLines}
 
 ## Experience
 
-${home.experience.lead} ${home.experience.rest}
+${home.experience.before} ${years} ${home.experience.after}
 
-${home.products.lead} ${home.products.items.map((p) => `[${p.name}](${p.href}) ${p.gloss}`).join('. ')}.
+${home.experience.places.map((p) => `- [${p.name}](${p.href})`).join('\n')}
 
 ## Proof — things Oli has built
 
@@ -117,7 +128,7 @@ ${linkLines}
 ## Work with Oli
 
 To work with Oli, send an enquiry at ${profile.enquireUrl}, email ${profile.email}, or call
-${profile.phone}. ${home.close.body}
+${profile.phone}. ${home.honest.lead} ${home.honest.rest} ${home.start.ask} ${home.start.rest}
 Full text of every article is available at ${SITE}/llms-full.txt and ${SITE}/feed.xml.
 `
 

@@ -1,16 +1,21 @@
 ---
-import { Image } from 'astro:assets'
 import DefaultLayout from '../layouts/default.astro'
 import Seo from '../components/seo/index.astro'
 import Essay from '../components/essay.astro'
 import ArrowRight from '../icons/arrowRight.astro'
 import BoatPlate from '../components/boatPlate.astro'
-import TrackPlate from '../components/trackPlate.astro'
+import SeaPlate from '../components/seaPlate.astro'
+import Log from '../components/log.astro'
+import Footer from '../components/footer.astro'
+import StickyCta from '../components/stickyCta.astro'
+import Cloud from '../components/cloud.astro'
 import profileImage from '../assets/images/profile.jpg'
 import { profile, home } from '../data/profile'
 import { personSchema, websiteSchema, profilePageSchema, serviceSchema } from '../lib/schema'
 
 const image = `https://olinelson.com${profileImage.src}`
+const YEAR = 365.2425 * 24 * 60 * 60 * 1000
+const years = ((Date.now() - Date.parse(home.experience.start)) / YEAR).toFixed(8)
 const schema = [personSchema(image), websiteSchema(), profilePageSchema(), serviceSchema()]
 ---
 
@@ -23,19 +28,10 @@ const schema = [personSchema(image), websiteSchema(), profilePageSchema(), servi
   />
 
   <main class="pt-[116px] md:pt-[248px]">
-    <h1 class="essay flex items-center gap-[11px] md:gap-[14px]">
-      {home.greeting}
-      <Image
-        src={profileImage}
-        alt={profile.name}
-        width={80}
-        height={80}
-        class="size-7 rounded-full object-cover md:size-9"
-      />
-    </h1>
+    <h1 class="essay">{home.headline}</h1>
 
     <Essay class="mt-10 md:mt-[60px]" essay={home.intro} />
-    <Essay class="mt-10 md:mt-[60px]" essay={home.chat} />
+    <Essay class="mt-10 md:mt-[60px]" essay={home.punch} />
     <Essay class="mt-10 md:mt-[60px]" essay={home.kickoff} />
 
     <div class="mt-10 grid gap-8 md:mt-[62px] md:grid-cols-3 md:gap-6 md:pl-8">
@@ -46,9 +42,9 @@ const schema = [personSchema(image), websiteSchema(), profilePageSchema(), servi
             data-lead-source={`size-${size.label.toLowerCase()}`}
             class="group flex flex-col"
           >
-            <h2 class="text-[17px]/[25.5px] font-semibold">{size.label}</h2>
+            <BoatPlate months={(i + 1) as 1 | 2 | 3} />
+            <h2 class="mt-4 text-[17px]/[25.5px] font-semibold">{size.label}</h2>
             <span class="mt-[2px] text-[15px]/[22px] text-muted md:text-base/6">{size.note}</span>
-            <BoatPlate months={(i + 1) as 1 | 2 | 3} class="mt-3" />
             <div class="mt-3 flex items-end justify-between">
               <span class="mono price">
                 {size.from && <span class="from">from </span>}
@@ -87,8 +83,8 @@ const schema = [personSchema(image), websiteSchema(), profilePageSchema(), servi
               {speed.note}
             </p>
 
-            <TrackPlate
-              ships={speed.ships}
+            <SeaPlate
+              crests={speed.crests}
               lead={speed.invert}
               class="col-span-2 mt-3 md:col-span-1 md:col-start-2 md:row-span-2 md:row-start-1 md:mt-0 md:self-center"
             />
@@ -98,52 +94,34 @@ const schema = [personSchema(image), websiteSchema(), profilePageSchema(), servi
     </div>
 
     <Essay class="mt-11 md:mt-[66px]" essay={home.log} />
-    <Essay class="mt-10 md:mt-[60px]" essay={home.bugs} />
-    <Essay class="mt-10 md:mt-[60px]" essay={home.billing} />
-    <Essay class="mt-10 md:mt-[60px]" essay={home.ownership} />
-    <Essay class="mt-10 md:mt-[60px]" essay={home.experience} />
-    <Essay class="mt-10 md:mt-[60px]" essay={{ lead: home.products.lead }}>
-      {
-        home.products.items.map((item, i) => (
-          <>
-            <a href={item.href}>{item.name}</a> {item.gloss}
-            {i < home.products.items.length - 1 ? '. ' : '.'}
-          </>
-        ))
-      }
-    </Essay>
+    <Essay class="mt-10 md:mt-[60px]" essay={home.terms} />
 
-    <div
-      class="mt-14 flex flex-col gap-[18px] md:mt-24 md:flex-row md:items-center md:justify-between md:gap-10"
-    >
-      <div class="flex flex-col gap-1">
-        <h2 class="text-[17px]/[25.5px] font-semibold">{home.close.title}</h2>
-        <p class="text-[15px]/[22px] text-muted md:text-base/6">{home.close.body}</p>
-      </div>
+    <Essay class="mt-11 md:mt-[66px]" essay={home.clients} />
 
-      <div class="flex shrink-0 items-center gap-[10px]">
-        <a
-          href={profile.enquireUrl}
-          data-lead-source="close"
-          class="inline-flex items-center gap-2 rounded-full bg-ink px-[22px] py-[14px] text-[15px] font-medium text-ground transition-opacity hover:opacity-85 md:order-2 md:px-5 md:py-[11px] md:text-sm"
-        >
-          {home.close.start}
-          <ArrowRight class="size-[14px]" />
-        </a>
-        <a
-          href={`tel:${profile.phoneHref}`}
-          data-lead-source="close"
-          class="pill mono px-[18px] py-[14px] text-[13px] md:order-1 md:py-[11px]"
-        >
-          {profile.phone}
-        </a>
-      </div>
-    </div>
+    <Log class="mt-10 md:mt-[62px]" />
 
-    <div class="mono mt-14 flex items-center justify-between text-faint md:mt-24">
-      <span>{home.footer.name}</span>
-      <span class="md:hidden">{home.footer.placeShort}</span>
-      <span class="hidden md:inline">{home.footer.place}</span>
-    </div>
+    <p class="essay mt-11 md:mt-[66px]">
+      {home.experience.before}{' '}
+      <span
+        class="tabular-nums"
+        data-controller="years"
+        data-years-start-value={home.experience.start}
+      >
+        {years}
+      </span>{' '}
+      {home.experience.after}
+    </p>
+
+    <Cloud class="mt-10 md:mt-[62px]" />
+
+    <Essay class="mt-11 md:mt-[66px]" essay={home.honest} />
+
+    <p class="essay mt-10 md:mt-[60px]">
+      <a href={profile.enquireUrl} data-lead-source="start">{home.start.ask}</a>
+      {' '}{home.start.rest}
+    </p>
+
+    <Footer class="mt-24 md:mt-40" />
+    <StickyCta />
   </main>
 </DefaultLayout>

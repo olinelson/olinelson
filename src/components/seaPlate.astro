@@ -1,0 +1,54 @@
+---
+interface Props {
+  crests: number
+  lead?: boolean
+  class?: string
+}
+
+const { crests, lead, class: className } = Astro.props
+
+const W = 480
+const H = 96
+const MID = 50
+const X0 = 14
+const SPAN = W - 2 * X0
+const f = (n: number) => n.toFixed(1)
+
+// Sea state is the pace: flat water for lights-on, then a crest for every
+// major feature. Amplitude climbs with the count so the choppy rows read as
+// rougher, not just busier.
+const amp = crests === 0 ? 1.2 : Math.min(19, 11 + crests * 0.45)
+const periods = crests || 6
+const period = SPAN / periods
+
+const wave = (dy: number, a: number) => {
+  let d = `M ${X0},${f(MID + dy)}`
+  for (let i = 0; i < periods; i++) {
+    const x = X0 + i * period
+    d += ` Q ${f(x + period / 4)},${f(MID + dy - a)} ${f(x + period / 2)},${f(MID + dy)}`
+    d += ` Q ${f(x + (3 * period) / 4)},${f(MID + dy + a)} ${f(x + period)},${f(MID + dy)}`
+  }
+  return d
+}
+
+const peaks = crests
+  ? Array.from({ length: crests }, (_, i) => {
+      const cx = X0 + i * period + period / 4
+      return `<circle cx="${f(cx)}" cy="${f(MID - amp)}" r="2.6" />`
+    }).join('')
+  : ''
+
+const plate = `<g filter="url(#trkPen)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="${wave(14, amp * 0.6)}" stroke-width="1.2" opacity="0.14" />
+    <path d="${wave(7, amp * 0.8)}" stroke-width="1.4" opacity="0.3" />
+    <path d="${wave(0, amp)}" stroke-width="2" opacity="${crests ? 0.85 : 0.5}" />
+    <g fill="currentColor" stroke="none" opacity="0.85">${peaks}</g>
+  </g>`
+---
+
+<svg
+  viewBox={`0 0 ${W} ${H}`}
+  class:list={['plate', lead ? 'text-accent' : 'text-ink', className]}
+  aria-hidden="true"
+  set:html={plate}
+/>
