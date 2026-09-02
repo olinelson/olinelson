@@ -31,7 +31,7 @@ export const services = {
       items: [
         {
           title: 'Catch every enquiry',
-          body: 'Calls, texts, and website enquiries answered the moment they land — day or night — so work stops walking away while you’re on a job or asleep.',
+          body: 'Calls, texts, and website enquiries answered the moment they land — day or night — so work stops leading away while you’re on a job or asleep.',
         },
         {
           title: 'Quotes in minutes',
@@ -347,13 +347,14 @@ export type Size = {
   // Three month pips: how much of a quarter the build takes.
   pips: ('on' | 'off' | 'onward')[]
 }
+export type Scene = 'feeding' | 'leading' | 'riding' | 'racing'
 export type Speed = {
   label: string
   price: string
   major: string
   small: string
   note: string
-  crests: number
+  scene: Scene
   invert?: boolean
 }
 
@@ -396,7 +397,6 @@ export const home = {
     lead: 'Once the app is live, you choose.',
     rest: 'Just keep the lights on, or keep building.',
   } satisfies Essay,
-  speedHeader: { left: 'ONE MONTH', right: 'PER MONTH' },
   speedColumns: {
     name: 'Name',
     price: 'Price',
@@ -410,7 +410,7 @@ export const home = {
       major: '—',
       small: '—',
       note: 'At cost, plus 20%. Bug fixes only.',
-      crests: 0,
+      scene: 'feeding',
     },
     {
       label: 'Steady',
@@ -418,7 +418,7 @@ export const home = {
       major: '2',
       small: '4',
       note: '2 major features, 4 small changes.',
-      crests: 2,
+      scene: 'leading',
     },
     {
       label: 'Brisk',
@@ -426,7 +426,7 @@ export const home = {
       major: '10',
       small: '20',
       note: '10 major features, 20 small changes.',
-      crests: 10,
+      scene: 'riding',
       invert: true,
     },
     {
@@ -435,12 +435,12 @@ export const home = {
       major: '20',
       small: '40',
       note: '20 major features, 40 small changes.',
-      crests: 20,
+      scene: 'racing',
     },
   ] satisfies Speed[],
   log: {
-    lead: 'Each crest is a major feature going live.',
-    rest: 'Lights-on is flat water. Hammer and tongs is a crest every working day.',
+    lead: 'The horse is the pace.',
+    rest: 'Lights-on is feeding the horse. Hammer and tongs is racing flat out, with a major feature going live every working day.',
   } satisfies Essay,
   terms: {
     lead: 'Bug fixes are unlimited on every plan.',

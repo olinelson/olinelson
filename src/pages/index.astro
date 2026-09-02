@@ -4,7 +4,7 @@ import Seo from '../components/seo/index.astro'
 import Essay from '../components/essay.astro'
 import ArrowRight from '../icons/arrowRight.astro'
 import BoatPlate from '../components/boatPlate.astro'
-import SeaPlate from '../components/seaPlate.astro'
+import HorsePlate from '../components/horsePlate.astro'
 import Log from '../components/log.astro'
 import Footer from '../components/footer.astro'
 import StickyCta from '../components/stickyCta.astro'
@@ -34,7 +34,7 @@ const schema = [personSchema(image), websiteSchema(), profilePageSchema(), servi
     <Essay class="mt-10 md:mt-[60px]" essay={home.punch} />
     <Essay class="mt-10 md:mt-[60px]" essay={home.kickoff} />
 
-    <div class="mt-10 grid gap-8 md:mt-[62px] md:grid-cols-3 md:gap-6 md:pl-8">
+    <div class="mt-10 grid gap-8 sm:grid-cols-3 sm:gap-6 md:mt-[62px] md:pl-8">
       {
         home.sizes.map((size, i) => (
           <a
@@ -59,36 +59,27 @@ const schema = [personSchema(image), websiteSchema(), profilePageSchema(), servi
 
     <Essay class="mt-11 md:mt-[66px]" essay={home.live} />
 
-    <div class="mt-10 flex flex-col gap-7 md:mt-[62px] md:gap-5 md:pl-8">
-      <div
-        class="mono flex items-baseline justify-between px-1 pb-1 text-[11px] text-faint md:px-4 md:pb-0 md:text-[13px]"
-      >
-        <span>{home.speedHeader.left}</span>
-        <span>{home.speedHeader.right}</span>
-      </div>
-
+    <div class="mt-10 grid gap-8 sm:grid-cols-2 sm:gap-6 md:mt-[62px] md:grid-cols-4 md:pl-8">
       {
         home.speeds.map((speed) => (
-          <div class="grid grid-cols-[1fr_auto] items-baseline gap-x-[14px] gap-y-[2px] md:grid-cols-[232px_minmax(0,1fr)_92px] md:items-center md:gap-x-5 md:px-4">
-            <div class="flex items-center gap-[9px] md:col-start-1 md:row-start-1">
+          <a
+            href={profile.enquireUrl}
+            data-lead-source={`speed-${speed.scene}`}
+            class="group flex flex-col"
+          >
+            <HorsePlate scene={speed.scene} />
+            <div class="mt-4 flex items-center gap-[9px]">
               {speed.invert && <span class="lead-dot" />}
               <h2 class="text-[17px]/[25.5px] font-semibold">{speed.label}</h2>
             </div>
-
-            <span class="mono justify-self-end md:col-start-3 md:row-span-2 md:row-start-1 md:self-center md:justify-self-stretch md:text-right">
-              {speed.price}
-            </span>
-
-            <p class="col-span-2 text-[15px]/[22px] text-muted md:col-span-1 md:col-start-1 md:row-start-2">
-              {speed.note}
-            </p>
-
-            <SeaPlate
-              crests={speed.crests}
-              lead={speed.invert}
-              class="col-span-2 mt-3 md:col-span-1 md:col-start-2 md:row-span-2 md:row-start-1 md:mt-0 md:self-center"
-            />
-          </div>
+            <span class="mt-[2px] text-[15px]/[22px] text-muted md:text-base/6">{speed.note}</span>
+            <div class="mt-3 flex items-end justify-between">
+              <span class="mono price">
+                {speed.price} <span class="from">a month</span>
+              </span>
+              <ArrowRight class="mb-1 size-[15px] opacity-0 transition-opacity group-hover:opacity-60" />
+            </div>
+          </a>
         ))
       }
     </div>

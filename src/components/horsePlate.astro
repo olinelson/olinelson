@@ -1,0 +1,34 @@
+---
+import { Image } from 'astro:assets'
+import feeding from '../assets/images/jockeys/feeding.jpg'
+import leading from '../assets/images/jockeys/leading.jpg'
+import riding from '../assets/images/jockeys/riding.jpg'
+import racing from '../assets/images/jockeys/racing.jpg'
+import type { Scene } from '../data/profile'
+
+interface Props {
+  scene: Scene
+  class?: string
+}
+
+const { scene, class: className } = Astro.props
+
+const LIFT = 1.01
+const PLATES: Record<Scene, { src: ImageMetadata; alt: string }> = {
+  feeding: { src: feeding, alt: 'A watercolour jockey feeding hay to a racehorse' },
+  leading: { src: leading, alt: 'A watercolour jockey leading a racehorse by the reins' },
+  riding: { src: riding, alt: 'A watercolour jockey riding a racehorse at a trot' },
+  racing: { src: racing, alt: 'A watercolour jockey racing a horse at full gallop, whip raised' },
+}
+
+const { src, alt } = PLATES[scene]
+---
+
+<Image
+  src={src}
+  alt={alt}
+  widths={[340, 680]}
+  sizes="(min-width: 48rem) 190px, (min-width: 40rem) 50vw, 100vw"
+  class:list={['plate', className]}
+  style={`mix-blend-mode: multiply; filter: brightness(${LIFT})`}
+/>
