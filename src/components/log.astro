@@ -1,5 +1,9 @@
 ---
+import { Image } from 'astro:assets'
 import { clients } from '../data/profile'
+import ccbpi from '../assets/images/logos/ccbpi.svg'
+import vault from '../assets/images/logos/vault.png'
+import gosling from '../assets/images/logos/gosling.png'
 
 interface Props {
   class?: string
@@ -7,29 +11,36 @@ interface Props {
 
 const { class: className } = Astro.props
 
+const logos = { ccbpi, vault, gosling }
+const tilt = [-0.7, 0.6, -0.5]
+const side = ['md:self-start', 'md:self-end', 'md:self-start']
+
 const when = (date?: string) =>
   date
     ? new Date(date).toLocaleDateString('en-AU', { day: '2-digit', month: 'short', year: 'numeric' })
     : '—'
 ---
 
-<div class:list={['flex flex-col gap-7 md:gap-5 md:pl-8', className]}>
-  <div class="mono flex items-baseline justify-between px-1 pb-1 text-[11px] text-faint md:px-4 md:pb-0 md:text-[13px]">
-    <span>LOG</span>
-    <span>RECEIVED</span>
-  </div>
+<div class:list={['flex flex-col gap-6 md:gap-8 md:px-4', className]}>
   {
-    clients.map((client) => (
-      <div class="grid grid-cols-[1fr_auto] gap-x-[14px] gap-y-2 md:grid-cols-[232px_minmax(0,1fr)_92px] md:gap-x-5 md:px-4">
-        <div class="flex flex-col gap-[2px] md:col-start-1">
-          <h2 class="text-[17px]/[25.5px] font-semibold">{client.name}</h2>
-          <a href={client.href} class="text-[15px]/[22px] text-muted underline decoration-line underline-offset-4 hover:decoration-current">
-            {client.business}
-          </a>
+    clients.map((client, i) => (
+      <a
+        href={client.href}
+        class:list={['buoy flex w-full flex-col gap-4 rounded-2xl p-5 md:max-w-[640px] md:p-6', side[i % side.length]]}
+        style={`--tilt: ${tilt[i % tilt.length]}deg; animation-duration: ${(6.4 + i * 0.8).toFixed(1)}s; animation-delay: ${(-i * 1.7).toFixed(1)}s`}
+      >
+        <div class="flex items-center gap-3">
+          <Image src={logos[client.logo]} alt="" height={64} class="h-7 w-auto md:h-8" />
+          <h2 class="text-[17px]/[25.5px] font-semibold">{client.business}</h2>
         </div>
-        <span class="mono justify-self-end text-faint md:col-start-3 md:text-right">{when(client.date)}</span>
-        <p class="quote col-span-2 md:col-span-1 md:col-start-2 md:row-start-1">“{client.quote}”</p>
-      </div>
+        <p class="quote">“{client.quote}”</p>
+        <div class="flex items-baseline justify-between gap-4">
+          <span class="text-[15px]/[22px] text-muted">
+            {client.name}, {client.role}
+          </span>
+          <span class="mono shrink-0 text-faint">{when(client.date)}</span>
+        </div>
+      </a>
     ))
   }
 </div>

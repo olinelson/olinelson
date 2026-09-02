@@ -296,6 +296,7 @@ export type Client = {
   role: string
   business: string
   href: string
+  logo: 'ccbpi' | 'vault' | 'gosling'
   built: string
   quote: string
   // ISO date of the email or message the quote came from.
@@ -311,6 +312,7 @@ export const clients: Client[] = [
     role: 'Owner',
     business: 'Coffs Coast Building & Pest Inspections',
     href: 'https://ccbpi.com.au',
+    logo: 'ccbpi',
     built: 'An app that turns a day of inspection photos and notes into a print-ready report.',
     quote: 'Love the new features. Once again my time will be reduced in processing these reports.',
     date: '2026-08-23',
@@ -320,6 +322,7 @@ export const clients: Client[] = [
     role: 'Managing Director',
     business: 'Vault Moving & Storage',
     href: 'https://www.vaultmoving.com.au',
+    logo: 'vault',
     built: 'One feed of every tender from three broker portals, with the jobs that fit a truck matched up.',
     quote: 'Every tender from every portal lands in one place now. I open it in the morning and I can see what to bid on.',
     pending: true,
@@ -329,6 +332,7 @@ export const clients: Client[] = [
     role: 'CEO',
     business: 'Gosling Group',
     href: 'https://www.goslinggroup.com.au',
+    logo: 'gosling',
     built: 'Revenue forecasts per job for an electrical contractor, synced from three Simpro accounts.',
     quote: 'Oli sat with our project managers and quoters, worked out how the business actually runs, and built the thing that replaced the spreadsheets.',
     pending: true,
