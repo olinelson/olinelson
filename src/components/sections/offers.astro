@@ -1,0 +1,71 @@
+---
+import { services, profile } from '../../data/profile'
+
+// Simplified offer ladder — short, specific wins
+const offers = [
+  {
+    title: 'Catch every enquiry',
+    body: 'Calls, texts, and web enquiries answered instantly — day or night. Work stops walking away.',
+    icon: 'phone',
+  },
+  {
+    title: 'Quotes in minutes',
+    body: 'Photos or a voice note become a draft quote on the spot. Reply first, win more.',
+    icon: 'lightning',
+  },
+  {
+    title: 'Follow-ups that close',
+    body: 'Automatic chases on quotes, job reminders, review requests — the revenue that usually falls through.',
+    icon: 'repeat',
+  },
+  {
+    title: 'Paperwork that writes itself',
+    body: 'Invoices, reports, compliance docs from a voice note. You speak; it writes.',
+    icon: 'document',
+  },
+  {
+    title: 'Numbers you can trust',
+    body: 'Bank, accounting, and job records in one clear picture of how the business is tracking.',
+    icon: 'chart',
+  },
+]
+---
+
+<section id="offers" class="mx-auto max-w-5xl px-6 py-20 sm:py-28">
+  <header class="max-w-2xl" data-reveal>
+    <p class="eyebrow">What I offer</p>
+    <h2 class="mt-5 text-3xl sm:text-4xl">Where AI usually pays for itself</h2>
+    <p class="mt-5 text-base-content/65">
+      More money in. Less time burned. Built for the kind of business where missing one call or
+      losing an evening to admin actually costs you.
+    </p>
+  </header>
+
+  <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      offers.map((offer, i) => (
+        <article
+          class="group rounded-2xl border border-base-300 bg-base-100 p-6 transition-colors hover:border-primary/30 hover:bg-base-100"
+          data-reveal
+          style={`--reveal-delay: ${i * 60}ms`}
+        >
+          <h3 class="text-lg font-medium sm:text-xl">{offer.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-base-content/70">{offer.body}</p>
+        </article>
+      ))
+    }
+  </div>
+
+  <div class="mt-10 max-w-2xl" data-reveal>
+    <p class="text-base-content/70">
+      Not sure which is yours?{' '}
+      <a
+        href={profile.enquireUrl}
+        data-lead-source="offers"
+        class="font-medium text-primary underline-offset-4 hover:underline"
+      >
+        Free call — I'll say if AI is worth it →
+      </a>
+    </p>
+  </div>
+</section>
