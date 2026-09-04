@@ -4,24 +4,26 @@ import { profile } from '../data/profile'
 import profileImage from '../assets/images/profile.jpg'
 ---
 
-<header class="flex items-center justify-between pt-5 md:pt-8">
-  <a href="/" class="flex items-center gap-[9px] md:gap-[10px]">
-    <Image
-      src={profileImage}
-      alt={profile.name}
-      width={64}
-      height={64}
-      class="size-6 rounded-full object-cover md:size-[26px]"
-    />
-    <span class="text-[15px] font-semibold md:text-base">olinelson.com</span>
-  </a>
-
-  <nav class="flex items-center gap-5 md:gap-7">
-    <a href="/" class="text-sm transition-colors hover:text-muted">Apps</a>
-    <a href="/consulting.html" class="text-sm transition-colors hover:text-muted">Consulting</a>
-    <a href="/words.html" class="text-sm transition-colors hover:text-muted">Words</a>
-    <a href={profile.enquireUrl} data-lead-source="nav" class="pill px-[18px] py-[10px]">
-      Contact
+<header class="pt-5 md:pt-8">
+  <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+    <a href="/" class="flex items-center gap-[9px] md:gap-[10px]">
+      <Image
+        src={profileImage}
+        alt={profile.name}
+        width={64}
+        height={64}
+        class="size-6 rounded-full object-cover md:size-[26px]"
+      />
+      <span class="text-[15px] font-semibold md:text-base">olinelson.com</span>
     </a>
-  </nav>
+
+    <nav class="flex items-center justify-between gap-3 md:justify-end md:gap-7">
+      <a href="/" class="text-sm transition-colors hover:text-muted">Apps</a>
+      <a href="/consulting.html" class="text-sm transition-colors hover:text-muted">Consulting</a>
+      <a href="/words.html" class="text-sm transition-colors hover:text-muted">Words</a>
+      <a href={profile.enquireUrl} data-lead-source="nav" class="pill px-[18px] py-[10px]">
+        Contact
+      </a>
+    </nav>
+  </div>
 </header>
