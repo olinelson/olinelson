@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content'
 import {
   profile,
   home,
-  clients,
+  consulting,
   work,
   experience,
   skills,
@@ -35,16 +35,14 @@ export const GET: APIRoute = async () => {
   const skillsLines = skills.map((s) => `- **${s.label}:** ${s.items}`).join('\n')
 
   const sizeLines = home.sizes
-    .map((s) => `- **${s.label}:** ${s.from ? 'from ' : ''}${s.price} — ${s.note}`)
+    .map((s) => `- **${s.label}:** ${s.from ? 'from ' : ''}${s.price} — ${s.note} ${s.body}`)
     .join('\n')
 
   const speedLines = home.speeds
-    .map((s) => `- **${s.label}:** ${s.price} per month — ${s.note}`)
+    .map((s) => `- **${s.label}:** ${s.price} per month — ${s.note} ${s.body}`)
     .join('\n')
 
-  const clientLines = clients
-    .map((c) => `- **${c.name}, ${c.role}, [${c.business}](${c.href})** — ${c.built} “${c.quote}”`)
-    .join('\n')
+  const kindLines = consulting.kinds.map((k) => `- **${k.label}:** ${k.note}`).join('\n')
 
   const years = ((Date.now() - Date.parse(home.experience.start)) / (365.2425 * 24 * 60 * 60 * 1000)).toFixed(1)
 
@@ -87,21 +85,36 @@ ${home.live.lead} ${home.live.rest}
 
 ${speedLines}
 
-${home.log.lead} ${home.log.rest}
-
 ## Terms
 
 ${home.terms.lead} ${home.terms.rest}
 
-## Clients
+## Consulting, by the day
 
-${home.clients.lead}
+Separate from the fixed-price builds above. ${consulting.headline} ${consulting.intro.lead}
+${consulting.intro.rest} ${consulting.together.lead} ${consulting.together.rest}
 
-${clientLines}
+${consulting.byTheDay.lead} ${consulting.byTheDay.rest} ${consulting.method.lead}
+${consulting.method.rest}
+
+${kindLines}
+
+${consulting.team.lead} ${consulting.team.rest} ${consulting.teamProof.lead}
+${consulting.teamProof.rest}
+
+${consulting.rate.lead} ${consulting.rate.rest}
+
+${consulting.why.lead} ${consulting.why.rest}
+
+${consulting.honest.lead} ${consulting.honest.rest}
+
+Read more: ${SITE}/consulting.html
 
 ## Experience
 
 ${home.experience.before} ${years} ${home.experience.after}
+
+${home.bothSides.lead} ${home.bothSides.rest} ${home.direct.lead} ${home.direct.rest}
 
 ${home.experience.places.map((p) => `- [${p.name}](${p.href})`).join('\n')}
 
@@ -128,7 +141,7 @@ ${linkLines}
 ## Work with Oli
 
 To work with Oli, send an enquiry at ${profile.enquireUrl}, email ${profile.email}, or call
-${profile.phone}. ${home.honest.lead} ${home.honest.rest} ${home.start.ask} ${home.start.rest}
+${profile.phone}. ${home.unsure.lead} ${home.unsure.rest} ${home.honest.lead} ${home.honest.rest} ${home.start.ask} ${home.start.rest}
 Full text of every article is available at ${SITE}/llms-full.txt and ${SITE}/feed.xml.
 `
 

@@ -1,0 +1,34 @@
+---
+import { Image } from 'astro:assets'
+
+interface Props {
+  scene: string
+  alt: string
+  class?: string
+}
+
+const { scene, alt, class: className } = Astro.props
+
+// Globbed, not imported one by one: a plate appears as soon as its file lands in
+// the folder, and a scene with no file yet renders nothing instead of failing.
+const plates = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/images/boatyard/*.jpg',
+  { eager: true },
+)
+const plate = plates[`../assets/images/boatyard/${scene}.jpg`]
+
+const LIFT = 1.01
+---
+
+{
+  plate && (
+    <Image
+      src={plate.default}
+      alt={alt}
+      widths={[340, 680]}
+      sizes="(min-width: 40rem) 280px, 100vw"
+      class:list={['plate', className]}
+      style={`mix-blend-mode: multiply; filter: brightness(${LIFT})`}
+    />
+  )
+}

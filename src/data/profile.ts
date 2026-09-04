@@ -3,9 +3,9 @@
 export const profile = {
   name: 'Oli Nelson',
   role: 'AI consultant & software engineer',
-  headline: 'I run a solo software development agency.',
+  headline: 'I build software for small businesses.',
   subhead:
-    'I handle everything from the initial chat to your own app up and running, saving you time and money.',
+    'You tell me what your business needs. We work it out together, then I design, build and deploy it.',
   location: 'Coffs Harbour, NSW · working anywhere',
   enquireUrl: 'https://bosun.olinelson.com/enquire/work-with-me',
   email: 'olivernelson@hey.com',
@@ -347,6 +347,7 @@ export type Size = {
   label: string
   note: string
   price: string
+  body: string
   from?: boolean
   // Three month pips: how much of a quarter the build takes.
   pips: ('on' | 'off' | 'onward')[]
@@ -358,35 +359,38 @@ export type Speed = {
   major: string
   small: string
   note: string
+  body: string
   scene: Scene
   invert?: boolean
 }
 
 export const home = {
-  headline: 'Your own app, live in about a month.',
+  headline: 'Your app, live in about a month.',
   intro: {
-    lead: 'I’m Oli. I run a solo software development agency in Coffs Harbour.',
-    rest: 'Chat, design, build, deploy. From the first call to a live app.',
+    lead: 'I’m Oli. I build software for small businesses.',
+    rest: 'You tell me what your business needs. We work it out together, then I design, build and deploy it.',
   } satisfies Essay,
   punch: {
-    lead: 'You talk to one person, and that person does the work.',
-    rest: 'No hand-offs.',
+    lead: 'One person, from the first conversation to live software.',
+    rest: 'No sales guy. No project manager. No hand-offs.',
   } satisfies Essay,
   kickoff: {
-    lead: 'A one-off fee gets you live.',
-    rest: 'It depends on the size. Most solutions are Small.',
+    lead: 'Most projects are live in about a month, for a fixed one-off fee.',
+    rest: 'It depends on the size. Most are Small.',
   } satisfies Essay,
   sizes: [
     {
       label: 'Small',
-      note: 'About a month, then you’re live.',
+      note: 'Live in about a month.',
       price: '$5,000',
+      body: 'A focused app that solves a specific problem in your business.',
       pips: ['on', 'off', 'off'],
     },
     {
       label: 'Medium',
-      note: 'About two months.',
+      note: 'Live in about two months.',
       price: '$10,000',
+      body: 'A larger workflow, with more screens, more automation, or more moving parts.',
       pips: ['on', 'on', 'off'],
     },
     {
@@ -394,12 +398,13 @@ export const home = {
       note: 'Three months or more.',
       price: '$15,000',
       from: true,
+      body: 'For substantial systems that need more time to design, build and test properly.',
       pips: ['on', 'on', 'onward'],
     },
   ] satisfies Size[],
   live: {
-    lead: 'Once the app is live, you choose.',
-    rest: 'Just keep the lights on, or keep building.',
+    lead: 'Once your app is live, you choose what happens next.',
+    rest: 'Keep the lights on, or keep building.',
   } satisfies Essay,
   speedColumns: {
     name: 'Name',
@@ -414,6 +419,7 @@ export const home = {
       major: '—',
       small: '—',
       note: 'At cost, plus 20%. Bug fixes only.',
+      body: 'Hosting, services, and the bits that keep the app running. That’s it.',
       scene: 'feeding',
     },
     {
@@ -421,7 +427,8 @@ export const home = {
       price: '$1,000',
       major: '2',
       small: '4',
-      note: '2 major features, 4 small changes.',
+      note: 'Two major features and four small changes each month.',
+      body: 'For a business that wants the software to keep getting better, without going all in.',
       scene: 'leading',
     },
     {
@@ -429,7 +436,8 @@ export const home = {
       price: '$5,000',
       major: '10',
       small: '20',
-      note: '10 major features, 20 small changes.',
+      note: 'Ten major features and twenty small changes each month.',
+      body: 'For a business with a lot to build.',
       scene: 'riding',
       invert: true,
     },
@@ -438,34 +446,48 @@ export const home = {
       price: '$10,000',
       major: '20',
       small: '40',
-      note: '20 major features, 40 small changes.',
+      note: 'Twenty major features and forty small changes each month.',
+      body: 'Building flat out, with a major feature going live every working day.',
       scene: 'racing',
     },
   ] satisfies Speed[],
-  log: {
-    lead: 'The horse is the pace.',
-    rest: 'Lights-on is feeding the horse. Hammer and tongs is racing flat out, with a major feature going live every working day.',
-  } satisfies Essay,
   terms: {
     lead: 'Bug fixes are unlimited on every plan.',
     rest: 'You pay at the start of each month and stop when you want. The software and your data are yours from day one.',
   } satisfies Essay,
+  consulting: {
+    ask: 'Already running, and something isn’t working?',
+    link: 'I fix businesses by the day.',
+  },
   clients: {
     lead: 'Some of the people I build for.',
   } satisfies Essay,
   experience: {
-    start: '2017-01-01',
-    before: 'I have been a software engineer for',
-    after: 'years. I was a professional jazz drummer first.',
+    start: '2019-01-01',
+    before: 'I’ve been building software for',
+    after: 'years. Before software, I was a professional jazz drummer.',
     places: [
       { name: 'Uscreen', href: 'https://www.uscreen.tv', logo: 'uscreen' },
       { name: 'Rapid Global', href: 'https://www.rapidglobal.com', logo: 'rapidglobal' },
       { name: 'Nirovision', href: 'https://www.nirovision.com', logo: 'nirovision' },
       { name: 'WithYouWithMe', href: 'https://withyouwithme.com', logo: 'withyouwithme' },
+      { name: 'iCare OCULO', href: 'https://www.oculo.com.au', logo: 'oculo' },
       { name: 'Ricordi', href: 'https://ricordi.ai', logo: 'ricordi' },
       { name: 'Maestrocast', href: 'https://maestrocast.com', logo: 'maestrocast' },
     ],
   },
+  bothSides: {
+    lead: 'I’ve built for startups and established businesses, and I’ve built and run my own products.',
+    rest: 'So I know both sides: building software for a business, and being the person whose business depends on it.',
+  } satisfies Essay,
+  direct: {
+    lead: 'These days I work directly with the people who use the software.',
+    rest: 'No layers between you and the person writing the code.',
+  } satisfies Essay,
+  unsure: {
+    lead: 'Not sure you need an app? That’s fine.',
+    rest: 'Tell me what’s annoying you, what takes too long, or what your team keeps doing by hand. We’ll work out whether software is actually the answer.',
+  } satisfies Essay,
   honest: {
     lead: 'If it’s not a good fit, I’ll say so.',
     rest: 'I won’t sell you.',
@@ -481,4 +503,84 @@ export const home = {
     place: 'Coffs Harbour, NSW — working anywhere',
     placeShort: 'Coffs Harbour, NSW',
   },
+}
+
+// ── /consulting: day-rate work fixing what is stuck in a working business ────
+// Its own page on purpose. The homepage prices packages, not time — a day rate
+// sitting beside those numbers invites a reader to divide one by the other.
+export const consulting = {
+  headline: 'I help fix businesses.',
+  intro: {
+    lead: 'Not in the management-consultant sense.',
+    rest: 'I mean I get inside the business, work out where things are getting stuck, and fix them.',
+  } satisfies Essay,
+  stuck: {
+    lead: 'Maybe the problem is a spreadsheet that everyone hates.',
+    rest: 'Maybe information gets entered three times. Maybe a quoting process takes two days when it should take twenty minutes. Maybe the software is the problem. Maybe the software isn’t the problem at all.',
+  } satisfies Essay,
+  together: {
+    lead: 'We work it out together. Then I fix what needs fixing.',
+    rest: 'Sometimes that means changing a process. Sometimes it means writing some software. Usually it’s a bit of both.',
+  } satisfies Essay,
+  byTheDay: {
+    lead: 'I work by the day.',
+    rest: 'You get me inside the business, not a slide deck.',
+  } satisfies Essay,
+  method: {
+    lead: 'I’ll sit with the people doing the work, follow the process from beginning to end, find the unnecessary steps and bottlenecks, and work out what to change. Then I’ll make the change.',
+    rest: 'I can write the code myself, so there isn’t a hand-off between figuring out the solution and building it.',
+  } satisfies Essay,
+  kinds: [
+    {
+      label: 'Fix the process',
+      scene: 'process',
+      alt: 'A watercolour tangle of rope beside a neat coil on a timber dock',
+      note: 'I’ll spend time with the people doing the work and find where it’s slow, repetitive or needlessly manual. Then we’ll simplify it.',
+    },
+    {
+      label: 'Fix the software',
+      scene: 'software',
+      alt: 'A watercolour wooden boat hull on a timber cradle, a plane and chisel beside it',
+      note: 'If the answer is software, I’ll build it. A new feature, an integration, an automation, or a small internal tool.',
+    },
+    {
+      label: 'Fix the whole thing',
+      scene: 'whole',
+      alt: 'A watercolour sailing boat up in a boatyard cradle, hull and rigging both being worked on',
+      note: 'Sometimes it’s all of it: the process, the software, and the way people work. I’ll keep fixing until the business runs better.',
+    },
+  ] satisfies { label: string; scene: string; alt: string; note: string }[],
+  team: {
+    lead: 'I can also drop into an existing software team.',
+    rest: 'If you’ve already got a product and a development team, I can work inside it too. I can take on a difficult feature, fix something that’s been sitting around too long, help make a technical decision, or build the AI feature that everyone has been talking about but nobody has shipped.',
+  } satisfies Essay,
+  teamProof: {
+    lead: 'I’ve spent most of my career working inside other people’s teams and codebases.',
+    rest: 'I don’t need to own the project to be useful.',
+  } satisfies Essay,
+  rate: {
+    lead: 'The rate depends on the work.',
+    rest: 'Tell me what is going wrong, what you’d like to improve, or what you’re trying to get done. I’ll work out the shape of the engagement and come back with a day rate in Australian dollars plus GST. Two days is the smallest engagement worth either of our time.',
+  } satisfies Essay,
+  why: {
+    lead: 'A day rate makes sense when we don’t know exactly what we’re going to find yet.',
+    rest: 'If we can define the work properly, I’ll usually give you a fixed price instead.',
+  } satisfies Essay,
+  honest: {
+    lead: 'No consulting theatre.',
+    rest: 'I’ll get into the business, understand what’s actually happening, and help fix it. If the answer is a process change, we’ll change the process. If it’s software, I’ll build the software. If it’s both, we’ll do both. The goal is to make the business work better — not to find a reason to keep me around.',
+  } satisfies Essay,
+  proof: {
+    lead: 'I’ve worked inside businesses of all sizes.',
+  } satisfies Essay,
+  bothSides: {
+    lead: 'I’ve also built and run my own SaaS products, including Ricordi and Maestrocast.',
+    rest: 'So I know what it feels like to be on both sides of the problem: the person trying to run the business, and the person building the thing that makes it work.',
+  } satisfies Essay,
+  close: {
+    ask: 'Tell me what’s not working.',
+    rest: 'I reply within a day, usually faster.',
+  },
+  back: 'Looking to have a new app built instead?',
+  backLink: 'Start here.',
 }

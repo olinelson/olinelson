@@ -1,0 +1,81 @@
+---
+import DefaultLayout from '../layouts/default.astro'
+import Seo from '../components/seo/index.astro'
+import Essay from '../components/essay.astro'
+import BoatyardPlate from '../components/boatyardPlate.astro'
+import Cloud from '../components/cloud.astro'
+import Footer from '../components/footer.astro'
+import StickyCta from '../components/stickyCta.astro'
+import { profile, consulting } from '../data/profile'
+import { consultingSchema, breadcrumbSchema, SITE } from '../lib/schema'
+
+const url = `${SITE}/consulting.html`
+const schema = [
+  consultingSchema(),
+  breadcrumbSchema([
+    { name: 'Home', item: SITE },
+    { name: 'Consulting', item: url },
+  ]),
+]
+---
+
+<DefaultLayout>
+  <Seo
+    slot="seo"
+    title="Consulting — Oli Nelson"
+    description="I get inside the business, work out where things are getting stuck, and fix them — the process, the software, or both. Day-rate work, in Australian dollars plus GST."
+    canonical={url}
+    image={`${SITE}/og/consulting.png`}
+    imageAlt="Oli Nelson — I help fix businesses"
+    schema={schema}
+  />
+
+  <main class="pt-[116px] md:pt-[168px]">
+    <h1 class="essay">{consulting.headline}</h1>
+
+    <Essay class="mt-10 md:mt-[60px]" essay={consulting.intro} />
+    <Essay class="mt-10 md:mt-[60px]" essay={consulting.stuck} />
+    <Essay class="mt-10 md:mt-[60px]" essay={consulting.together} />
+
+    <Essay class="mt-11 md:mt-[66px]" essay={consulting.byTheDay} />
+    <Essay class="mt-10 md:mt-[60px]" essay={consulting.method} />
+
+    <div class="mt-10 grid gap-8 sm:grid-cols-3 sm:gap-6 md:mt-[62px] md:pl-8">
+      {
+        consulting.kinds.map((kind) => (
+          <div class="flex flex-col">
+            <BoatyardPlate scene={kind.scene} alt={kind.alt} />
+            <h2 class="mt-4 text-[17px]/[25.5px] font-semibold">{kind.label}</h2>
+            <span class="mt-[2px] text-[15px]/[22px] text-muted md:text-base/6">{kind.note}</span>
+          </div>
+        ))
+      }
+    </div>
+
+    <Essay class="mt-11 md:mt-[66px]" essay={consulting.team} />
+    <Essay class="mt-10 md:mt-[60px]" essay={consulting.teamProof} />
+
+    <Essay class="mt-11 md:mt-[66px]" essay={consulting.rate} />
+    <Essay class="mt-10 md:mt-[60px]" essay={consulting.why} />
+
+    <Essay class="mt-11 md:mt-[66px]" essay={consulting.honest} />
+
+    <Essay class="mt-11 md:mt-[66px]" essay={consulting.proof} />
+
+    <Cloud class="mt-10 md:mt-[62px]" />
+
+    <Essay class="mt-10 md:mt-[60px]" essay={consulting.bothSides} />
+
+    <p class="essay mt-11 md:mt-[66px]">
+      <a href={profile.enquireUrl} data-lead-source="consulting">{consulting.close.ask}</a>
+      {' '}{consulting.close.rest}
+    </p>
+
+    <p class="essay mt-10 md:mt-[60px]">
+      {consulting.back} <a href="/">{consulting.backLink}</a>
+    </p>
+
+    <Footer class="mt-24 md:mt-40" />
+    <StickyCta />
+  </main>
+</DefaultLayout>
