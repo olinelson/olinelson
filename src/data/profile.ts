@@ -474,12 +474,19 @@ export const home = {
       { name: 'iCare OCULO', href: 'https://www.oculo.com.au', logo: 'oculo' },
       { name: 'Ricordi', href: 'https://ricordi.ai', logo: 'ricordi' },
       { name: 'Maestrocast', href: 'https://maestrocast.com', logo: 'maestrocast' },
+      { name: 'TradieBridge', href: 'https://tradiebridge.com', logo: 'tradiebridge' },
     ],
   },
   bothSides: {
     lead: 'I’ve built for startups and established businesses, and I’ve built and run my own products.',
     rest: 'So I know both sides: building software for a business, and being the person whose business depends on it.',
   } satisfies Essay,
+  tradiebridge: {
+    lead: 'My newest product is',
+    name: 'TradieBridge',
+    href: 'https://tradiebridge.com',
+    rest: 'Simpro, Xero and Deputy backup in a copy you own, that you can ask with AI. A$49/month.',
+  },
   direct: {
     lead: 'These days I work directly with the people who use the software.',
     rest: 'No layers between you and the person writing the code.',

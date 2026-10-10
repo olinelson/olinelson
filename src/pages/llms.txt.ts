@@ -114,7 +114,7 @@ Read more: ${SITE}/consulting.html
 
 ${home.experience.before} ${years} ${home.experience.after}
 
-${home.bothSides.lead} ${home.bothSides.rest} ${home.direct.lead} ${home.direct.rest}
+${home.bothSides.lead} ${home.bothSides.rest} ${home.tradiebridge.lead} [${home.tradiebridge.name}](${home.tradiebridge.href}): ${home.tradiebridge.rest} ${home.direct.lead} ${home.direct.rest}
 
 ${home.experience.places.map((p) => `- [${p.name}](${p.href})`).join('\n')}
 

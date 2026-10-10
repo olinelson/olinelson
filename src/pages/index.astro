@@ -107,6 +107,10 @@ const schema = [personSchema(image), websiteSchema(), profilePageSchema(), servi
     <Cloud class="mt-10 md:mt-[62px]" />
 
     <Essay class="mt-11 md:mt-[66px]" essay={home.bothSides} />
+    <p class="essay mt-10 md:mt-[60px]">
+      {home.tradiebridge.lead}{' '}
+      <a href={home.tradiebridge.href}>{home.tradiebridge.name}</a>: {home.tradiebridge.rest}
+    </p>
     <Essay class="mt-10 md:mt-[60px]" essay={home.direct} />
 
     <Essay class="mt-11 md:mt-[66px]" essay={home.unsure} />
