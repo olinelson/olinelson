@@ -221,10 +221,10 @@ export type Job = {
 export const experience: Job[] = [
   {
     role: 'Founder',
-    company: 'Ricordi & Maestrocast',
+    company: 'TradieBridge, Ricordi & Maestrocast',
     period: '2025 — now',
     blurb:
-      'Founded and built two of my own products from nothing — the software, the AI, the brand, the support — and put them in front of real paying users.',
+      'Founded and built three of my own products from nothing — the software, the AI, the brand, the support — and put them in front of real paying users.',
   },
   {
     role: 'Product Engineer',
@@ -581,7 +581,7 @@ export const consulting = {
     lead: 'I’ve worked inside businesses of all sizes.',
   } satisfies Essay,
   bothSides: {
-    lead: 'I’ve also built and run my own SaaS products, including Ricordi and Maestrocast.',
+    lead: 'I’ve also built and run my own SaaS products, including TradieBridge, Ricordi and Maestrocast.',
     rest: 'So I know what it feels like to be on both sides of the problem: the person trying to run the business, and the person building the thing that makes it work.',
   } satisfies Essay,
   close: {
