@@ -221,10 +221,10 @@ export type Job = {
 export const experience: Job[] = [
   {
     role: 'Founder',
-    company: 'Ricordi & Maestrocast',
+    company: 'TradieBridge, Ricordi & Maestrocast',
     period: '2025 — now',
     blurb:
-      'Founded and built two of my own products from nothing — the software, the AI, the brand, the support — and put them in front of real paying users.',
+      'Founded and built three of my own products from nothing — the software, the AI, the brand, the support — and put them in front of real paying users.',
   },
   {
     role: 'Product Engineer',
@@ -474,12 +474,19 @@ export const home = {
       { name: 'iCare OCULO', href: 'https://www.oculo.com.au', logo: 'oculo' },
       { name: 'Ricordi', href: 'https://ricordi.ai', logo: 'ricordi' },
       { name: 'Maestrocast', href: 'https://maestrocast.com', logo: 'maestrocast' },
+      { name: 'TradieBridge', href: 'https://tradiebridge.com', logo: 'tradiebridge' },
     ],
   },
   bothSides: {
     lead: 'I’ve built for startups and established businesses, and I’ve built and run my own products.',
     rest: 'So I know both sides: building software for a business, and being the person whose business depends on it.',
   } satisfies Essay,
+  tradiebridge: {
+    lead: 'My newest product is',
+    name: 'TradieBridge',
+    href: 'https://tradiebridge.com',
+    rest: 'Simpro, Xero and Deputy backup in a copy you own, that you can ask with AI. A$49/month.',
+  },
   direct: {
     lead: 'These days I work directly with the people who use the software.',
     rest: 'No layers between you and the person writing the code.',
@@ -574,7 +581,7 @@ export const consulting = {
     lead: 'I’ve worked inside businesses of all sizes.',
   } satisfies Essay,
   bothSides: {
-    lead: 'I’ve also built and run my own SaaS products, including Ricordi and Maestrocast.',
+    lead: 'I’ve also built and run my own SaaS products, including TradieBridge, Ricordi and Maestrocast.',
     rest: 'So I know what it feels like to be on both sides of the problem: the person trying to run the business, and the person building the thing that makes it work.',
   } satisfies Essay,
   close: {
