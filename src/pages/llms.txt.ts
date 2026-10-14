@@ -92,7 +92,7 @@ ${home.terms.lead} ${home.terms.rest}
 ## Consulting, by the day
 
 Separate from the fixed-price builds above. ${consulting.headline} ${consulting.intro.lead}
-${consulting.intro.rest} ${consulting.together.lead} ${consulting.together.rest}
+${consulting.together.lead} ${consulting.together.rest}
 
 ${consulting.byTheDay.lead} ${consulting.byTheDay.rest} ${consulting.method.lead}
 ${consulting.method.rest}

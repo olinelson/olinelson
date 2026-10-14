@@ -518,8 +518,7 @@ export const home = {
 export const consulting = {
   headline: 'I help fix businesses.',
   intro: {
-    lead: 'Not in the management-consultant sense.',
-    rest: 'I mean I get inside the business, work out where things are getting stuck, and fix them.',
+    lead: 'I get inside the business, work out where things are getting stuck, and fix them.',
   } satisfies Essay,
   stuck: {
     lead: 'Maybe the problem is a spreadsheet that everyone hates.',
